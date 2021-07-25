@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
     {
         private const string k_AppId = "1450160541956417";
         private bool m_IsLoggedIn;
-        private LoginResult m_loginResult;
+        private User m_LoggedUser;
         public FormMain()
         {
             
@@ -30,25 +30,25 @@ namespace BasicFacebookFeatures
             {
                 Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
 
-                m_loginResult = FacebookService.Login(
+                LoginResult loginResult = FacebookService.Login(
                     /// (This is Desig Patter's App ID. replace it with your own)
                     k_AppId,
                     /// requested permissions:
                     "email",
                     "public_profile",
-                    "groups_acces_member_info",
                     "user_photos",
                     "user_birthday",
                     "user_friends"
                     /// add any relevant permissions
                     
                 );
-                if(m_loginResult.FacebookOAuthResult.IsSuccess)
+                if(loginResult.FacebookOAuthResult.IsSuccess)
                 {
+                    m_LoggedUser = loginResult.LoggedInUser;
                     m_IsLoggedIn = true;
                     buttonLogin.Text = "You Are Logged in!";
                     buttonLogin.BackColor = Color.Green;
-                    label1.Text = $"Hello {m_loginResult.LoggedInUser.Name} !";
+                    label1.Text = $@"Hello {m_LoggedUser.Name} !";
                 }
             }
         }
