@@ -13,6 +13,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private const string k_AppId = "1450160541956417";
         private bool m_IsLoggedIn;
         private LoginResult m_loginResult;
         public FormMain()
@@ -31,22 +32,24 @@ namespace BasicFacebookFeatures
 
                 m_loginResult = FacebookService.Login(
                     /// (This is Desig Patter's App ID. replace it with your own)
-                    "1450160541956417",
+                    k_AppId,
                     /// requested permissions:
                     "email",
-                    "public_profile"
+                    "public_profile",
+                    "groups_acces_member_info",
+                    "user_photos",
+                    "user_birthday",
+                    "user_friends"
                     /// add any relevant permissions
                     
                 );
                 if(m_loginResult.FacebookOAuthResult.IsSuccess)
                 {
                     m_IsLoggedIn = true;
-                    buttonLogin.Text = $"Logged in as {m_loginResult.LoggedInUser.Name}";
+                    buttonLogin.Text = "You Are Logged in!";
+                    buttonLogin.BackColor = Color.Green;
+                    label1.Text = $"Hello {m_loginResult.LoggedInUser.Name} !";
                 }
-            }
-            else
-            {
-                buttonLogin.Text = m_loginResult.LoggedInUser.Birthday;
             }
         }
 
@@ -58,7 +61,7 @@ namespace BasicFacebookFeatures
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
