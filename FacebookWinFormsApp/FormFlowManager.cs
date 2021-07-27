@@ -16,6 +16,7 @@ namespace BasicFacebookFeatures
             m_StartForm.ShowDialog();
             m_FacebookForm = new FormMain(m_StartForm.m_LoggedUser);
             m_FacebookForm.ShowDialog();
+            
         }
     }
 }

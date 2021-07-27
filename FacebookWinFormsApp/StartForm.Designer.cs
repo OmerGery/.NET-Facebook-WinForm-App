@@ -51,7 +51,6 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.buttonLogin);
             this.Name = "StartForm";
             this.Text = "StartForm";
-            this.Load += new System.EventHandler(this.StartForm_Load);
             this.ResumeLayout(false);
 
         }

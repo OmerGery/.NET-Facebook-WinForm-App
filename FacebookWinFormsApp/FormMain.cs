@@ -1,38 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
-using FacebookWrapper;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
         private readonly Random r_Random = new Random();
-        private User m_LoggedUser;
+        private readonly User r_LoggedUser;
         public FormMain(User i_LoggedUser)
         {
-            m_LoggedUser = i_LoggedUser;
+            r_LoggedUser = i_LoggedUser;
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
         }
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            m_UserNameLabel.Text = m_LoggedUser.Name;
-            m_ProfilePicture.Image = m_LoggedUser.ImageSmall;
-            fetchEvents();
+            m_UserNameLabel.Text = r_LoggedUser.Name;
+            m_ProfilePicture.Image = r_LoggedUser.ImageSmall;
+            fetchEvents();  
         }
 
         private void fetchEvents()
         {
-            foreach(var userEvent in m_LoggedUser.Events)
+            FacebookObjectCollection<Event> userEvents = r_LoggedUser.Events;
+            m_UpcomingEventsLabel.Text = $@" {userEvents.Count} {m_UpcomingEventsLabel.Text}";
+            foreach(var userEvent in userEvents)
             {
                 string userEventLocation = userEvent.Location;
                 userEventLocation = userEventLocation.Replace("Name", "").Replace(", URL:", " ");
@@ -82,7 +76,7 @@ namespace BasicFacebookFeatures
 
         private void m_RandomPicture_Click(object sender, EventArgs e)
         {
-           FacebookObjectCollection<Photo> taggedPictures  = m_LoggedUser.PhotosTaggedIn;
+           FacebookObjectCollection<Photo> taggedPictures  = r_LoggedUser.PhotosTaggedIn;
            if(taggedPictures.Count < 1)
            {
                throw new Exception("No Tagged pictures");
