@@ -14,7 +14,7 @@ namespace BasicFacebookFeatures
 {
     public partial class StartForm : Form
     {
-        private const string k_AppId = "1450160541956417";
+        private const string k_AppId = "327180762451294";
         private bool m_IsLoggedIn;
         public User m_LoggedUser { get; set; }
 
@@ -30,7 +30,6 @@ namespace BasicFacebookFeatures
                 Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
                 LoginResult loginResult = FacebookService.Connect("EAAUm6cZC4eUEBAJypJGsyXHIZB9uxv4PPaQhZBzSHDpoy1z9YVBa4dZBnhPb2lsQiAY4eKBZAHXvZAjB6kMnJooZBo57pphzTnv5d8qUkZBC1fZBSQyZBZAQVQkpUx0tYfus2ZB6KunmZBeeMzasSLwaTiVGvGJBzr1EbYXdXnmVHbbsQUAZDZD");
                 //LoginResult loginResult = FacebookService.Login(
-                //    /// (This is Desig Patter's App ID. replace it with your own)
                 //    k_AppId,
                 //    /// requested permissions:
                 //    "email",
@@ -38,20 +37,23 @@ namespace BasicFacebookFeatures
                 //    "user_photos",
                 //    "user_birthday",
                 //    "user_friends"
-                //    /// add any relevant permissions
-
                 //);
-       //         if (loginResult.FacebookOAuthResult.IsSuccess)
-     //           {
+                //if (loginResult.FacebookOAuthResult.IsSuccess)
+                //{
                     m_LoggedUser = loginResult.LoggedInUser;
                     m_IsLoggedIn = true;
                     Close();
-       //         }
-            //    else
-            //    {
-            //        // show message that login was failed... 
-            //    }
+               //}
+              //else
+              //{
+              //     // show message that login was failed... 
+              //}
             }
+        }
+
+        private void StartForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

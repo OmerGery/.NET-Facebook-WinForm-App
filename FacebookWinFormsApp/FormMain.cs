@@ -14,21 +14,31 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private readonly Random r_Random = new Random();
         private User m_LoggedUser;
         public FormMain(User i_LoggedUser)
         {
             m_LoggedUser = i_LoggedUser;
             InitializeComponent();
-            m_UserNameLabel.Text = i_LoggedUser.Name;
-            m_ProfilePicture.Image = i_LoggedUser.ImageSmall;
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
         }
-
-        private void buttonLogout_Click(object sender, EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-			FacebookService.LogoutWithUI();
-			buttonLogin.Text = "Login";
-		}
+            base.OnShown(e);
+            m_UserNameLabel.Text = m_LoggedUser.Name;
+            m_ProfilePicture.Image = m_LoggedUser.ImageSmall;
+            fetchEvents();
+        }
+
+        private void fetchEvents()
+        {
+            foreach(var userEvent in m_LoggedUser.Events)
+            {
+                string userEventLocation = userEvent.Location;
+                userEventLocation = userEventLocation.Replace("Name", "").Replace(", URL:", " ");
+                m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} {userEventLocation}");
+            }
+        }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -67,7 +77,18 @@ namespace BasicFacebookFeatures
 
         private void m_UpcomingBirthdaysListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+        }
 
+        private void m_RandomPicture_Click(object sender, EventArgs e)
+        {
+           FacebookObjectCollection<Photo> taggedPictures  = m_LoggedUser.PhotosTaggedIn;
+           if(taggedPictures.Count < 1)
+           {
+               throw new Exception("No Tagged pictures");
+           }
+           int randomizedIndex = r_Random.Next(taggedPictures.Count);
+           m_RandomPicture.Image = taggedPictures[randomizedIndex].ImageAlbum;
         }
     }
 }
