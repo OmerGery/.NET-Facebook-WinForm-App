@@ -34,14 +34,29 @@ namespace BasicFacebookFeatures
             this.buttonLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chromiumWebBrowser1 = new CefSharp.WinForms.ChromiumWebBrowser();
+            this.m_LoggedInLabel = new System.Windows.Forms.Label();
+            this.m_UserName = new System.Windows.Forms.Label();
+            this.m_ProfilePicture = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.m_TrendingPostLabel = new System.Windows.Forms.Label();
+            this.m_UpcomingBirthdayLabel = new System.Windows.Forms.Label();
+            this.m_TrendingPostListBox = new System.Windows.Forms.ListBox();
+            this.m_UpcomingBirthdaysListBox = new System.Windows.Forms.ListBox();
+            this.m_UpcomingEventsLabel = new System.Windows.Forms.Label();
+            this.m_UpcomingEventsListBox = new System.Windows.Forms.ListBox();
+            this.m_RandomPhotoLabel = new System.Windows.Forms.Label();
+            this.m_RandomPhotoPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_RandomPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(18, 18);
+            this.buttonLogin.Location = new System.Drawing.Point(13, 18);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(268, 35);
+            this.buttonLogin.Size = new System.Drawing.Size(179, 42);
             this.buttonLogin.TabIndex = 36;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -49,10 +64,10 @@ namespace BasicFacebookFeatures
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(942, 358);
+            this.buttonLogout.Location = new System.Drawing.Point(1151, 14);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(268, 35);
+            this.buttonLogout.Size = new System.Drawing.Size(99, 35);
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -63,9 +78,8 @@ namespace BasicFacebookFeatures
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(858, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 20);
+            this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 53;
-            this.label1.Text = String.Empty;
             // 
             // chromiumWebBrowser1
             // 
@@ -75,11 +89,146 @@ namespace BasicFacebookFeatures
             this.chromiumWebBrowser1.Size = new System.Drawing.Size(21, 8);
             this.chromiumWebBrowser1.TabIndex = 54;
             // 
+            // m_LoggedInLabel
+            // 
+            this.m_LoggedInLabel.AutoSize = true;
+            this.m_LoggedInLabel.Location = new System.Drawing.Point(21, 65);
+            this.m_LoggedInLabel.Name = "m_LoggedInLabel";
+            this.m_LoggedInLabel.Size = new System.Drawing.Size(104, 20);
+            this.m_LoggedInLabel.TabIndex = 55;
+            this.m_LoggedInLabel.Text = "Logged in as ";
+            this.m_LoggedInLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // m_UserName
+            // 
+            this.m_UserName.AutoSize = true;
+            this.m_UserName.Location = new System.Drawing.Point(117, 65);
+            this.m_UserName.Name = "m_UserName";
+            this.m_UserName.Size = new System.Drawing.Size(89, 20);
+            this.m_UserName.TabIndex = 56;
+            this.m_UserName.Text = "user_name";
+            this.m_UserName.Click += new System.EventHandler(this.m_UserName_Click);
+            // 
+            // m_ProfilePicture
+            // 
+            this.m_ProfilePicture.Location = new System.Drawing.Point(1057, 10);
+            this.m_ProfilePicture.Name = "m_ProfilePicture";
+            this.m_ProfilePicture.Size = new System.Drawing.Size(57, 50);
+            this.m_ProfilePicture.TabIndex = 57;
+            this.m_ProfilePicture.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(358, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 74);
+            this.button1.TabIndex = 58;
+            this.button1.Text = "Upcoming Concerts";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(613, 25);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(120, 74);
+            this.button2.TabIndex = 59;
+            this.button2.Text = "Common Interest Friends";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // m_TrendingPostLabel
+            // 
+            this.m_TrendingPostLabel.AutoSize = true;
+            this.m_TrendingPostLabel.Location = new System.Drawing.Point(203, 226);
+            this.m_TrendingPostLabel.Name = "m_TrendingPostLabel";
+            this.m_TrendingPostLabel.Size = new System.Drawing.Size(129, 20);
+            this.m_TrendingPostLabel.TabIndex = 60;
+            this.m_TrendingPostLabel.Text = "#1 Trending Post";
+            this.m_TrendingPostLabel.Click += new System.EventHandler(this.label2_Click_1);
+            // 
+            // m_UpcomingBirthdayLabel
+            // 
+            this.m_UpcomingBirthdayLabel.AutoSize = true;
+            this.m_UpcomingBirthdayLabel.Location = new System.Drawing.Point(819, 226);
+            this.m_UpcomingBirthdayLabel.Name = "m_UpcomingBirthdayLabel";
+            this.m_UpcomingBirthdayLabel.Size = new System.Drawing.Size(151, 20);
+            this.m_UpcomingBirthdayLabel.TabIndex = 61;
+            this.m_UpcomingBirthdayLabel.Text = "Upcoming Birthdays";
+            // 
+            // m_TrendingPostListBox
+            // 
+            this.m_TrendingPostListBox.FormattingEnabled = true;
+            this.m_TrendingPostListBox.ItemHeight = 20;
+            this.m_TrendingPostListBox.Location = new System.Drawing.Point(162, 268);
+            this.m_TrendingPostListBox.Name = "m_TrendingPostListBox";
+            this.m_TrendingPostListBox.Size = new System.Drawing.Size(257, 284);
+            this.m_TrendingPostListBox.TabIndex = 62;
+            // 
+            // m_UpcomingBirthdaysListBox
+            // 
+            this.m_UpcomingBirthdaysListBox.FormattingEnabled = true;
+            this.m_UpcomingBirthdaysListBox.ItemHeight = 20;
+            this.m_UpcomingBirthdaysListBox.Location = new System.Drawing.Point(777, 268);
+            this.m_UpcomingBirthdaysListBox.Name = "m_UpcomingBirthdaysListBox";
+            this.m_UpcomingBirthdaysListBox.Size = new System.Drawing.Size(257, 284);
+            this.m_UpcomingBirthdaysListBox.TabIndex = 63;
+            this.m_UpcomingBirthdaysListBox.SelectedIndexChanged += new System.EventHandler(this.m_UpcomingBirthdaysListBox_SelectedIndexChanged);
+            // 
+            // m_UpcomingEventsLabel
+            // 
+            this.m_UpcomingEventsLabel.AutoSize = true;
+            this.m_UpcomingEventsLabel.Location = new System.Drawing.Point(203, 644);
+            this.m_UpcomingEventsLabel.Name = "m_UpcomingEventsLabel";
+            this.m_UpcomingEventsLabel.Size = new System.Drawing.Size(134, 20);
+            this.m_UpcomingEventsLabel.TabIndex = 64;
+            this.m_UpcomingEventsLabel.Text = "Upcoming Events";
+            // 
+            // m_UpcomingEventsListBox
+            // 
+            this.m_UpcomingEventsListBox.FormattingEnabled = true;
+            this.m_UpcomingEventsListBox.ItemHeight = 20;
+            this.m_UpcomingEventsListBox.Location = new System.Drawing.Point(162, 687);
+            this.m_UpcomingEventsListBox.Name = "m_UpcomingEventsListBox";
+            this.m_UpcomingEventsListBox.Size = new System.Drawing.Size(257, 284);
+            this.m_UpcomingEventsListBox.TabIndex = 65;
+            // 
+            // m_RandomPhotoLabel
+            // 
+            this.m_RandomPhotoLabel.AutoSize = true;
+            this.m_RandomPhotoLabel.Location = new System.Drawing.Point(795, 644);
+            this.m_RandomPhotoLabel.Name = "m_RandomPhotoLabel";
+            this.m_RandomPhotoLabel.Size = new System.Drawing.Size(200, 20);
+            this.m_RandomPhotoLabel.TabIndex = 67;
+            this.m_RandomPhotoLabel.Text = "Random Photo Of The Day";
+            this.m_RandomPhotoLabel.Click += new System.EventHandler(this.label2_Click_2);
+            // 
+            // m_RandomPhotoPictureBox
+            // 
+            this.m_RandomPhotoPictureBox.Location = new System.Drawing.Point(777, 687);
+            this.m_RandomPhotoPictureBox.Name = "m_RandomPhotoPictureBox";
+            this.m_RandomPhotoPictureBox.Size = new System.Drawing.Size(248, 284);
+            this.m_RandomPhotoPictureBox.TabIndex = 68;
+            this.m_RandomPhotoPictureBox.TabStop = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1263, 1011);
+            this.Controls.Add(this.m_RandomPhotoPictureBox);
+            this.Controls.Add(this.m_RandomPhotoLabel);
+            this.Controls.Add(this.m_UpcomingEventsListBox);
+            this.Controls.Add(this.m_UpcomingEventsLabel);
+            this.Controls.Add(this.m_UpcomingBirthdaysListBox);
+            this.Controls.Add(this.m_TrendingPostListBox);
+            this.Controls.Add(this.m_UpcomingBirthdayLabel);
+            this.Controls.Add(this.m_TrendingPostLabel);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.m_ProfilePicture);
+            this.Controls.Add(this.m_UserName);
+            this.Controls.Add(this.m_LoggedInLabel);
             this.Controls.Add(this.chromiumWebBrowser1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonLogout);
@@ -89,6 +238,8 @@ namespace BasicFacebookFeatures
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fun Facebook App";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_RandomPhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,6 +251,19 @@ namespace BasicFacebookFeatures
 		private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Label label1;
         private CefSharp.WinForms.ChromiumWebBrowser chromiumWebBrowser1;
+        private System.Windows.Forms.Label m_LoggedInLabel;
+        private System.Windows.Forms.Label m_UserName;
+        private System.Windows.Forms.PictureBox m_ProfilePicture;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label m_TrendingPostLabel;
+        private System.Windows.Forms.Label m_UpcomingBirthdayLabel;
+        private System.Windows.Forms.ListBox m_TrendingPostListBox;
+        private System.Windows.Forms.ListBox m_UpcomingBirthdaysListBox;
+        private System.Windows.Forms.Label m_UpcomingEventsLabel;
+        private System.Windows.Forms.ListBox m_UpcomingEventsListBox;
+        private System.Windows.Forms.Label m_RandomPhotoLabel;
+        private System.Windows.Forms.PictureBox m_RandomPhotoPictureBox;
     }
 }
 

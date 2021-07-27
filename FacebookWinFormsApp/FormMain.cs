@@ -48,7 +48,7 @@ namespace BasicFacebookFeatures
                     m_IsLoggedIn = true;
                     buttonLogin.Text = "You Are Logged in!";
                     buttonLogin.BackColor = Color.Green;
-                    label1.Text = $@"Hello {m_LoggedUser.Name} !";
+                    m_UserName.Text = m_LoggedUser.Name;
                 }
             }
         }
@@ -60,6 +60,41 @@ namespace BasicFacebookFeatures
 		}
 
         private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void m_UserName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void m_UpcomingBirthdaysListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
