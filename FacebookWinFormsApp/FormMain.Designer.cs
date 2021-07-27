@@ -69,7 +69,7 @@ namespace BasicFacebookFeatures
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Visible = false;
+            this.buttonLogout.Visible = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // chromiumWebBrowser1
@@ -88,7 +88,7 @@ namespace BasicFacebookFeatures
             this.m_LoggedInLabel.Size = new System.Drawing.Size(104, 20);
             this.m_LoggedInLabel.TabIndex = 55;
             this.m_LoggedInLabel.Text = "Logged in as ";
-            this.m_LoggedInLabel.Visible = false;
+            this.m_LoggedInLabel.Visible = true;
             this.m_LoggedInLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // m_UserNameLabel
@@ -99,7 +99,7 @@ namespace BasicFacebookFeatures
             this.m_UserNameLabel.Size = new System.Drawing.Size(89, 20);
             this.m_UserNameLabel.TabIndex = 56;
             this.m_UserNameLabel.Text = "user_name";
-            this.m_UserNameLabel.Visible = false;
+            this.m_UserNameLabel.Visible = true;
             this.m_UserNameLabel.Click += new System.EventHandler(this.m_UserName_Click);
             // 
             // m_ProfilePicture
@@ -109,7 +109,7 @@ namespace BasicFacebookFeatures
             this.m_ProfilePicture.Size = new System.Drawing.Size(57, 50);
             this.m_ProfilePicture.TabIndex = 57;
             this.m_ProfilePicture.TabStop = false;
-            this.m_ProfilePicture.Visible = false;
+            this.m_ProfilePicture.Visible = true;
             // 
             // button1
             // 
@@ -119,7 +119,7 @@ namespace BasicFacebookFeatures
             this.button1.TabIndex = 58;
             this.button1.Text = "Upcoming Concerts";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.button1.Visible = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
@@ -130,7 +130,7 @@ namespace BasicFacebookFeatures
             this.button2.TabIndex = 59;
             this.button2.Text = "Common Interest Friends";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.button2.Visible = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // m_TrendingPostLabel
@@ -141,7 +141,7 @@ namespace BasicFacebookFeatures
             this.m_TrendingPostLabel.Size = new System.Drawing.Size(129, 20);
             this.m_TrendingPostLabel.TabIndex = 60;
             this.m_TrendingPostLabel.Text = "#1 Trending Post";
-            this.m_TrendingPostLabel.Visible = false;
+            this.m_TrendingPostLabel.Visible = true;
             this.m_TrendingPostLabel.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // m_UpcomingBirthdayLabel
@@ -152,7 +152,7 @@ namespace BasicFacebookFeatures
             this.m_UpcomingBirthdayLabel.Size = new System.Drawing.Size(151, 20);
             this.m_UpcomingBirthdayLabel.TabIndex = 61;
             this.m_UpcomingBirthdayLabel.Text = "Upcoming Birthdays";
-            this.m_UpcomingBirthdayLabel.Visible = false;
+            this.m_UpcomingBirthdayLabel.Visible = true;
             // 
             // m_TrendingPostListBox
             // 
@@ -162,7 +162,7 @@ namespace BasicFacebookFeatures
             this.m_TrendingPostListBox.Name = "m_TrendingPostListBox";
             this.m_TrendingPostListBox.Size = new System.Drawing.Size(257, 284);
             this.m_TrendingPostListBox.TabIndex = 62;
-            this.m_TrendingPostListBox.Visible = false;
+            this.m_TrendingPostListBox.Visible = true;
             // 
             // m_UpcomingBirthdaysListBox
             // 
@@ -172,7 +172,7 @@ namespace BasicFacebookFeatures
             this.m_UpcomingBirthdaysListBox.Name = "m_UpcomingBirthdaysListBox";
             this.m_UpcomingBirthdaysListBox.Size = new System.Drawing.Size(257, 284);
             this.m_UpcomingBirthdaysListBox.TabIndex = 63;
-            this.m_UpcomingBirthdaysListBox.Visible = false;
+            this.m_UpcomingBirthdaysListBox.Visible = true;
             this.m_UpcomingBirthdaysListBox.SelectedIndexChanged += new System.EventHandler(this.m_UpcomingBirthdaysListBox_SelectedIndexChanged);
             // 
             // m_UpcomingEventsLabel
@@ -183,7 +183,7 @@ namespace BasicFacebookFeatures
             this.m_UpcomingEventsLabel.Size = new System.Drawing.Size(134, 20);
             this.m_UpcomingEventsLabel.TabIndex = 64;
             this.m_UpcomingEventsLabel.Text = "Upcoming Events";
-            this.m_UpcomingEventsLabel.Visible = false;
+            this.m_UpcomingEventsLabel.Visible = true;
             // 
             // m_UpcomingEventsListBox
             // 
@@ -193,7 +193,7 @@ namespace BasicFacebookFeatures
             this.m_UpcomingEventsListBox.Name = "m_UpcomingEventsListBox";
             this.m_UpcomingEventsListBox.Size = new System.Drawing.Size(257, 284);
             this.m_UpcomingEventsListBox.TabIndex = 65;
-            this.m_UpcomingEventsListBox.Visible = false;
+            this.m_UpcomingEventsListBox.Visible = true;
             // 
             // m_RandomPhotoLabel
             // 
@@ -203,7 +203,7 @@ namespace BasicFacebookFeatures
             this.m_RandomPhotoLabel.Size = new System.Drawing.Size(200, 20);
             this.m_RandomPhotoLabel.TabIndex = 67;
             this.m_RandomPhotoLabel.Text = "Random Photo Of The Day";
-            this.m_RandomPhotoLabel.Visible = false;
+            this.m_RandomPhotoLabel.Visible = true;
             this.m_RandomPhotoLabel.Click += new System.EventHandler(this.label2_Click_2);
             // 
             // m_RandomPicture
@@ -213,7 +213,7 @@ namespace BasicFacebookFeatures
             this.m_RandomPicture.Size = new System.Drawing.Size(248, 284);
             this.m_RandomPicture.TabIndex = 68;
             this.m_RandomPicture.TabStop = false;
-            this.m_RandomPicture.Visible = false;
+            this.m_RandomPicture.Visible = true;
             // 
             // FormMain
             // 

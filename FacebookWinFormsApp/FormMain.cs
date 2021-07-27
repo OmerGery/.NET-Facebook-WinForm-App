@@ -18,25 +18,10 @@ namespace BasicFacebookFeatures
         public FormMain(User i_LoggedUser)
         {
             m_LoggedUser = i_LoggedUser;
-            //m_IsLoggedIn = false;
             InitializeComponent();
+            m_UserNameLabel.Text = i_LoggedUser.Name;
+            m_ProfilePicture.Image = i_LoggedUser.ImageSmall;
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-        }
-
-        private void displayFormObjects()
-        {
-            m_UserNameLabel.Visible = true;
-            m_LoggedInLabel.Visible = true;
-            m_ProfilePicture.Visible = true;
-            m_RandomPhotoLabel.Visible = true;
-
-
-
-            PropertyInfo[] properties = this.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
-            {
-               // property.SetValue();
-            }
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
