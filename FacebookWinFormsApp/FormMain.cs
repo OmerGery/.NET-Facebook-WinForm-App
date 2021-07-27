@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
@@ -46,10 +47,26 @@ namespace BasicFacebookFeatures
                 {
                     m_LoggedUser = loginResult.LoggedInUser;
                     m_IsLoggedIn = true;
-                    buttonLogin.Text = "You Are Logged in!";
-                    buttonLogin.BackColor = Color.Green;
-                    m_UserName.Text = m_LoggedUser.Name;
+                    buttonLogin.Visible = false;
+                    m_UserNameLabel.Text = m_LoggedUser.Name;
+                    displayFormObjects();
                 }
+            }
+        }
+
+        private void displayFormObjects()
+        {
+            m_UserNameLabel.Visible = true;
+            m_LoggedInLabel.Visible = true;
+            m_ProfilePicture.Visible = true;
+            m_RandomPhotoLabel.Visible = true;
+
+
+
+            PropertyInfo[] properties = this.GetType().GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+               // property.SetValue();
             }
         }
 
