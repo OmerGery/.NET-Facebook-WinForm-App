@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
@@ -28,8 +29,12 @@ namespace BasicFacebookFeatures
             m_UpcomingEventsLabel.Text = $@" {userEvents.Count} {m_UpcomingEventsLabel.Text}";
             foreach(var userEvent in userEvents)
             {
-                string userEventLocation = userEvent.Location;
-                userEventLocation = userEventLocation.Replace("Name", "").Replace(", URL:", " ");
+                string userEventLocation = String.Empty;
+                if (!string.IsNullOrEmpty(userEvent.Location))
+                {
+                    userEventLocation = userEvent.Location;
+                    userEventLocation = userEventLocation.Replace("Name", "").Replace(", URL:", " ");
+                }
                 m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} {userEventLocation}");
             }
         }
@@ -83,6 +88,12 @@ namespace BasicFacebookFeatures
            }
            int randomizedIndex = r_Random.Next(taggedPictures.Count);
            m_RandomPicture.Image = taggedPictures[randomizedIndex].ImageAlbum;
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            FacebookService.LogoutWithUI();
+            Close();
         }
     }
 }

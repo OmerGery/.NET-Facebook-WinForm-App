@@ -22,25 +22,25 @@ namespace BasicFacebookFeatures
         {
             try
             {
+                LoginResult loginResult = FacebookService.Connect("EAAUm6cZC4eUEBAJypJGsyXHIZB9uxv4PPaQhZBzSHDpoy1z9YVBa4dZBnhPb2lsQiAY4eKBZAHXvZAjB6kMnJooZBo57pphzTnv5d8qUkZBC1fZBSQyZBZAQVQkpUx0tYfus2ZB6KunmZBeeMzasSLwaTiVGvGJBzr1EbYXdXnmVHbbsQUAZDZD");
                 if(!m_IsLoggedIn)
                 {
-                    Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-                    //     LoginResult loginResult = FacebookService.Connect("EAAUm6cZC4eUEBAJypJGsyXHIZB9uxv4PPaQhZBzSHDpoy1z9YVBa4dZBnhPb2lsQiAY4eKBZAHXvZAjB6kMnJooZBo57pphzTnv5d8qUkZBC1fZBSQyZBZAQVQkpUx0tYfus2ZB6KunmZBeeMzasSLwaTiVGvGJBzr1EbYXdXnmVHbbsQUAZDZD");
-                    LoginResult loginResult = FacebookService.Login(
-                        k_AppId,
-                        /// requested permissions:
-                        "email",
-                        "public_profile",
-                        "user_photos",
-                        "user_events",
-                        "user_birthday",
-                        "user_friends");
-                    if(loginResult.FacebookOAuthResult.IsSuccess)
-                    {
+                //    Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
+                //LoginResult loginResult = FacebookService.Login(
+                    //    k_AppId,
+                    //    /// requested permissions:
+                    //    "email",
+                    //    "public_profile",
+                    //    "user_photos",
+                    //    "user_events",
+                    //    "user_birthday",
+                    //    "user_friends");
+                    //if(loginResult.FacebookOAuthResult.IsSuccess)
+                    //{
                         m_LoggedUser = loginResult.LoggedInUser;
                         m_IsLoggedIn = true;
                         Close();
-                    }
+                //    }
                 }
             }
             catch(Exception)

@@ -58,6 +58,7 @@ namespace BasicFacebookFeatures
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // chromiumWebBrowser1
             // 
@@ -89,9 +90,9 @@ namespace BasicFacebookFeatures
             // 
             // m_ProfilePicture
             // 
-            this.m_ProfilePicture.Location = new System.Drawing.Point(1057, 10);
+            this.m_ProfilePicture.Location = new System.Drawing.Point(1030, 10);
             this.m_ProfilePicture.Name = "m_ProfilePicture";
-            this.m_ProfilePicture.Size = new System.Drawing.Size(57, 50);
+            this.m_ProfilePicture.Size = new System.Drawing.Size(84, 73);
             this.m_ProfilePicture.TabIndex = 57;
             this.m_ProfilePicture.TabStop = false;
             // 
