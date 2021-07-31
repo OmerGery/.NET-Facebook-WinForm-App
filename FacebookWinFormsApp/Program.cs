@@ -20,6 +20,7 @@ namespace BasicFacebookFeatures
             Application.SetCompatibleTextRenderingDefault(false);
             FormFlowManager formFlowManager = new FormFlowManager();
             formFlowManager.RunApp();
+
         }
     }
 }

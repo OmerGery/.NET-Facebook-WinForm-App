@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
@@ -9,10 +10,15 @@ namespace BasicFacebookFeatures
     {
         private readonly Random r_Random = new Random();
         private readonly User r_LoggedUser;
-        public FormMain(User i_LoggedUser)
+
+        private readonly AppSettings m_AppSettings = new AppSettings(); //need to change to Singleton
+        public FormMain(User i_LoggedUser) //need to send i_AppSettings
         {
             r_LoggedUser = i_LoggedUser;
             InitializeComponent();
+            this.Size = m_AppSettings.m_LastWindowsSize;
+            this.Location = m_AppSettings.m_LastWindowsLocation;
+            m_RememberMeCheckBox.Checked = m_AppSettings.m_RememberUser;
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
         }
         protected override void OnShown(EventArgs e)
@@ -20,7 +26,14 @@ namespace BasicFacebookFeatures
             base.OnShown(e);
             m_UserNameLabel.Text = r_LoggedUser.Name;
             m_ProfilePicture.Image = r_LoggedUser.ImageSmall;
-            fetchEvents();  
+            fetchEvents();
+            fetchConcerts();  
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            // need to save appsettings with singleton
+            base.OnClosed(e);
         }
 
         private void fetchEvents()
@@ -29,47 +42,53 @@ namespace BasicFacebookFeatures
             m_UpcomingEventsLabel.Text = $@" {userEvents.Count} {m_UpcomingEventsLabel.Text}";
             foreach(var userEvent in userEvents)
             {
-                string userEventLocation = String.Empty;
-                if (!string.IsNullOrEmpty(userEvent.Location))
-                {
-                    userEventLocation = userEvent.Location;
-                    userEventLocation = userEventLocation.Replace("Name", "").Replace(", URL:", " ");
-                }
-                m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} {userEventLocation}");
+                long? eventAttendingNumber = userEvent.AttendingCount;
+                //userEventLocation = userEvent.Location;
+               // userEventLocation = userEventLocation.Replace("Name", "").Replace(", URL:", " ");
+               if(eventAttendingNumber != null)
+               {
+                   m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
+               }
             }
         }
 
+        private void fetchConcerts()
+        {
+            int i = 0;
+            List<string> userFavoriteArtists = new List<string>
+                                                   {
+                                                       "Metallica",
+                                                       "Radiohead",
+                                                       "The Strokes",
+                                                       "Pink Floyd",
+                                                       "Doja Cat",
+                                                       "Lady Gaga",
+                                                       "Nirvana"
+                                                       
+                                                   };
+            var fakeConcerts = findFavoriteArtistsConcertsAPI(userFavoriteArtists);
+            foreach (string favoriteArtist in userFavoriteArtists)
+            {
+                m_UpcomingConcertsListBox.Items.Add($"{favoriteArtist} - {fakeConcerts[favoriteArtist]}");
+                i++;
+            }
+        }
+
+        private Dictionary<string, string> findFavoriteArtistsConcertsAPI(List<string> i_UserFavoriteArtists)
+        {
+            return new Dictionary<string, string>()
+                                  {
+                                      {i_UserFavoriteArtists[0], "LOUISVILLE, KY, UNITED STATES / SEPTEMBER 24, 2021"},
+                                      {i_UserFavoriteArtists[1], "Not on Tour"},
+                                      {i_UserFavoriteArtists[2], "Not on Tour"},
+                                      {i_UserFavoriteArtists[3], "New York, NY, United States / August 5, 2021" },
+                                      {i_UserFavoriteArtists[4] , "Reading, England / August 26-29, 2021" },
+                                      {i_UserFavoriteArtists[5], "Yuzawa, Japan / August 20-22, 2021"},
+                                      {i_UserFavoriteArtists[6], "Not on Tour"}
+                                  };
+        }
+
         private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void m_UserName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_2(object sender, EventArgs e)
         {
 
         }
@@ -94,6 +113,21 @@ namespace BasicFacebookFeatures
         {
             FacebookService.LogoutWithUI();
             Close();
+        }
+
+        private void m_HomeTabPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void m_RememberMeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            m_AppSettings.m_RememberUser = !m_AppSettings.m_RememberUser;
         }
     }
 }
