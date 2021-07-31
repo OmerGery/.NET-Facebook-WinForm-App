@@ -28,14 +28,46 @@ namespace BasicFacebookFeatures
             m_UserNameLabel.Text = r_LoggedUser.Name;
             m_ProfilePicture.Image = r_LoggedUser.ImageSmall;
             fetchEvents();
+            fetchUpcomingBirthdays();
             fetchConcerts();
             fetchFriendsWithCommonInterest();
+            fetchTopPostByFriend();
         }
 
         protected override void OnClosed(EventArgs e)
         {
             // need to save appsettings with singleton
             base.OnClosed(e);
+        }
+
+        private void fetchTopPostByFriend()
+        {
+            int currentMaxLikedPost = 0;
+            string friendName = null;
+            Post mostLikedPost = null;
+
+            foreach (User friend in r_LoggedUser.Friends)
+            {
+                foreach(var friendPost in friend.Posts)
+                {
+                    if(friendPost.LikedBy.Count() > currentMaxLikedPost)
+                    {
+                        currentMaxLikedPost = friendPost.LikedBy.Count();
+                        friendName = friend.Name;
+                        mostLikedPost = friendPost;
+                    }
+                }
+            }
+
+            if(currentMaxLikedPost == 0)
+            {
+                m_TrendingPostListBox.Items.Add("No liked posts by friends");
+            }
+            else
+            {
+                m_CommonInterestListBox.Items.Add($" {mostLikedPost.Message} " + 
+                                                  $"By {friendName} ({currentMaxLikedPost} likes");
+            }
         }
 
         private void fetchEvents()
@@ -54,8 +86,29 @@ namespace BasicFacebookFeatures
             }
         }
 
+        private void fetchUpcomingBirthdays()
+        {
+            bool areFriendsBdaysThisMonth = false;
+
+            foreach (User friend in r_LoggedUser.Friends)
+            {
+                DateTime friendBirthday = DateTime.Parse(friend.Birthday);
+                if(friendBirthday.Month == DateTime.Now.Month)
+                {
+                    areFriendsBdaysThisMonth = true;
+                    m_UpcomingBirthdaysListBox.Items.Add($"{friend.Name} - {friend.Birthday} ");
+                }
+            }
+
+            if(!areFriendsBdaysThisMonth)
+            {
+                m_UpcomingBirthdaysListBox.Items.Add($"No friends birthdays in {DateTime.Now.ToString("MMMM")}");
+            }
+        }
+
         private void fetchFriendsWithCommonInterest()
         {
+            bool isFriendWithCommonInterest = false;
             Dictionary<string, int> friendsCommonPagesLikes = new Dictionary<string, int>();
             
             foreach (User friend in r_LoggedUser.Friends)
@@ -65,6 +118,7 @@ namespace BasicFacebookFeatures
                 {
                     if(r_LoggedUser.LikedPages.Contains(friendLikedPage))
                     {
+                        isFriendWithCommonInterest = true;
                         friendCommonLikedPages++;
                     }
                 }
@@ -76,8 +130,12 @@ namespace BasicFacebookFeatures
 
             foreach(var friendInDictionary in friendsCommonPagesLikes)
             {
-                m_CommonInterestListBox.Items.Add(
-                    $"{friendInDictionary.Key} - {friendInDictionary.Value.ToString()} Pages");
+                m_CommonInterestListBox.Items.Add($"{friendInDictionary.Key} - {friendInDictionary.Value.ToString()} Pages");
+            }
+
+            if(!isFriendWithCommonInterest)
+            {
+                m_CommonInterestListBox.Items.Add("No Friends With Common Liked Pages");
             }
 
         }
@@ -144,16 +202,6 @@ namespace BasicFacebookFeatures
         {
             FacebookService.LogoutWithUI();
             Close();
-        }
-
-        private void m_HomeTabPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void m_RememberMeCheckBox_CheckedChanged(object sender, EventArgs e)

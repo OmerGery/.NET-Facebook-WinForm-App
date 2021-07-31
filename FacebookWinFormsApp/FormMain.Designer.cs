@@ -206,7 +206,6 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.TabIndex = 0;
             this.m_HomeTabPage.Text = "Home";
             this.m_HomeTabPage.UseVisualStyleBackColor = true;
-            this.m_HomeTabPage.Click += new System.EventHandler(this.m_HomeTabPage_Click);
             // 
             // m_UpcomingConcertsTabPage
             // 
@@ -249,7 +248,6 @@ namespace BasicFacebookFeatures
             this.label1.Size = new System.Drawing.Size(408, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Your Favorite Artists Upcoming Concerts:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // m_RememberMeCheckBox
             // 
