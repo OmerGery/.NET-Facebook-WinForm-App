@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
@@ -27,7 +28,8 @@ namespace BasicFacebookFeatures
             m_UserNameLabel.Text = r_LoggedUser.Name;
             m_ProfilePicture.Image = r_LoggedUser.ImageSmall;
             fetchEvents();
-            fetchConcerts();  
+            fetchConcerts();
+            fetchFriendsWithCommonInterest();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -50,6 +52,34 @@ namespace BasicFacebookFeatures
                    m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
                }
             }
+        }
+
+        private void fetchFriendsWithCommonInterest()
+        {
+            Dictionary<string, int> friendsCommonPagesLikes = new Dictionary<string, int>();
+            
+            foreach (User friend in r_LoggedUser.Friends)
+            {
+                int friendCommonLikedPages = 0;
+                foreach (var friendLikedPage in friend.LikedPages)
+                {
+                    if(r_LoggedUser.LikedPages.Contains(friendLikedPage))
+                    {
+                        friendCommonLikedPages++;
+                    }
+                }
+
+                friendsCommonPagesLikes.Add(friend.Name, friendCommonLikedPages);
+            }
+
+            friendsCommonPagesLikes.OrderByDescending(pair => pair.Value);
+
+            foreach(var friendInDictionary in friendsCommonPagesLikes)
+            {
+                m_CommonInterestListBox.Items.Add(
+                    $"{friendInDictionary.Key} - {friendInDictionary.Value.ToString()} Pages");
+            }
+
         }
 
         private void fetchConcerts()
@@ -76,6 +106,7 @@ namespace BasicFacebookFeatures
 
         private Dictionary<string, string> findFavoriteArtistsConcertsAPI(List<string> i_UserFavoriteArtists)
         {
+            
             return new Dictionary<string, string>()
                                   {
                                       {i_UserFavoriteArtists[0], "LOUISVILLE, KY, UNITED STATES / SEPTEMBER 24, 2021"},

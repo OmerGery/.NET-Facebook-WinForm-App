@@ -49,11 +49,14 @@ namespace BasicFacebookFeatures
             this.m_UpcomingConcertsListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.m_CommonInterestListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
             this.m_HomeTabPage.SuspendLayout();
             this.m_UpcomingConcertsTabPage.SuspendLayout();
+            this.m_CommonInterestTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLogout
@@ -219,6 +222,8 @@ namespace BasicFacebookFeatures
             // 
             // m_CommonInterestTabPage
             // 
+            this.m_CommonInterestTabPage.Controls.Add(this.m_CommonInterestListBox);
+            this.m_CommonInterestTabPage.Controls.Add(this.label2);
             this.m_CommonInterestTabPage.Location = new System.Drawing.Point(4, 22);
             this.m_CommonInterestTabPage.Name = "m_CommonInterestTabPage";
             this.m_CommonInterestTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -257,6 +262,24 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             this.m_RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.m_RememberMeCheckBox_CheckedChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label2.Location = new System.Drawing.Point(203, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(308, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Best Friends With Best Interest";
+            // 
+            // m_CommonInterestListBox
+            // 
+            this.m_CommonInterestListBox.FormattingEnabled = true;
+            this.m_CommonInterestListBox.Location = new System.Drawing.Point(186, 78);
+            this.m_CommonInterestListBox.Name = "m_CommonInterestListBox";
+            this.m_CommonInterestListBox.Size = new System.Drawing.Size(407, 212);
+            this.m_CommonInterestListBox.TabIndex = 3;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +302,8 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.PerformLayout();
             this.m_UpcomingConcertsTabPage.ResumeLayout(false);
             this.m_UpcomingConcertsTabPage.PerformLayout();
+            this.m_CommonInterestTabPage.ResumeLayout(false);
+            this.m_CommonInterestTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,6 +329,8 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox m_UpcomingConcertsListBox;
         private System.Windows.Forms.CheckBox m_RememberMeCheckBox;
+        private System.Windows.Forms.ListBox m_CommonInterestListBox;
+        private System.Windows.Forms.Label label2;
     }
 }
 
