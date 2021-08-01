@@ -10,14 +10,14 @@ using System.Xml.Serialization;
 
 namespace BasicFacebookFeatures
 {
-    class AppSettings
+    public class AppSettings
     {
         public string m_LastAccessToken { get; set; }
         public bool m_RememberUser { get; set; }
         public Size m_LastWindowsSize { get; set; }
         public Point m_LastWindowsLocation { get; set; }
 
-        private static readonly string  m_AppSettingsFilePath = Path.GetDirectoryName(Application.ExecutablePath) + "appsettings.xml";
+        private static readonly string  m_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
 
         public AppSettings()
         {
@@ -29,7 +29,7 @@ namespace BasicFacebookFeatures
 
         public void SaveSettingsToFile()
         {
-            using (Stream stream = new FileStream(m_AppSettingsFilePath, FileMode.Truncate))
+            using (Stream stream = new FileStream(m_AppSettingsFilePath, FileMode.Truncate, FileAccess.ReadWrite))
             {
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
                 serializer.Serialize( stream, this);

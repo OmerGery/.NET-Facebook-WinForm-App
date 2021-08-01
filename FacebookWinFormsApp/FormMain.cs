@@ -13,13 +13,13 @@ namespace BasicFacebookFeatures
         private readonly User r_LoggedUser;
 
         private readonly AppSettings m_AppSettings = new AppSettings(); //need to change to Singleton
-        public FormMain(User i_LoggedUser) //need to send i_AppSettings
+        public FormMain(User i_LoggedUser, AppSettings i_AppSettings) //need to send i_AppSettings
         {
             r_LoggedUser = i_LoggedUser;
             InitializeComponent();
-            this.Size = m_AppSettings.m_LastWindowsSize;
-            this.Location = m_AppSettings.m_LastWindowsLocation;
-            m_RememberMeCheckBox.Checked = m_AppSettings.m_RememberUser;
+            this.Size = i_AppSettings.m_LastWindowsSize;
+            this.Location = i_AppSettings.m_LastWindowsLocation;
+            m_RememberMeCheckBox.Checked = i_AppSettings.m_RememberUser;
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
         }
         protected override void OnShown(EventArgs e)
@@ -36,7 +36,13 @@ namespace BasicFacebookFeatures
 
         protected override void OnClosed(EventArgs e)
         {
-            // need to save appsettings with singleton
+             m_AppSettings.m_LastWindowsSize = this.Size ;
+            m_AppSettings.m_LastWindowsLocation = this.Location;
+            if(m_RememberMeCheckBox.Checked)
+            {
+               // m_AppSettings.m_LastAccessToken = 
+            };
+            m_AppSettings.SaveSettingsToFile();
             base.OnClosed(e);
         }
 
@@ -102,7 +108,7 @@ namespace BasicFacebookFeatures
 
             if(!areFriendsBdaysThisMonth)
             {
-                m_UpcomingBirthdaysListBox.Items.Add($"No friends birthdays in {DateTime.Now.ToString("MMMM")}");
+                m_UpcomingBirthdaysListBox.Items.Add($"No friends birthdays on {DateTime.Now.ToString("MMMM")}");
             }
         }
 
