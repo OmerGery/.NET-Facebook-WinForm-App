@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures
         public Size m_LastWindowsSize { get; set; }
         public Point m_LastWindowsLocation { get; set; }
 
-        private static readonly string  m_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
+        private static readonly string  sr_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
 
         public AppSettings()
         {
@@ -28,9 +28,9 @@ namespace BasicFacebookFeatures
         }
 
         public void SaveSettingsToFile()
-        {
-            using (Stream stream = new FileStream(m_AppSettingsFilePath, FileMode.Truncate, FileAccess.ReadWrite))
-            {
+        { 
+            using (Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Create, FileAccess.ReadWrite))
+            { 
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
                 serializer.Serialize( stream, this);
             }
@@ -39,9 +39,9 @@ namespace BasicFacebookFeatures
         public static AppSettings LoadSettingsFromFile()
         {
             AppSettings appSettings = null;
-            if(File.Exists(m_AppSettingsFilePath))
+            if(File.Exists(sr_AppSettingsFilePath))
             {
-                using(Stream stream = new FileStream(m_AppSettingsFilePath, FileMode.Open))
+                using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Open))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
                     appSettings = serializer.Deserialize(stream) as AppSettings;
