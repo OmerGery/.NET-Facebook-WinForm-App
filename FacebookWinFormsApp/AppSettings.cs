@@ -28,12 +28,13 @@ namespace BasicFacebookFeatures
         }
 
         public void SaveSettingsToFile()
-        { 
-            using (Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Create, FileAccess.ReadWrite))
-            { 
+        {
+            using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Create, FileAccess.ReadWrite))
+            {
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
-                serializer.Serialize( stream, this);
+                serializer.Serialize(stream, this);
             }
+
         }
 
         public static AppSettings LoadSettingsFromFile()
@@ -51,6 +52,12 @@ namespace BasicFacebookFeatures
             {
                 appSettings = new AppSettings();
             }
+
+            if(appSettings.m_RememberUser == false)
+            {
+                appSettings = new AppSettings();
+            }
+                
 
             return appSettings;
         }
