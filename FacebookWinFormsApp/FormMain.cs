@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
         private readonly User r_LoggedUser;
 
         private readonly AppSettings m_AppSettings = new AppSettings(); //need to change to Singleton
-        public FormMain(User i_LoggedUser, AppSettings i_AppSettings) //need to send i_AppSettings
+        public FormMain(User i_LoggedUser, AppSettings i_AppSettings) 
         {
             r_LoggedUser = i_LoggedUser;
             InitializeComponent();
@@ -148,39 +148,26 @@ namespace BasicFacebookFeatures
 
         private void fetchConcerts()
         {
-            int i = 0;
             List<string> userFavoriteArtists = new List<string>
                                                    {
                                                        "Metallica",
                                                        "Radiohead",
-                                                       "The Strokes",
-                                                       "Pink Floyd",
-                                                       "Doja Cat",
-                                                       "Lady Gaga",
+                                                       "The_Strokes",
+                                                       "Pink_Floyd",
+                                                       "Doja_Cat",
+                                                       "Lady_Gaga",
                                                        "Nirvana"
-                                                       
                                                    };
-            var fakeConcerts = findFavoriteArtistsConcertsAPI(userFavoriteArtists);
+
             foreach (string favoriteArtist in userFavoriteArtists)
             {
-                m_UpcomingConcertsListBox.Items.Add($"{favoriteArtist} - {fakeConcerts[favoriteArtist]}");
-                i++;
+                string favoriteAndSimilarArtists = favoriteArtist;
+                var userSimilarArtists = LastfmAPI.GetSimilarArtists(favoriteArtist);
+                //foreach (similarArtist in userSimilarArtists)
+                //  to toAdd += similarArtist
+                m_UpcomingConcertsListBox.Items.Add(favoriteAndSimilarArtists);
             }
-        }
 
-        private Dictionary<string, string> findFavoriteArtistsConcertsAPI(List<string> i_UserFavoriteArtists)
-        {
-            
-            return new Dictionary<string, string>()
-                                  {
-                                      {i_UserFavoriteArtists[0], "LOUISVILLE, KY, UNITED STATES / SEPTEMBER 24, 2021"},
-                                      {i_UserFavoriteArtists[1], "Not on Tour"},
-                                      {i_UserFavoriteArtists[2], "Not on Tour"},
-                                      {i_UserFavoriteArtists[3], "New York, NY, United States / August 5, 2021" },
-                                      {i_UserFavoriteArtists[4] , "Reading, England / August 26-29, 2021" },
-                                      {i_UserFavoriteArtists[5], "Yuzawa, Japan / August 20-22, 2021"},
-                                      {i_UserFavoriteArtists[6], "Not on Tour"}
-                                  };
         }
 
         private void FormMain_Load(object sender, EventArgs e)
