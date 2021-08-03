@@ -12,7 +12,7 @@ namespace BasicFacebookFeatures
         private readonly Random r_Random = new Random();
         private readonly User r_LoggedUser;
 
-        private readonly AppSettings m_AppSettings = new AppSettings(); //need to change to Singleton
+        private readonly AppSettings m_AppSettings = AppSettings.Instance;
         public FormMain(User i_LoggedUser, AppSettings i_AppSettings) 
         {
             r_LoggedUser = i_LoggedUser;

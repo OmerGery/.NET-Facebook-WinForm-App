@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace BasicFacebookFeatures
 {
-    public class AppSettings
+    public sealed class AppSettings 
     {
         public string m_LastAccessToken { get; set; }
         public bool m_RememberUser { get; set; }
@@ -19,7 +13,9 @@ namespace BasicFacebookFeatures
 
         private static readonly string  sr_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
 
-        public AppSettings()
+        public static AppSettings Instance { get; } = new AppSettings();
+
+        private AppSettings()
         {
             m_LastAccessToken = null;
             m_RememberUser = false;
