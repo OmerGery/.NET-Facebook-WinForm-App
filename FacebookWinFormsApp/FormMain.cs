@@ -146,7 +146,7 @@ namespace BasicFacebookFeatures
 
         }
 
-        private void fetchConcerts()
+        async private void fetchConcerts()
         {
             List<string> userFavoriteArtists = new List<string>
                                                    {
@@ -161,11 +161,19 @@ namespace BasicFacebookFeatures
 
             foreach (string favoriteArtist in userFavoriteArtists)
             {
-                string favoriteAndSimilarArtists = favoriteArtist;
-                var userSimilarArtists = LastfmAPI.GetSimilarArtists(favoriteArtist);
-                //foreach (similarArtist in userSimilarArtists)
-                //  to toAdd += similarArtist
-                m_UpcomingConcertsListBox.Items.Add(favoriteAndSimilarArtists);
+                string favoriteAndSimilarArtists = $"{favoriteArtist}  - " ;
+                await LastfmAPI.GetSimilarArtists(favoriteArtist);
+                List<string> userSimilarArtists = new List<string>();
+                userSimilarArtists = LastfmAPI.filterFavoriteArtists();
+                foreach(string similarArtist in userSimilarArtists)
+                {
+                    favoriteAndSimilarArtists += $"{similarArtist} ";
+                }
+
+                if(userSimilarArtists.Count > 0)
+                {
+                    m_UpcomingConcertsListBox.Items.Add(favoriteAndSimilarArtists);
+                }
             }
 
         }
@@ -200,6 +208,11 @@ namespace BasicFacebookFeatures
         private void m_RememberMeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             m_AppSettings.m_RememberUser = !m_AppSettings.m_RememberUser;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
