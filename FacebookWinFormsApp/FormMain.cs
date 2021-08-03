@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using FacebookWrapper;
@@ -19,12 +20,13 @@ namespace BasicFacebookFeatures
 
         public FormMain(LoginResult i_LoginResult, AppSettings i_AppSettings) 
         {
+            InitializeComponent();
+            m_AppSettings = i_AppSettings;
             r_LoggedUser = i_LoginResult.LoggedInUser;
             r_AccesToken = i_LoginResult.AccessToken;
-            InitializeComponent();
-            Size = i_AppSettings.m_LastWindowsSize;
-            Location = i_AppSettings.m_LastWindowsLocation;
-            m_RememberMeCheckBox.Checked = i_AppSettings.m_RememberUser;
+            Size = m_AppSettings.m_LastWindowsSize;
+            Location = m_AppSettings.m_LastWindowsLocation;
+            m_RememberMeCheckBox.Checked = m_AppSettings.m_RememberUser;
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
         }
 
