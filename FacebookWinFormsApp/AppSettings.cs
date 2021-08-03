@@ -4,34 +4,19 @@ using System.Xml.Serialization;
 
 namespace BasicFacebookFeatures
 {
-    public sealed class AppSettings 
+    public sealed class AppSettings
     {
-        public string m_LastAccessToken { get; set; }
-        public bool m_RememberUser { get; set; }
-        public Size m_LastWindowsSize { get; set; }
-        public Point m_LastWindowsLocation { get; set; }
-
-        private static readonly string  sr_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
-
         public static AppSettings Instance { get; } = new AppSettings();
 
-        private AppSettings()
-        {
-            m_LastAccessToken = null;
-            m_RememberUser = false;
-            m_LastWindowsSize = new Size(870, 650);
-            m_LastWindowsLocation = new Point(50, 50);
-        }
+        public string m_LastAccessToken { get; set; }
 
-        public void SaveSettingsToFile()
-        {
-            using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Create, FileAccess.ReadWrite))
-            {
-                XmlSerializer serializer = new XmlSerializer(this.GetType());
-                serializer.Serialize(stream, this);
-            }
+        public bool m_RememberUser { get; set; }
 
-        }
+        public Size m_LastWindowsSize { get; set; }
+
+        public Point m_LastWindowsLocation { get; set; }
+
+        private static readonly string sr_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
 
         public static AppSettings LoadSettingsFromFile()
         {
@@ -53,9 +38,25 @@ namespace BasicFacebookFeatures
             {
                 appSettings = new AppSettings();
             }
-                
 
             return appSettings;
+        }
+
+        private AppSettings()
+        {
+            m_LastAccessToken = null;
+            m_RememberUser = false;
+            m_LastWindowsSize = new Size(870, 650);
+            m_LastWindowsLocation = new Point(50, 50);
+        }
+
+        public void SaveSettingsToFile()
+        {
+            using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Create, FileAccess.ReadWrite))
+            {
+                XmlSerializer serializer = new XmlSerializer(this.GetType());
+                serializer.Serialize(stream, this);
+            }
         }
     }
 }

@@ -10,9 +10,11 @@ namespace BasicFacebookFeatures
     public partial class FormMain : Form
     {
         private readonly Random r_Random = new Random();
+
         private readonly User r_LoggedUser;
 
         private readonly AppSettings m_AppSettings = AppSettings.Instance;
+
         public FormMain(User i_LoggedUser, AppSettings i_AppSettings) 
         {
             r_LoggedUser = i_LoggedUser;
@@ -22,6 +24,7 @@ namespace BasicFacebookFeatures
             m_RememberMeCheckBox.Checked = i_AppSettings.m_RememberUser;
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
         }
+
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -36,12 +39,13 @@ namespace BasicFacebookFeatures
 
         protected override void OnClosed(EventArgs e)
         {
-             m_AppSettings.m_LastWindowsSize = this.Size ;
+             m_AppSettings.m_LastWindowsSize = this.Size;
             m_AppSettings.m_LastWindowsLocation = this.Location;
             if(m_RememberMeCheckBox.Checked)
             {
                // m_AppSettings.m_LastAccessToken = 
-            };
+            }
+
             m_AppSettings.SaveSettingsToFile();
             base.OnClosed(e);
         }
@@ -81,11 +85,10 @@ namespace BasicFacebookFeatures
             FacebookObjectCollection<Event> userEvents = r_LoggedUser.Events;
             m_UpcomingEventsLabel.Text = $@" {userEvents.Count} {m_UpcomingEventsLabel.Text}";
             foreach(var userEvent in userEvents)
-            {
+            { 
                 long? eventAttendingNumber = userEvent.AttendingCount;
-                //userEventLocation = userEvent.Location;
-               // userEventLocation = userEventLocation.Replace("Name", "").Replace(", URL:", " ");
-               if(eventAttendingNumber != null)
+
+                if(eventAttendingNumber != null)
                {
                    m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
                }
@@ -143,10 +146,9 @@ namespace BasicFacebookFeatures
             {
                 m_CommonInterestListBox.Items.Add("No Friends With Common Liked Pages");
             }
-
         }
 
-        async private void fetchConcerts()
+        private async void fetchConcerts()
         {
             List<string> userFavoriteArtists = new List<string>
                                                    {
@@ -161,7 +163,7 @@ namespace BasicFacebookFeatures
 
             foreach (string favoriteArtist in userFavoriteArtists)
             {
-                string favoriteAndSimilarArtists = $"{favoriteArtist}  - " ;
+                string favoriteAndSimilarArtists = $"{favoriteArtist}  - ";
                 await LastfmAPI.GetSimilarArtists(favoriteArtist);
                 List<string> userSimilarArtists = new List<string>();
                 userSimilarArtists = LastfmAPI.filterFavoriteArtists();
@@ -175,19 +177,8 @@ namespace BasicFacebookFeatures
                     m_UpcomingConcertsListBox.Items.Add(favoriteAndSimilarArtists);
                 }
             }
-
         }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void m_UpcomingBirthdaysListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void m_RandomPicture_Click(object sender, EventArgs e)
         {
            FacebookObjectCollection<Photo> taggedPictures  = r_LoggedUser.PhotosTaggedIn;
@@ -195,6 +186,7 @@ namespace BasicFacebookFeatures
            {
                throw new Exception("No Tagged pictures");
            }
+
            int randomizedIndex = r_Random.Next(taggedPictures.Count);
            m_RandomPicture.Image = taggedPictures[randomizedIndex].ImageAlbum;
         }
@@ -208,11 +200,6 @@ namespace BasicFacebookFeatures
         private void m_RememberMeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             m_AppSettings.m_RememberUser = !m_AppSettings.m_RememberUser;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

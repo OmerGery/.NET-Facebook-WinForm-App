@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace BasicFacebookFeatures
 {
-    static class LastfmAPI
+    public static class LastfmAPI
     {
         private static readonly string sr_LastfmToken = "e55a6c4ec6ffa24e98f249adc405865d";
         private static readonly string sr_Limit = "3";
@@ -23,13 +23,10 @@ namespace BasicFacebookFeatures
             string parametersUri = $"&api_key={sr_LastfmToken}&artist={i_ArtistName}&format=xml&limit={sr_Limit}";
             string response = await m_HttpClient.GetStringAsync(sr_getRequestBaseUri + parametersUri);
             m_XDocument = XDocument.Parse(response);
-
-
         }
 
         public static List<string> filterFavoriteArtists()
         {
-
             List<string> artistsNames = new List<string>();
             foreach (XElement element in m_XDocument.Descendants().Where(p => p.HasElements == false))
             {

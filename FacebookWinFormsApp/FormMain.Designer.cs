@@ -2,7 +2,7 @@
 
 namespace BasicFacebookFeatures
 {
-    partial class FormMain
+    public partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -19,6 +19,7 @@ namespace BasicFacebookFeatures
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -136,7 +137,6 @@ namespace BasicFacebookFeatures
             this.m_UpcomingBirthdaysListBox.Name = "m_UpcomingBirthdaysListBox";
             this.m_UpcomingBirthdaysListBox.Size = new System.Drawing.Size(173, 186);
             this.m_UpcomingBirthdaysListBox.TabIndex = 63;
-            this.m_UpcomingBirthdaysListBox.SelectedIndexChanged += new System.EventHandler(this.m_UpcomingBirthdaysListBox_SelectedIndexChanged);
             // 
             // m_UpcomingEventsLabel
             // 
@@ -228,7 +228,6 @@ namespace BasicFacebookFeatures
             this.m_SimilarArtistsLabel.Size = new System.Drawing.Size(345, 25);
             this.m_SimilarArtistsLabel.TabIndex = 1;
             this.m_SimilarArtistsLabel.Text = "Your Favorite Artists Similar Artists";
-            this.m_SimilarArtistsLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // m_UpcomingConcertsListBox
             // 
@@ -293,7 +292,6 @@ namespace BasicFacebookFeatures
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fun Facebook App";
-            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).EndInit();
             this.m_tabControl.ResumeLayout(false);
@@ -332,4 +330,3 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label label2;
     }
 }
-

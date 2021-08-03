@@ -43,14 +43,13 @@ namespace BasicFacebookFeatures
                     m_LoggedUser = loginResult.LoggedInUser;
                     m_IsLoggedIn = true;
                     Close();
-                    //    }
+                    ////    }
                 }
             }
             catch(Exception)
             {
                 MessageBox.Show("Please enter a valid login and password");
             }
-
         }
     }
 }
