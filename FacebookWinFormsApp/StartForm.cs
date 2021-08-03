@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using Logic;
 
 namespace BasicFacebookFeatures
 {

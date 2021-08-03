@@ -41,7 +41,6 @@ namespace BasicFacebookFeatures
             this.m_UpcomingBirthdaysListBox = new System.Windows.Forms.ListBox();
             this.m_UpcomingEventsLabel = new System.Windows.Forms.Label();
             this.m_UpcomingEventsListBox = new System.Windows.Forms.ListBox();
-            this.m_RandomPhotoLabel = new System.Windows.Forms.Label();
             this.m_RandomPicture = new System.Windows.Forms.PictureBox();
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.m_HomeTabPage = new System.Windows.Forms.TabPage();
@@ -52,6 +51,7 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.m_PictureRandomizerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
@@ -152,15 +152,6 @@ namespace BasicFacebookFeatures
             this.m_UpcomingEventsListBox.Size = new System.Drawing.Size(258, 284);
             this.m_UpcomingEventsListBox.TabIndex = 65;
             // 
-            // m_RandomPhotoLabel
-            // 
-            this.m_RandomPhotoLabel.AutoSize = true;
-            this.m_RandomPhotoLabel.Location = new System.Drawing.Point(748, 400);
-            this.m_RandomPhotoLabel.Name = "m_RandomPhotoLabel";
-            this.m_RandomPhotoLabel.Size = new System.Drawing.Size(200, 20);
-            this.m_RandomPhotoLabel.TabIndex = 67;
-            this.m_RandomPhotoLabel.Text = "Random Photo Of The Day";
-            // 
             // m_RandomPicture
             // 
             this.m_RandomPicture.Location = new System.Drawing.Point(753, 449);
@@ -169,7 +160,6 @@ namespace BasicFacebookFeatures
             this.m_RandomPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.m_RandomPicture.TabIndex = 68;
             this.m_RandomPicture.TabStop = false;
-            this.m_RandomPicture.Click += new System.EventHandler(this.m_RandomPicture_Click);
             // 
             // m_tabControl
             // 
@@ -185,11 +175,11 @@ namespace BasicFacebookFeatures
             // 
             // m_HomeTabPage
             // 
+            this.m_HomeTabPage.Controls.Add(this.m_PictureRandomizerButton);
             this.m_HomeTabPage.Controls.Add(this.m_UpcomingEventsListBox);
             this.m_HomeTabPage.Controls.Add(this.m_RandomPicture);
             this.m_HomeTabPage.Controls.Add(this.m_TrendingPostLabel);
             this.m_HomeTabPage.Controls.Add(this.m_UpcomingBirthdayLabel);
-            this.m_HomeTabPage.Controls.Add(this.m_RandomPhotoLabel);
             this.m_HomeTabPage.Controls.Add(this.m_TrendingPostListBox);
             this.m_HomeTabPage.Controls.Add(this.m_UpcomingBirthdaysListBox);
             this.m_HomeTabPage.Controls.Add(this.m_UpcomingEventsLabel);
@@ -282,6 +272,16 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             this.m_RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.m_RememberMeCheckBox_CheckedChanged);
             // 
+            // m_PictureRandomizerButton
+            // 
+            this.m_PictureRandomizerButton.Location = new System.Drawing.Point(741, 382);
+            this.m_PictureRandomizerButton.Name = "m_PictureRandomizerButton";
+            this.m_PictureRandomizerButton.Size = new System.Drawing.Size(276, 56);
+            this.m_PictureRandomizerButton.TabIndex = 69;
+            this.m_PictureRandomizerButton.Text = "Click To Get A Random Photo From Your Profile";
+            this.m_PictureRandomizerButton.UseVisualStyleBackColor = true;
+            this.m_PictureRandomizerButton.Click += new System.EventHandler(this.m_PictureRandomizerButton_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -322,7 +322,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.ListBox m_UpcomingBirthdaysListBox;
         private System.Windows.Forms.Label m_UpcomingEventsLabel;
         private System.Windows.Forms.ListBox m_UpcomingEventsListBox;
-        private System.Windows.Forms.Label m_RandomPhotoLabel;
         private System.Windows.Forms.PictureBox m_RandomPicture;
         private System.Windows.Forms.TabControl m_tabControl;
         private System.Windows.Forms.TabPage m_HomeTabPage;
@@ -333,5 +332,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.CheckBox m_RememberMeCheckBox;
         private System.Windows.Forms.ListBox m_CommonInterestListBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button m_PictureRandomizerButton;
     }
 }

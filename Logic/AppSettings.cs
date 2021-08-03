@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml.Serialization;
 
-namespace BasicFacebookFeatures
+namespace Logic
 {
     public sealed class AppSettings
     {
