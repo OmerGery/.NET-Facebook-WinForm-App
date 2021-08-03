@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
-    <Compile Include="LastfmAPI.cs" />
+    <Compile Include="LastFmApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

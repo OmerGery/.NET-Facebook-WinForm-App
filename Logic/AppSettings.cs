@@ -8,13 +8,13 @@ namespace Logic
     {
         public static AppSettings Instance { get; } = new AppSettings();
 
-        public string m_LastAccessToken { get; set; }
+        public string LastAccessToken { get; set; }
 
-        public bool m_RememberUser { get; set; }
+        public bool RememberUser { get; set; }
 
-        public Size m_LastWindowsSize { get; set; }
+        public Size LastWindowsSize { get; set; }
 
-        public Point m_LastWindowsLocation { get; set; }
+        public Point LastWindowsLocation { get; set; }
 
         private static readonly string sr_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
 
@@ -39,10 +39,10 @@ namespace Logic
 
         private AppSettings()
         {
-            m_LastAccessToken = null;
-            m_RememberUser = false;
-            m_LastWindowsSize = new Size(870, 650);
-            m_LastWindowsLocation = new Point(50, 50);
+            LastAccessToken = null;
+            RememberUser = false;
+            LastWindowsSize = new Size(870, 650);
+            LastWindowsLocation = new Point(50, 50);
         }
 
         public void SaveSettingsToFile()

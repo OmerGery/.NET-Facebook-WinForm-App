@@ -15,20 +15,20 @@ namespace BasicFacebookFeatures
 
         private readonly User r_LoggedUser;
 
-        private readonly AppSettings m_AppSettings = AppSettings.Instance;
+        private readonly AppSettings r_AppSettings;
 
-        private readonly string r_AccesToken;
+        private readonly string r_AccessToken;
 
         public FormMain(LoginResult i_LoginResult, AppSettings i_AppSettings) 
         {
             InitializeComponent();
-            m_AppSettings = i_AppSettings;
+            r_AppSettings = i_AppSettings;
             r_LoggedUser = i_LoginResult.LoggedInUser;
-            r_AccesToken = i_LoginResult.AccessToken;
-            Size = m_AppSettings.m_LastWindowsSize;
-            Location = m_AppSettings.m_LastWindowsLocation;
-            m_RememberMeCheckBox.Checked = m_AppSettings.m_RememberUser;
-            FacebookWrapper.FacebookService.s_CollectionLimit = 100;
+            r_AccessToken = i_LoginResult.AccessToken;
+            Size = r_AppSettings.LastWindowsSize;
+            Location = r_AppSettings.LastWindowsLocation;
+            m_RememberMeCheckBox.Checked = r_AppSettings.RememberUser;
+            FacebookService.s_CollectionLimit = 100;
         }
 
         protected override void OnShown(EventArgs e)
@@ -45,19 +45,19 @@ namespace BasicFacebookFeatures
 
         protected override void OnClosed(EventArgs e)
         {
-            m_AppSettings.m_LastWindowsSize = Size;
-            m_AppSettings.m_LastWindowsLocation = Location;
+            r_AppSettings.LastWindowsSize = Size;
+            r_AppSettings.LastWindowsLocation = Location;
 
             if(m_RememberMeCheckBox.Checked)
             {
-                m_AppSettings.m_LastAccessToken = r_AccesToken;
+                r_AppSettings.LastAccessToken = r_AccessToken;
             }
             else
             {
-                m_AppSettings.m_LastAccessToken = null;
+                r_AppSettings.LastAccessToken = null;
             }
 
-            m_AppSettings.SaveSettingsToFile();
+            r_AppSettings.SaveSettingsToFile();
             base.OnClosed(e);
         }
 
@@ -86,8 +86,11 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                m_CommonInterestListBox.Items.Add($" {mostLikedPost.Message} " + 
-                                                  $"By {friendName} ({currentMaxLikedPost} likes");
+                if(mostLikedPost != null)
+                {
+                    m_CommonInterestListBox.Items.Add(
+                        $" {mostLikedPost.Message} By {friendName} ({currentMaxLikedPost} likes");
+                }
             }
         }
 
@@ -178,9 +181,9 @@ namespace BasicFacebookFeatures
             foreach (string favoriteArtist in userFavoriteArtists)
             {
                 string favoriteAndSimilarArtists = $"{favoriteArtist}  - ";
-                await LastfmAPI.GetSimilarArtists(favoriteArtist);
+                await LastFmApi.GetSimilarArtists(favoriteArtist);
                 List<string> userSimilarArtists = new List<string>();
-                userSimilarArtists = LastfmAPI.FilterFavoriteArtists();
+                userSimilarArtists = LastFmApi.FilterFavoriteArtists();
                 foreach(string similarArtist in userSimilarArtists)
                 {
                     favoriteAndSimilarArtists += $"{similarArtist} ";
@@ -206,7 +209,7 @@ namespace BasicFacebookFeatures
 
         private void ChangeUserRemembrance()
         {
-            m_AppSettings.m_RememberUser = !m_AppSettings.m_RememberUser;
+            r_AppSettings.RememberUser = !r_AppSettings.RememberUser;
         }
 
         private void m_PictureRandomizerButton_Click(object sender, EventArgs e)

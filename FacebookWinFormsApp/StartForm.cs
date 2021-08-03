@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq.Expressions;
 using System.Windows.Forms;
 using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
 using Logic;
 
 namespace BasicFacebookFeatures
@@ -25,7 +23,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if(string.IsNullOrEmpty(m_AppSettings.m_LastAccessToken))
+                if(string.IsNullOrEmpty(m_AppSettings.LastAccessToken))
                 {
                     UserLoginResult = FacebookService.Login(
                         k_AppId,
@@ -38,12 +36,12 @@ namespace BasicFacebookFeatures
                 }
                 else
                 {
-                    UserLoginResult = FacebookService.Connect(m_AppSettings.m_LastAccessToken);
+                    UserLoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
                 }
             }
             catch(Exception)
             {
-                MessageBox.Show("Please enter a valid login and password");
+                MessageBox.Show(@"Please enter a valid login and password");
             }
 
             Close();
