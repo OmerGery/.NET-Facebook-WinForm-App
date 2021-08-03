@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using Logic;
@@ -178,16 +179,16 @@ namespace BasicFacebookFeatures
 
             foreach (string favoriteArtist in fabricatedUserFavoriteArtists)
             {
-                List<string> userSimilarArtists = new List<string>();
+                List<string> userSimilarArtistsList = new List<string>();
                 string favoriteAndSimilarArtists = $"{favoriteArtist}  - / ";
-                await LastFmApi.GetSimilarArtists(favoriteArtist);
-                userSimilarArtists = LastFmApi.FilterSimilarArtists();
-                foreach(string similarArtist in userSimilarArtists)
+                XDocument userSimilarArtists = await LastFmApi.GetSimilarArtists(favoriteArtist);
+                userSimilarArtistsList = LastFmApi.FilterSimilarArtists(userSimilarArtists);
+                foreach(string similarArtist in userSimilarArtistsList)
                 {
                     favoriteAndSimilarArtists += $"{similarArtist} / ";
                 }
 
-                if(userSimilarArtists.Count > 0)
+                if(userSimilarArtistsList.Count > 0)
                 {
                     m_SimilarArtistsListBox.Items.Add(favoriteAndSimilarArtists);
                 }
@@ -226,6 +227,7 @@ namespace BasicFacebookFeatures
             int randomizedIndex = r_Random.Next(taggedPictures.Count);
             return taggedPictures[randomizedIndex].ImageAlbum;
         }
+
 
     }
 }

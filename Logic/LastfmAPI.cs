@@ -12,19 +12,18 @@ namespace Logic
         private const string k_Limit = "3";
         private const string k_getRequestBaseUri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar";
         private static readonly HttpClient sr_HttpClient = new HttpClient();
-        private static XDocument s_SimilarArtistsXDocument = new XDocument();
 
-        public static async Task GetSimilarArtists(string i_ArtistName)
+        public static async Task<XDocument> GetSimilarArtists(string i_ArtistName)
         {
             string parametersUri = $"&api_key={k_LastFmToken}&artist={i_ArtistName}&format=xml&limit={k_Limit}";
             string response = await sr_HttpClient.GetStringAsync(k_getRequestBaseUri + parametersUri);
-            s_SimilarArtistsXDocument = XDocument.Parse(response);
+            return XDocument.Parse(response);
         }
 
-        public static List<string> FilterSimilarArtists()
+        public static List<string> FilterSimilarArtists(XDocument i_XDocument)
         {
             List<string> artistsNames = new List<string>();
-            foreach (XElement element in s_SimilarArtistsXDocument.Descendants().Where(i_Xelement => i_Xelement.HasElements == false))
+            foreach (XElement element in i_XDocument.Descendants().Where(io_XElement => io_XElement.HasElements == false))
             {
                 string keyName = element.Name.LocalName;
                 if (keyName == "name")

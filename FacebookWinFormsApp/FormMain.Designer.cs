@@ -46,13 +46,14 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage = new System.Windows.Forms.TabPage();
             this.m_PictureRandomizerButton = new System.Windows.Forms.Button();
             this.m_UpcomingConcertsTabPage = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.m_SimilarArtistsLabel = new System.Windows.Forms.Label();
             this.m_SimilarArtistsListBox = new System.Windows.Forms.ListBox();
             this.m_CommonInterestTabPage = new System.Windows.Forms.TabPage();
             this.m_CommonInterestListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
@@ -173,11 +174,13 @@ namespace BasicFacebookFeatures
             this.m_tabControl.Controls.Add(this.m_HomeTabPage);
             this.m_tabControl.Controls.Add(this.m_UpcomingConcertsTabPage);
             this.m_tabControl.Controls.Add(this.m_CommonInterestTabPage);
+            this.m_tabControl.Controls.Add(this.tabPage1);
             this.m_tabControl.Location = new System.Drawing.Point(12, 69);
             this.m_tabControl.Name = "m_tabControl";
             this.m_tabControl.SelectedIndex = 0;
             this.m_tabControl.Size = new System.Drawing.Size(807, 509);
             this.m_tabControl.TabIndex = 69;
+            this.m_tabControl.SelectedIndexChanged += new System.EventHandler(this.m_tabControl_SelectedIndexChanged);
             // 
             // m_HomeTabPage
             // 
@@ -220,6 +223,15 @@ namespace BasicFacebookFeatures
             this.m_UpcomingConcertsTabPage.TabIndex = 1;
             this.m_UpcomingConcertsTabPage.Text = "Artists Recommendations";
             this.m_UpcomingConcertsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(190, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(228, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = " Based on your favorite Artists, using last.fm api";
             // 
             // m_SimilarArtistsLabel
             // 
@@ -280,14 +292,16 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             this.m_RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.m_RememberMeCheckBox_CheckedChanged);
             // 
-            // label1
+            // tabPage1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = " Based on your favorite Artists, using last.fm api";
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(799, 483);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // FormMain
             // 
@@ -340,5 +354,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button m_PictureRandomizerButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
