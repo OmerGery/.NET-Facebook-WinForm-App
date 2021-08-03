@@ -48,14 +48,7 @@ namespace BasicFacebookFeatures
             r_AppSettings.LastWindowsSize = Size;
             r_AppSettings.LastWindowsLocation = Location;
 
-            if(m_RememberMeCheckBox.Checked)
-            {
-                r_AppSettings.LastAccessToken = r_AccessToken;
-            }
-            else
-            {
-                r_AppSettings.LastAccessToken = null;
-            }
+            r_AppSettings.LastAccessToken = m_RememberMeCheckBox.Checked ? r_AccessToken : null;
 
             r_AppSettings.SaveSettingsToFile();
             base.OnClosed(e);
@@ -103,9 +96,9 @@ namespace BasicFacebookFeatures
                 long? eventAttendingNumber = userEvent.AttendingCount;
 
                 if(eventAttendingNumber != null)
-               {
-                   m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
-               }
+                {
+                    m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
+                }
             }
         }
 
@@ -167,31 +160,36 @@ namespace BasicFacebookFeatures
 
         private async void fetchConcerts()
         {
-            List<string> userFavoriteArtists = new List<string>
-                                                   {
-                                                       "Metallica",
-                                                       "Radiohead",
-                                                       "The_Strokes",
-                                                       "Pink_Floyd",
-                                                       "Doja_Cat",
-                                                       "Lady_Gaga",
-                                                       "Nirvana"
-                                                   };
 
-            foreach (string favoriteArtist in userFavoriteArtists)
+            List<string> fabricatedUserFavoriteArtists = new List<string>
+                                                             {
+                                                                 "Cat Stevens",
+                                                                 "Cheetah Girls",
+                                                                 "Cat Power",
+                                                                 "One Day As A Lion",
+                                                                 "Def Leopard",
+                                                                 "Stray Cats",
+                                                                 "Lady Gaga",
+                                                                 "Nirvana",
+                                                                 "Radiohead",
+                                                                 "Pink Floyd",
+
+                                                             };
+
+            foreach (string favoriteArtist in fabricatedUserFavoriteArtists)
             {
-                string favoriteAndSimilarArtists = $"{favoriteArtist}  - ";
-                await LastFmApi.GetSimilarArtists(favoriteArtist);
                 List<string> userSimilarArtists = new List<string>();
-                userSimilarArtists = LastFmApi.FilterFavoriteArtists();
+                string favoriteAndSimilarArtists = $"{favoriteArtist}  - / ";
+                await LastFmApi.GetSimilarArtists(favoriteArtist);
+                userSimilarArtists = LastFmApi.FilterSimilarArtists();
                 foreach(string similarArtist in userSimilarArtists)
                 {
-                    favoriteAndSimilarArtists += $"{similarArtist} ";
+                    favoriteAndSimilarArtists += $"{similarArtist} / ";
                 }
 
                 if(userSimilarArtists.Count > 0)
                 {
-                    m_UpcomingConcertsListBox.Items.Add(favoriteAndSimilarArtists);
+                    m_SimilarArtistsListBox.Items.Add(favoriteAndSimilarArtists);
                 }
             }
         }
@@ -228,5 +226,6 @@ namespace BasicFacebookFeatures
             int randomizedIndex = r_Random.Next(taggedPictures.Count);
             return taggedPictures[randomizedIndex].ImageAlbum;
         }
+
     }
 }
