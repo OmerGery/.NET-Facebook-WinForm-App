@@ -25,7 +25,7 @@ namespace BasicFacebookFeatures
             m_XDocument = XDocument.Parse(response);
         }
 
-        public static List<string> filterFavoriteArtists()
+        public static List<string> FilterFavoriteArtists()
         {
             List<string> artistsNames = new List<string>();
             foreach (XElement element in m_XDocument.Descendants().Where(p => p.HasElements == false))

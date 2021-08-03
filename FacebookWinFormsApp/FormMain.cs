@@ -15,12 +15,15 @@ namespace BasicFacebookFeatures
 
         private readonly AppSettings m_AppSettings = AppSettings.Instance;
 
-        public FormMain(User i_LoggedUser, AppSettings i_AppSettings) 
+        private readonly string r_AccesToken;
+
+        public FormMain(LoginResult i_LoginResult, AppSettings i_AppSettings) 
         {
-            r_LoggedUser = i_LoggedUser;
+            r_LoggedUser = i_LoginResult.LoggedInUser;
+            r_AccesToken = i_LoginResult.AccessToken;
             InitializeComponent();
-            this.Size = i_AppSettings.m_LastWindowsSize;
-            this.Location = i_AppSettings.m_LastWindowsLocation;
+            Size = i_AppSettings.m_LastWindowsSize;
+            Location = i_AppSettings.m_LastWindowsLocation;
             m_RememberMeCheckBox.Checked = i_AppSettings.m_RememberUser;
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
         }
@@ -39,11 +42,16 @@ namespace BasicFacebookFeatures
 
         protected override void OnClosed(EventArgs e)
         {
-             m_AppSettings.m_LastWindowsSize = this.Size;
-            m_AppSettings.m_LastWindowsLocation = this.Location;
+            m_AppSettings.m_LastWindowsSize = Size;
+            m_AppSettings.m_LastWindowsLocation = Location;
+
             if(m_RememberMeCheckBox.Checked)
             {
-               // m_AppSettings.m_LastAccessToken = 
+                m_AppSettings.m_LastAccessToken = r_AccesToken;
+            }
+            else
+            {
+                m_AppSettings.m_LastAccessToken = null;
             }
 
             m_AppSettings.SaveSettingsToFile();
@@ -166,7 +174,7 @@ namespace BasicFacebookFeatures
                 string favoriteAndSimilarArtists = $"{favoriteArtist}  - ";
                 await LastfmAPI.GetSimilarArtists(favoriteArtist);
                 List<string> userSimilarArtists = new List<string>();
-                userSimilarArtists = LastfmAPI.filterFavoriteArtists();
+                userSimilarArtists = LastfmAPI.FilterFavoriteArtists();
                 foreach(string similarArtist in userSimilarArtists)
                 {
                     favoriteAndSimilarArtists += $"{similarArtist} ";

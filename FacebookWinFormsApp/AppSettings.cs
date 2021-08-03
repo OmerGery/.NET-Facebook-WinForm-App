@@ -20,7 +20,7 @@ namespace BasicFacebookFeatures
 
         public static AppSettings LoadSettingsFromFile()
         {
-            AppSettings appSettings = null;
+            AppSettings appSettings; 
             if(File.Exists(sr_AppSettingsFilePath))
             {
                 using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Open))
@@ -30,11 +30,6 @@ namespace BasicFacebookFeatures
                 }
             }
             else
-            {
-                appSettings = new AppSettings();
-            }
-
-            if(appSettings.m_RememberUser == false)
             {
                 appSettings = new AppSettings();
             }
