@@ -45,12 +45,12 @@ namespace BasicFacebookFeatures
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.m_HomeTabPage = new System.Windows.Forms.TabPage();
             this.m_UpcomingConcertsTabPage = new System.Windows.Forms.TabPage();
-            this.m_CommonInterestTabPage = new System.Windows.Forms.TabPage();
+            this.m_SimilarArtistsLabel = new System.Windows.Forms.Label();
             this.m_UpcomingConcertsListBox = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.m_CommonInterestTabPage = new System.Windows.Forms.TabPage();
             this.m_CommonInterestListBox = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
@@ -209,7 +209,7 @@ namespace BasicFacebookFeatures
             // 
             // m_UpcomingConcertsTabPage
             // 
-            this.m_UpcomingConcertsTabPage.Controls.Add(this.label1);
+            this.m_UpcomingConcertsTabPage.Controls.Add(this.m_SimilarArtistsLabel);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_UpcomingConcertsListBox);
             this.m_UpcomingConcertsTabPage.Location = new System.Drawing.Point(4, 22);
             this.m_UpcomingConcertsTabPage.Name = "m_UpcomingConcertsTabPage";
@@ -218,6 +218,25 @@ namespace BasicFacebookFeatures
             this.m_UpcomingConcertsTabPage.TabIndex = 1;
             this.m_UpcomingConcertsTabPage.Text = "Upcoming Concerts";
             this.m_UpcomingConcertsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // m_SimilarArtistsLabel
+            // 
+            this.m_SimilarArtistsLabel.AutoSize = true;
+            this.m_SimilarArtistsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.m_SimilarArtistsLabel.Location = new System.Drawing.Point(188, 22);
+            this.m_SimilarArtistsLabel.Name = "m_SimilarArtistsLabel";
+            this.m_SimilarArtistsLabel.Size = new System.Drawing.Size(345, 25);
+            this.m_SimilarArtistsLabel.TabIndex = 1;
+            this.m_SimilarArtistsLabel.Text = "Your Favorite Artists Similar Artists";
+            this.m_SimilarArtistsLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // m_UpcomingConcertsListBox
+            // 
+            this.m_UpcomingConcertsListBox.FormattingEnabled = true;
+            this.m_UpcomingConcertsListBox.Location = new System.Drawing.Point(193, 72);
+            this.m_UpcomingConcertsListBox.Name = "m_UpcomingConcertsListBox";
+            this.m_UpcomingConcertsListBox.Size = new System.Drawing.Size(407, 212);
+            this.m_UpcomingConcertsListBox.TabIndex = 0;
             // 
             // m_CommonInterestTabPage
             // 
@@ -231,34 +250,13 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestTabPage.Text = "Friends With Common Interest";
             this.m_CommonInterestTabPage.UseVisualStyleBackColor = true;
             // 
-            // m_UpcomingConcertsListBox
+            // m_CommonInterestListBox
             // 
-            this.m_UpcomingConcertsListBox.FormattingEnabled = true;
-            this.m_UpcomingConcertsListBox.Location = new System.Drawing.Point(193, 72);
-            this.m_UpcomingConcertsListBox.Name = "m_UpcomingConcertsListBox";
-            this.m_UpcomingConcertsListBox.Size = new System.Drawing.Size(407, 212);
-            this.m_UpcomingConcertsListBox.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(188, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(408, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Your Favorite Artists Upcoming Concerts:";
-            // 
-            // m_RememberMeCheckBox
-            // 
-            this.m_RememberMeCheckBox.AutoSize = true;
-            this.m_RememberMeCheckBox.Location = new System.Drawing.Point(14, 36);
-            this.m_RememberMeCheckBox.Name = "m_RememberMeCheckBox";
-            this.m_RememberMeCheckBox.Size = new System.Drawing.Size(95, 17);
-            this.m_RememberMeCheckBox.TabIndex = 70;
-            this.m_RememberMeCheckBox.Text = "Remember Me";
-            this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
-            this.m_RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.m_RememberMeCheckBox_CheckedChanged);
+            this.m_CommonInterestListBox.FormattingEnabled = true;
+            this.m_CommonInterestListBox.Location = new System.Drawing.Point(186, 78);
+            this.m_CommonInterestListBox.Name = "m_CommonInterestListBox";
+            this.m_CommonInterestListBox.Size = new System.Drawing.Size(407, 212);
+            this.m_CommonInterestListBox.TabIndex = 3;
             // 
             // label2
             // 
@@ -270,13 +268,16 @@ namespace BasicFacebookFeatures
             this.label2.TabIndex = 2;
             this.label2.Text = "Best Friends With Best Interest";
             // 
-            // m_CommonInterestListBox
+            // m_RememberMeCheckBox
             // 
-            this.m_CommonInterestListBox.FormattingEnabled = true;
-            this.m_CommonInterestListBox.Location = new System.Drawing.Point(186, 78);
-            this.m_CommonInterestListBox.Name = "m_CommonInterestListBox";
-            this.m_CommonInterestListBox.Size = new System.Drawing.Size(407, 212);
-            this.m_CommonInterestListBox.TabIndex = 3;
+            this.m_RememberMeCheckBox.AutoSize = true;
+            this.m_RememberMeCheckBox.Location = new System.Drawing.Point(14, 36);
+            this.m_RememberMeCheckBox.Name = "m_RememberMeCheckBox";
+            this.m_RememberMeCheckBox.Size = new System.Drawing.Size(95, 17);
+            this.m_RememberMeCheckBox.TabIndex = 70;
+            this.m_RememberMeCheckBox.Text = "Remember Me";
+            this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
+            this.m_RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.m_RememberMeCheckBox_CheckedChanged);
             // 
             // FormMain
             // 
@@ -324,7 +325,7 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.TabPage m_HomeTabPage;
         private System.Windows.Forms.TabPage m_UpcomingConcertsTabPage;
         private System.Windows.Forms.TabPage m_CommonInterestTabPage;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label m_SimilarArtistsLabel;
         private System.Windows.Forms.ListBox m_UpcomingConcertsListBox;
         private System.Windows.Forms.CheckBox m_RememberMeCheckBox;
         private System.Windows.Forms.ListBox m_CommonInterestListBox;

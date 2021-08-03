@@ -18,19 +18,16 @@ namespace BasicFacebookFeatures
         private static readonly HttpClient m_HttpClient = new HttpClient();
         private static XDocument m_XDocument = new XDocument();
 
-        public static async Task<List<string>> GetSimilarArtists(string i_ArtistName)
+        public static async Task GetSimilarArtists(string i_ArtistName)
         {
             string parametersUri = $"&api_key={sr_LastfmToken}&artist={i_ArtistName}&format=xml&limit={sr_Limit}";
             string response = await m_HttpClient.GetStringAsync(sr_getRequestBaseUri + parametersUri);
-            Console.WriteLine(response);
             m_XDocument = XDocument.Parse(response);
-            List<string> artistsNames = new List<string>();
-            artistsNames = filterFavoriteArtists();
 
-            return artistsNames;
+
         }
 
-        private static List<string> filterFavoriteArtists()
+        public static List<string> filterFavoriteArtists()
         {
 
             List<string> artistsNames = new List<string>();
