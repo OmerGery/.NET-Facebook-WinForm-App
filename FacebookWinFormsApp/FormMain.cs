@@ -19,7 +19,7 @@ namespace BasicFacebookFeatures
         private readonly AppSettings r_AppSettings;
 
         private readonly string r_AccessToken;
-
+        
         public FormMain(LoginResult i_LoginResult, AppSettings i_AppSettings) 
         {
             InitializeComponent();
@@ -37,11 +37,6 @@ namespace BasicFacebookFeatures
             base.OnShown(e);
             m_UserNameLabel.Text = r_LoggedUser.Name;
             m_ProfilePicture.Image = r_LoggedUser.ImageSmall;
-            fetchEvents();
-            fetchUpcomingBirthdays();
-            fetchConcerts();
-            fetchFriendsWithCommonInterest();
-            fetchTopPostByFriend();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -88,10 +83,11 @@ namespace BasicFacebookFeatures
             }
         }
 
+
         private void fetchEvents()
         {
             FacebookObjectCollection<Event> userEvents = r_LoggedUser.Events;
-            m_UpcomingEventsLabel.Text = $@" {userEvents.Count} {m_UpcomingEventsLabel.Text}";
+            updateAmountOfEvents(userEvents.Count);
             foreach(var userEvent in userEvents)
             { 
                 long? eventAttendingNumber = userEvent.AttendingCount;
@@ -101,6 +97,14 @@ namespace BasicFacebookFeatures
                     m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
                 }
             }
+        }
+
+        private void updateAmountOfEvents(int i_UserEventsCount)
+        {
+            string newLabelText = m_EventsAmountLabel.Text;
+            newLabelText = newLabelText.Remove(newLabelText.Length - 1, 1);
+            newLabelText = newLabelText.Insert(newLabelText.Length, i_UserEventsCount.ToString());
+            m_EventsAmountLabel.Text = newLabelText;
         }
 
         private void fetchUpcomingBirthdays()
@@ -159,7 +163,7 @@ namespace BasicFacebookFeatures
             io_FriendsCommonPagesLikes.OrderByDescending(pair => pair.Value);
         }
 
-        private async void fetchConcerts()
+        private async void fetchRecommendations()
         {
 
             List<string> fabricatedUserFavoriteArtists = new List<string>
@@ -228,6 +232,24 @@ namespace BasicFacebookFeatures
             return taggedPictures[randomizedIndex].ImageAlbum;
         }
 
+        private void recommendationButton_Click(object sender, EventArgs e)
+        {
+            fetchRecommendations();
+        }
 
+        private void topPostButton_Click(object sender, EventArgs e)
+        {
+            fetchTopPostByFriend();
+        }
+
+        private void birthdaysButton_Click(object sender, EventArgs e)
+        {
+            fetchUpcomingBirthdays();
+        }
+
+        private void eventsButton_Click(object sender, EventArgs e)
+        {
+            fetchEvents();
+        }
     }
 }
