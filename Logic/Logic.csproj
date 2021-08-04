@@ -41,8 +41,15 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="LastFmApi.cs" />
+    <Compile Include="MainLogic.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\FBApi\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FbGraphApiWrapper">
+      <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />

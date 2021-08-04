@@ -13,30 +13,27 @@ namespace BasicFacebookFeatures
     public partial class FormMain : Form
     {
         private readonly Random r_Random = new Random();
-
-        private readonly User r_LoggedUser;
-
+        private MainLogic m_Logic;
         private readonly AppSettings r_AppSettings;
-
-        private readonly string r_AccessToken;
         
         public FormMain(LoginResult i_LoginResult, AppSettings i_AppSettings) 
         {
             InitializeComponent();
             r_AppSettings = i_AppSettings;
-            r_LoggedUser = i_LoginResult.LoggedInUser;
-            r_AccessToken = i_LoginResult.AccessToken;
             Size = r_AppSettings.LastWindowsSize;
             Location = r_AppSettings.LastWindowsLocation;
             m_RememberMeCheckBox.Checked = r_AppSettings.RememberUser;
+            m_Logic = new MainLogic(i_LoginResult);
             FacebookService.s_CollectionLimit = 100;
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            m_UserNameLabel.Text = r_LoggedUser.Name;
-            m_ProfilePicture.Image = r_LoggedUser.ImageSmall;
+            m_UserNameLabel.Text = m_Logic.LoggedUser.Name;
+
+            m_UserNameLabel.Text = m_Logic.GetUserName();
+            m_ProfilePicture.Image = m_Logic.GetProfilePicture();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -44,7 +41,7 @@ namespace BasicFacebookFeatures
             r_AppSettings.LastWindowsSize = Size;
             r_AppSettings.LastWindowsLocation = Location;
 
-            r_AppSettings.LastAccessToken = m_RememberMeCheckBox.Checked ? r_AccessToken : null;
+            r_AppSettings.LastAccessToken = m_RememberMeCheckBox.Checked ? m_Logic.AccessToken: null;
 
             r_AppSettings.SaveSettingsToFile();
             base.OnClosed(e);
@@ -131,7 +128,7 @@ namespace BasicFacebookFeatures
         {
             bool isFriendWithCommonInterest = false;
             Dictionary<string, int> friendsCommonPagesLikes = new Dictionary<string, int>();
-            GetFriendsCommonInterstest(ref friendsCommonPagesLikes, ref isFriendWithCommonInterest);
+            getFriendsCommonInterstest(ref friendsCommonPagesLikes, ref isFriendWithCommonInterest);
             foreach(var friendInDictionary in friendsCommonPagesLikes)
             {
                 m_CommonInterestListBox.Items.Add($"{friendInDictionary.Key} - {friendInDictionary.Value.ToString()} Pages");
@@ -143,7 +140,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void GetFriendsCommonInterstest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
+        private void getFriendsCommonInterstest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
         {
             foreach (User friend in r_LoggedUser.Friends)
             {
