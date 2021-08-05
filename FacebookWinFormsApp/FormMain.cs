@@ -30,10 +30,8 @@ namespace BasicFacebookFeatures
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            m_UserNameLabel.Text = m_Logic.LoggedUser.Name;
-
-            m_UserNameLabel.Text = m_Logic.GetUserName();
-            m_ProfilePicture.Image = m_Logic.GetProfilePicture();
+            m_UserNameLabel.Text = m_Logic.LoggedUser.UserName;
+            m_ProfilePicture.Image = m_Logic.LoggedUser.ImageSmall;
         }
 
         protected override void OnClosed(EventArgs e)
@@ -47,43 +45,10 @@ namespace BasicFacebookFeatures
             base.OnClosed(e);
         }
 
-        private void fetchTopPostByFriend()
-        {
-            int currentMaxLikedPost = 0;
-            string friendName = null;
-            Post mostLikedPost = null;
-
-            foreach (User friend in r_LoggedUser.Friends)
-            {
-                foreach(var friendPost in friend.Posts)
-                {
-                    if(friendPost.LikedBy.Count() > currentMaxLikedPost)
-                    {
-                        currentMaxLikedPost = friendPost.LikedBy.Count();
-                        friendName = friend.Name;
-                        mostLikedPost = friendPost;
-                    }
-                }
-            }
-
-            if(currentMaxLikedPost == 0)
-            {
-                m_TrendingPostListBox.Items.Add("No liked posts by friends");
-            }
-            else
-            {
-                if(mostLikedPost != null)
-                {
-                    m_CommonInterestListBox.Items.Add(
-                        $" {mostLikedPost.Message} By {friendName} ({currentMaxLikedPost} likes");
-                }
-            }
-        }
-
 
         private void fetchEvents()
         {
-            FacebookObjectCollection<Event> userEvents = r_LoggedUser.Events;
+            FacebookObjectCollection<Event> userEvents = m_Logic.LoggedUser.Events;
             updateAmountOfEvents(userEvents.Count);
             foreach(var userEvent in userEvents)
             { 
@@ -94,6 +59,7 @@ namespace BasicFacebookFeatures
                     m_UpcomingEventsListBox.Items.Add($"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
                 }
             }
+            
         }
 
         private void updateAmountOfEvents(int i_UserEventsCount)
@@ -108,7 +74,7 @@ namespace BasicFacebookFeatures
         {
             bool areFriendsBdaysThisMonth = false;
 
-            foreach (User friend in r_LoggedUser.Friends)
+            foreach (User friend in m_Logic.LoggedUser.Friends)
             {
                 DateTime friendBirthday = DateTime.Parse(friend.Birthday);
                 if(friendBirthday.Month == DateTime.Now.Month)
@@ -142,12 +108,12 @@ namespace BasicFacebookFeatures
 
         private void getFriendsCommonInterstest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
         {
-            foreach (User friend in r_LoggedUser.Friends)
+            foreach (User friend in m_Logic.LoggedUser.Friends)
             {
                 int friendCommonLikedPages = 0;
                 foreach (var friendLikedPage in friend.LikedPages)
                 {
-                    if (r_LoggedUser.LikedPages.Contains(friendLikedPage))
+                    if (m_Logic.LoggedUser.LikedPages.Contains(friendLikedPage))
                     {
                         io_IsFriendWithCommonInterest = true;
                         friendCommonLikedPages++;
@@ -219,7 +185,7 @@ namespace BasicFacebookFeatures
 
         private Image GetRandomImage()
         {
-            FacebookObjectCollection<Photo> taggedPictures = r_LoggedUser.PhotosTaggedIn;
+            FacebookObjectCollection<Photo> taggedPictures = m_Logic.LoggedUser.PhotosTaggedIn;
             if (taggedPictures.Count < 1)
             {
                 throw new Exception("No Tagged pictures");
@@ -236,7 +202,24 @@ namespace BasicFacebookFeatures
 
         private void topPostButton_Click(object sender, EventArgs e)
         {
-            fetchTopPostByFriend();
+
+            int currentMaxLikedPost = 0;
+            string friendName = null;
+            Post mostLikedPost = null;
+            
+            m_Logic.FetchTopPostByFriend(ref currentMaxLikedPost,ref friendName,ref mostLikedPost);
+            if (currentMaxLikedPost == 0)
+            {
+                m_TrendingPostListBox.Items.Add("No liked posts by friends");
+            }
+            else
+            {
+                if (mostLikedPost != null)
+                {
+                    m_CommonInterestListBox.Items.Add(
+                        $" {mostLikedPost.Message} By {friendName} ({currentMaxLikedPost} likes");
+                }
+            }
         }
 
         private void birthdaysButton_Click(object sender, EventArgs e)

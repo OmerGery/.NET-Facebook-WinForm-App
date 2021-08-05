@@ -19,7 +19,7 @@ namespace BasicFacebookFeatures
             m_AppSettings = AppSettings.LoadSettingsFromFile();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+         void buttonLogin_Click(object sender, EventArgs e)
         {
             try
             {
