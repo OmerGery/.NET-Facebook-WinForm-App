@@ -146,12 +146,11 @@ namespace BasicFacebookFeatures
             // 
             // m_tabControl
             // 
-            this.m_tabControl.BackColor = Color.Blue;
-            this.m_tabControl.ForeColor = Color.Black;
             this.m_tabControl.Controls.Add(this.m_HomeTabPage);
             this.m_tabControl.Controls.Add(this.m_UpcomingConcertsTabPage);
             this.m_tabControl.Controls.Add(this.m_CommonInterestTabPage);
             this.m_tabControl.Controls.Add(this.tabPage1);
+            this.m_tabControl.ForeColor = System.Drawing.Color.Black;
             this.m_tabControl.Location = new System.Drawing.Point(18, 106);
             this.m_tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_tabControl.Name = "m_tabControl";
@@ -160,8 +159,8 @@ namespace BasicFacebookFeatures
             this.m_tabControl.TabIndex = 69;
             // 
             // m_HomeTabPage
-            //
-            this.m_HomeTabPage.BackColor = Color.Blue;
+            // 
+            this.m_HomeTabPage.BackColor = System.Drawing.Color.CornflowerBlue;
             this.m_HomeTabPage.Controls.Add(this.pictureBox2);
             this.m_HomeTabPage.Controls.Add(this.pictureBox1);
             this.m_HomeTabPage.Controls.Add(this.m_EventsAmountLabel);
@@ -182,7 +181,6 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.TabIndex = 0;
             this.m_HomeTabPage.Text = "Home";
             this.m_HomeTabPage.UseVisualStyleBackColor = true;
-
             // 
             // pictureBox2
             // 
@@ -252,7 +250,7 @@ namespace BasicFacebookFeatures
             // 
             // m_UpcomingConcertsTabPage
             // 
-            this.m_UpcomingConcertsTabPage.BackColor = Color.Blue;
+            this.m_UpcomingConcertsTabPage.BackColor = System.Drawing.Color.CornflowerBlue;
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_RecommendationButton);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.label1);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_SimilarArtistsLabel);
@@ -309,7 +307,7 @@ namespace BasicFacebookFeatures
             // 
             // m_CommonInterestTabPage
             // 
-            this.m_CommonInterestTabPage.BackColor = Color.Blue;
+            this.m_CommonInterestTabPage.BackColor = System.Drawing.Color.CornflowerBlue;
             this.m_CommonInterestTabPage.Controls.Add(this.m_FriendsIntrestsButton);
             this.m_CommonInterestTabPage.Controls.Add(this.m_CommonInterestListBox);
             this.m_CommonInterestTabPage.Controls.Add(this.label2);
@@ -355,7 +353,7 @@ namespace BasicFacebookFeatures
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = Color.Blue;
+            this.tabPage1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tabPage1.Controls.Add(this.m_PhotosAmountLabel);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.m_LocaleLabel);
@@ -405,9 +403,9 @@ namespace BasicFacebookFeatures
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(294, 121);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 20);
+            this.label6.Size = new System.Drawing.Size(60, 20);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Locale";
+            this.label6.Text = "Locale:";
             // 
             // m_BirthdayLabel
             // 
@@ -461,7 +459,7 @@ namespace BasicFacebookFeatures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Blue;
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(1251, 749);
             this.Controls.Add(this.m_RememberMeCheckBox);
             this.Controls.Add(this.m_tabControl);

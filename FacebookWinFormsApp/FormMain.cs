@@ -142,22 +142,30 @@ namespace BasicFacebookFeatures
 
         private void m_RememberMeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
             r_AppSettings.RememberUser = !r_AppSettings.RememberUser;
         }
 
         private void m_PictureRandomizerButton_Click(object sender, EventArgs e)
         {
-            m_RandomPicture.Image = r_Logic.GetRandomImage();
+            try
+            {
+                m_RandomPicture.Image = r_Logic.GetRandomImage();
+            }
+            catch(Exception pictureException)
+            {
+                MessageBox.Show($@"An error occurred with the facebook API: {Environment.NewLine} {pictureException.Message}");
+            }
         }
 
         private void recommendationButton_Click(object sender, EventArgs e)
         {
+            m_RecommendationButton.Enabled = false;
             fetchRecommendations();
         }
 
         private void topPostButton_Click(object sender, EventArgs e)
         {
+            m_TopPostButton.Enabled = false;
             int currentMaxLikedPost = 0;
             string friendName = null;
             Post mostLikedPost = null;
@@ -179,7 +187,7 @@ namespace BasicFacebookFeatures
 
         private void birthdaysButton_Click(object sender, EventArgs e)
         {
-            
+            m_BirthdaysButton.Enabled = false;
             bool areFriendsBdaysThisMonth = false;
 
             foreach (User friend in r_Logic.LoggedUser.Friends)
@@ -200,11 +208,13 @@ namespace BasicFacebookFeatures
 
         private void eventsButton_Click(object sender, EventArgs e)
         {
+            m_EventsButton.Enabled = false;
             fetchEvents();
         }
 
         private void m_FriendsIntrestsButton_Click(object sender, EventArgs e)
         {
+            m_FriendsIntrestsButton.Enabled = false;
             fetchFriendsWithCommonInterest();
         }
     }
