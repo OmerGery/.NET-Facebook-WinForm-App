@@ -52,6 +52,7 @@ namespace BasicFacebookFeatures
             this.m_SimilarArtistsLabel = new System.Windows.Forms.Label();
             this.m_SimilarArtistsListBox = new System.Windows.Forms.ListBox();
             this.m_CommonInterestTabPage = new System.Windows.Forms.TabPage();
+            this.m_FriendsIntrestsButton = new System.Windows.Forms.Button();
             this.m_CommonInterestListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -279,6 +280,7 @@ namespace BasicFacebookFeatures
             // 
             // m_CommonInterestTabPage
             // 
+            this.m_CommonInterestTabPage.Controls.Add(this.m_FriendsIntrestsButton);
             this.m_CommonInterestTabPage.Controls.Add(this.m_CommonInterestListBox);
             this.m_CommonInterestTabPage.Controls.Add(this.label2);
             this.m_CommonInterestTabPage.Location = new System.Drawing.Point(4, 29);
@@ -289,6 +291,16 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestTabPage.TabIndex = 2;
             this.m_CommonInterestTabPage.Text = "Friends With Common Interest";
             this.m_CommonInterestTabPage.UseVisualStyleBackColor = true;
+            // 
+            // m_FriendsIntrestsButton
+            // 
+            this.m_FriendsIntrestsButton.Location = new System.Drawing.Point(424, 73);
+            this.m_FriendsIntrestsButton.Name = "m_FriendsIntrestsButton";
+            this.m_FriendsIntrestsButton.Size = new System.Drawing.Size(259, 39);
+            this.m_FriendsIntrestsButton.TabIndex = 4;
+            this.m_FriendsIntrestsButton.Text = "Click here to see them!";
+            this.m_FriendsIntrestsButton.UseVisualStyleBackColor = true;
+            this.m_FriendsIntrestsButton.Click += new System.EventHandler(this.m_FriendsIntrestsButton_Click);
             // 
             // m_CommonInterestListBox
             // 
@@ -304,12 +316,12 @@ namespace BasicFacebookFeatures
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label2.Location = new System.Drawing.Point(304, 58);
+            this.label2.Location = new System.Drawing.Point(307, 32);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(456, 37);
+            this.label2.Size = new System.Drawing.Size(689, 37);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Best Friends With Best Interest";
+            this.label2.Text = "Get list of cool friends that liked similar pages :)";
             // 
             // tabPage1
             // 
@@ -389,5 +401,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button m_TopPostButton;
         private System.Windows.Forms.Button m_BirthdaysButton;
         private System.Windows.Forms.Label m_EventsAmountLabel;
+        private System.Windows.Forms.Button m_FriendsIntrestsButton;
     }
 }
