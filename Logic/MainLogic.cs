@@ -47,7 +47,7 @@ namespace Logic
             int randomizedIndex = r_Random.Next(taggedPictures.Count);
             return taggedPictures[randomizedIndex].ImageAlbum;
         }
-        public void GetFriendsCommonInterstest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
+        public void GetFriendsCommonInterest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
         {
             foreach (User friend in LoggedUser.Friends)
             {

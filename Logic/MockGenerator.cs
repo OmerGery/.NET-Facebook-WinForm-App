@@ -60,11 +60,11 @@ namespace Logic
         {
             return new List<string>
                        {
-                           "Daniel Dolev - 6/9/95",
-                           "Omer Gery - 16/6/96",
-                           "Eden Shalev - 10/3/96",
-                           "Noam Bracha - 10/3/96",
-                           "Yuval Houri - 29/3/95",
+                           "Daniel Dolev - 6/8/95",
+                           "Omer Gery - 16/8/96",
+                           "Eden Shalev - 10/8/96",
+                           "Noam Bracha - 10/8/96",
+                           "Yuval Houri - 29/8/95",
                            "Ido Rot - 6/8/97"
                        };
         }
