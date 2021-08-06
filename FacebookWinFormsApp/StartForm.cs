@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
 
         public LoginResult UserLoginResult { get; private set; }
 
-        public bool LoggedIn { get; set; }
+        public bool LoggedIn { get; private set; }
 
 
         public StartForm()
