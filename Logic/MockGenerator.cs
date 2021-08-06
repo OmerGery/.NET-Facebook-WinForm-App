@@ -25,11 +25,12 @@ namespace Logic
         {
             return new Dictionary<string, int>()
                        {
-                           { "Daniel", 1 },
-                           { "Omer", 2 },
-                           { "Noam", 100 },
-                           { "Eden", 77 },
-                           { "Yuval", 1502 }
+                           { "Daniel Dolev", 1 },
+                           { "Omer Gery", 2 },
+                           { "Noam Bracha", 100 },
+                           { "Eden Shalev", 77 },
+                           { "Yuval Houri", 152 },
+                           {"Ido Rot", 1216 }
                        };
         }
 
@@ -50,7 +51,7 @@ namespace Logic
         public static string getFakePost(ref int io_MaxLikedPost, ref string io_FriendName)
         {
             io_MaxLikedPost = 712;
-            io_FriendName = "Daniel";
+            io_FriendName = "Daniel Dolev";
 
             return "Design Patterns are cool";
         }
@@ -59,11 +60,12 @@ namespace Logic
         {
             return new List<string>
                        {
-                           "Daniel - 6/9/95",
-                           "Omer - 16/6/96",
-                           "Eden - 10/3/96",
-                           "Noam - 10/3/96",
-                           "Yuval - 29/3/95"
+                           "Daniel Dolev - 6/9/95",
+                           "Omer Gery - 16/6/96",
+                           "Eden Shalev - 10/3/96",
+                           "Noam Bracha - 10/3/96",
+                           "Yuval Houri - 29/3/95",
+                           "Ido Rot - 6/8/97"
                        };
         }
     }
