@@ -10,10 +10,9 @@ namespace Logic
 
         public string LastAccessToken { get; set; }
 
-        public bool RememberUser { get; set; }
+        public bool RememberUser { get; }
 
         public bool IsMockState { get; set; }
-
 
         public Size LastWindowsSize { get; set; }
 

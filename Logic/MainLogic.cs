@@ -9,8 +9,8 @@ namespace Logic
 {
     public class MainLogic
     {
-
         private readonly Random r_Random = new Random();
+
         public User LoggedUser { get; }
 
         public string AccessToken { get; }
@@ -20,9 +20,9 @@ namespace Logic
             LoggedUser = i_LoginResult.LoggedInUser;
             AccessToken = i_LoginResult.AccessToken;
         }
+
         public void FetchTopPostByFriend(ref int io_CurrentMaxLikedPost, ref string io_FriendName, ref Post io_MostLikedPost)
         {
-
             foreach (User friend in LoggedUser.Friends)
             {
                 foreach (var friendPost in friend.Posts)
@@ -36,6 +36,7 @@ namespace Logic
                 }
             }
         }
+
         public Image GetRandomImage()
         {
             FacebookObjectCollection<Photo> taggedPictures = LoggedUser.PhotosTaggedIn;
@@ -61,10 +62,11 @@ namespace Logic
                     }
                 }
 
-                io_FriendsCommonPagesLikes.Add(friend.Name, friendCommonLikedPages);
+                if(friendCommonLikedPages > 0)
+                {
+                    io_FriendsCommonPagesLikes.Add(friend.Name, friendCommonLikedPages);
+                }
             }
-
-            io_FriendsCommonPagesLikes.OrderByDescending(pair => pair.Value);
         }
     }
 }

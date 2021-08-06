@@ -23,7 +23,7 @@ namespace Logic
         public static List<string> FilterSimilarArtists(XDocument i_XDocument)
         {
             List<string> artistsNames = new List<string>();
-            foreach (XElement element in i_XDocument.Descendants().Where(io_XElement => io_XElement.HasElements == false))
+            foreach (XElement element in i_XDocument.Descendants().Where(i_XElement => i_XElement.HasElements == false))
             {
                 string keyName = element.Name.LocalName;
                 if (keyName == "name")

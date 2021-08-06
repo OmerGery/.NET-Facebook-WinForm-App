@@ -49,7 +49,6 @@ namespace BasicFacebookFeatures
             base.OnClosed(e);
         }
 
-
         private void fetchEvents()
         {
             FacebookObjectCollection<Event> userEvents = r_Logic.LoggedUser.Events;
@@ -71,12 +70,11 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                List<string> fakeEvents = MocksGenerator.getFakeEvents();
+                List<string> fakeEvents = MocksGenerator.GetFakeEvents();
                 updateAmountOfEvents(fakeEvents.Count);
                 foreach (string fakeEvent in fakeEvents)
                 {
                     m_UpcomingEventsListBox.Items.Add($"{fakeEvent} Attendees");
-
                 }
             }
         }
@@ -89,7 +87,6 @@ namespace BasicFacebookFeatures
             m_EventsAmountLabel.Text = newLabelText;
         }
 
-
         private void fetchFriendsWithCommonInterest()
         {
             bool isFriendWithCommonInterest = false;
@@ -97,14 +94,14 @@ namespace BasicFacebookFeatures
 
             if (r_AppSettings.IsMockState)
             {
-                friendsCommonPagesLikes = MocksGenerator.getFakeFriends();
+                friendsCommonPagesLikes = MocksGenerator.GetFakeFriends();
             }
             else
             {
                 r_Logic.GetFriendsCommonInterest(ref friendsCommonPagesLikes, ref isFriendWithCommonInterest);
             }
 
-            foreach (var friendInDictionary in friendsCommonPagesLikes)
+            foreach (KeyValuePair<string, int> friendInDictionary in friendsCommonPagesLikes)
             {
                 m_CommonInterestListBox.Items.Add($"{friendInDictionary.Key} - {friendInDictionary.Value.ToString()} Pages");
             }
@@ -120,7 +117,7 @@ namespace BasicFacebookFeatures
             List<string> userFavoriteArtists = new List<string>();
             if (r_AppSettings.IsMockState)
             {
-                userFavoriteArtists = MocksGenerator.getFakeArtists();
+                userFavoriteArtists = MocksGenerator.GetFakeArtists();
             }
             else
             {
@@ -137,10 +134,9 @@ namespace BasicFacebookFeatures
             {
                 try
                 {
-                    List<string> userSimilarArtistsList = new List<string>();
                     string favoriteAndSimilarArtists = $"{favoriteArtist}  - / ";
                     XDocument userSimilarArtists = await LastFmApi.GetSimilarArtists(favoriteArtist);
-                    userSimilarArtistsList = LastFmApi.FilterSimilarArtists(userSimilarArtists);
+                    List<string> userSimilarArtistsList = LastFmApi.FilterSimilarArtists(userSimilarArtists);
                     foreach (string similarArtist in userSimilarArtistsList)
                     {
                         favoriteAndSimilarArtists += $"{similarArtist} / ";
@@ -169,7 +165,6 @@ namespace BasicFacebookFeatures
             Close();
         }
         
-
         private void m_PictureRandomizerButton_Click(object sender, EventArgs e)
         {
             try
@@ -211,44 +206,44 @@ namespace BasicFacebookFeatures
 
             if (r_AppSettings.IsMockState)
             {
-                string post = MocksGenerator.getFakePost(ref maxLikedPost, ref friendName);
+                string post = MocksGenerator.GetFakePost(out maxLikedPost, out friendName);
                 m_TrendingPostListBox.Items.Add(
                 $" {post}");
                 m_TrendingPostListBox.Items.Add(
                     $"By {friendName} ({maxLikedPost} likes)");
-
             }
         }
 
         private void birthdaysButton_Click(object sender, EventArgs e)
         {
             m_BirthdaysButton.Enabled = false;
-            bool areFriendsBdaysThisMonth = false;
+            bool areFriendsBDaysThisMonth = false;
 
             foreach (User friend in r_Logic.LoggedUser.Friends)
             {
                 DateTime friendBirthday = DateTime.Parse(friend.Birthday);
                 if (friendBirthday.Month == DateTime.Now.Month)
                 {
-                    areFriendsBdaysThisMonth = true;
+                    areFriendsBDaysThisMonth = true;
                     m_UpcomingBirthdaysListBox.Items.Add($"{friend.Name} - {friend.Birthday} ");
                 }
             }
 
-            if (!areFriendsBdaysThisMonth && !r_AppSettings.IsMockState)
+            if (!areFriendsBDaysThisMonth && !r_AppSettings.IsMockState)
             {
-                m_UpcomingBirthdaysListBox.Items.Add($"No friends birthdays on {DateTime.Now.ToString("MMMM")}");
+                m_UpcomingBirthdaysListBox.Items.Add($"No friends birthdays on {DateTime.Now.ToString("M")}");
             }
 
             if (r_AppSettings.IsMockState)
             {
-                List<string> fakeBirthdays = MocksGenerator.getFakeBirthdays();
+                List<string> fakeBirthdays = MocksGenerator.GetFakeBirthdays();
                 foreach (string fakeBirthday in fakeBirthdays)
                 {
                     m_UpcomingBirthdaysListBox.Items.Add($"{fakeBirthday}");
                 }
             }
         }
+
         private void eventsButton_Click(object sender, EventArgs e)
         {
             m_EventsButton.Enabled = false;
