@@ -18,7 +18,7 @@ namespace BasicFacebookFeatures
             }
             catch(Exception ex)
             {
-                MessageBox.Show($@"An error occured {ex.Message}");
+                MessageBox.Show($@"An error occured: {ex.Message} {Environment.NewLine} The App will close now.");
             }
         }
     }
