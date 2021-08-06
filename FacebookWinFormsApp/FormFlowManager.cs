@@ -1,4 +1,7 @@
-﻿namespace BasicFacebookFeatures
+﻿using System;
+using System.Windows.Forms;
+
+namespace BasicFacebookFeatures
 {
     public class FormFlowManager
     {
@@ -7,9 +10,16 @@
 
         public void RunApp()
         {
-            r_StartForm.ShowDialog();
-            m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.m_AppSettings);
-            m_FacebookForm.ShowDialog();
+            try
+            {
+                r_StartForm.ShowDialog();
+                m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.m_AppSettings);
+                m_FacebookForm.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($@"An error occured {ex.Message}");
+            }
         }
     }
 }

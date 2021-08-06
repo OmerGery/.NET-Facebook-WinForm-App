@@ -27,8 +27,17 @@ namespace BasicFacebookFeatures
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            m_UserNameLabel.Text = r_Logic.LoggedUser.UserName;
+            m_UserNameLabel.Text = $@"Hello {r_Logic.LoggedUser.FirstName} {r_Logic.LoggedUser.LastName}!";
+            fetchAboutData();
+        }
+
+        private void fetchAboutData()
+        {
             m_ProfilePicture.Image = r_Logic.LoggedUser.ImageSmall;
+            m_UserEmailLabel.Text = r_Logic.LoggedUser.Email;
+            m_BirthdayLabel.Text = r_Logic.LoggedUser.Birthday;
+            m_PhotosAmountLabel.Text = r_Logic.LoggedUser.PhotosTaggedIn.Count.ToString();
+            m_LocaleLabel.Text = r_Logic.LoggedUser.Locale;
         }
 
         protected override void OnClosed(EventArgs e)

@@ -32,7 +32,6 @@ namespace BasicFacebookFeatures
         private void InitializeComponent()
         {
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.m_LoggedInLabel = new System.Windows.Forms.Label();
             this.m_UserNameLabel = new System.Windows.Forms.Label();
             this.m_ProfilePicture = new System.Windows.Forms.PictureBox();
             this.m_TrendingPostListBox = new System.Windows.Forms.ListBox();
@@ -56,13 +55,22 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.m_BirthdayLabel = new System.Windows.Forms.Label();
+            this.m_UserEmailLabel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.m_LocaleLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.m_PhotosAmountLabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
             this.m_HomeTabPage.SuspendLayout();
             this.m_UpcomingConcertsTabPage.SuspendLayout();
             this.m_CommonInterestTabPage.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLogout
@@ -76,19 +84,10 @@ namespace BasicFacebookFeatures
             this.buttonLogout.UseVisualStyleBackColor = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
-            // m_LoggedInLabel
-            // 
-            this.m_LoggedInLabel.AutoSize = true;
-            this.m_LoggedInLabel.Location = new System.Drawing.Point(16, 25);
-            this.m_LoggedInLabel.Name = "m_LoggedInLabel";
-            this.m_LoggedInLabel.Size = new System.Drawing.Size(104, 20);
-            this.m_LoggedInLabel.TabIndex = 55;
-            this.m_LoggedInLabel.Text = "Logged in as ";
-            // 
             // m_UserNameLabel
             // 
             this.m_UserNameLabel.AutoSize = true;
-            this.m_UserNameLabel.Location = new System.Drawing.Point(112, 25);
+            this.m_UserNameLabel.Location = new System.Drawing.Point(839, 21);
             this.m_UserNameLabel.Name = "m_UserNameLabel";
             this.m_UserNameLabel.Size = new System.Drawing.Size(89, 20);
             this.m_UserNameLabel.TabIndex = 56;
@@ -325,14 +324,58 @@ namespace BasicFacebookFeatures
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.m_PhotosAmountLabel);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.m_LocaleLabel);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.m_BirthdayLabel);
+            this.tabPage1.Controls.Add(this.m_UserEmailLabel);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Size = new System.Drawing.Size(1202, 750);
             this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "About";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // m_BirthdayLabel
+            // 
+            this.m_BirthdayLabel.AutoSize = true;
+            this.m_BirthdayLabel.Location = new System.Drawing.Point(434, 79);
+            this.m_BirthdayLabel.Name = "m_BirthdayLabel";
+            this.m_BirthdayLabel.Size = new System.Drawing.Size(128, 20);
+            this.m_BirthdayLabel.TabIndex = 5;
+            this.m_BirthdayLabel.Text = "m_BirthdayLabel";
+            // 
+            // m_UserEmailLabel
+            // 
+            this.m_UserEmailLabel.AutoSize = true;
+            this.m_UserEmailLabel.Location = new System.Drawing.Point(379, 39);
+            this.m_UserEmailLabel.Name = "m_UserEmailLabel";
+            this.m_UserEmailLabel.Size = new System.Drawing.Size(143, 20);
+            this.m_UserEmailLabel.TabIndex = 3;
+            this.m_UserEmailLabel.Text = "m_UserEmailLabel";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(292, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Birthday:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(294, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Email:";
             // 
             // m_RememberMeCheckBox
             // 
@@ -346,6 +389,42 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             this.m_RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.m_RememberMeCheckBox_CheckedChanged);
             // 
+            // m_LocaleLabel
+            // 
+            this.m_LocaleLabel.AutoSize = true;
+            this.m_LocaleLabel.Location = new System.Drawing.Point(436, 121);
+            this.m_LocaleLabel.Name = "m_LocaleLabel";
+            this.m_LocaleLabel.Size = new System.Drawing.Size(117, 20);
+            this.m_LocaleLabel.TabIndex = 7;
+            this.m_LocaleLabel.Text = "m_LocaleLabel";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(294, 121);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Locale";
+            // 
+            // m_PhotosAmountLabel
+            // 
+            this.m_PhotosAmountLabel.AutoSize = true;
+            this.m_PhotosAmountLabel.Location = new System.Drawing.Point(520, 166);
+            this.m_PhotosAmountLabel.Name = "m_PhotosAmountLabel";
+            this.m_PhotosAmountLabel.Size = new System.Drawing.Size(176, 20);
+            this.m_PhotosAmountLabel.TabIndex = 9;
+            this.m_PhotosAmountLabel.Text = "m_PhotosAmountLabel";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(292, 164);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(210, 20);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Amount of photos tagged in:";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -355,7 +434,6 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.m_tabControl);
             this.Controls.Add(this.m_ProfilePicture);
             this.Controls.Add(this.m_UserNameLabel);
-            this.Controls.Add(this.m_LoggedInLabel);
             this.Controls.Add(this.buttonLogout);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
@@ -370,6 +448,8 @@ namespace BasicFacebookFeatures
             this.m_UpcomingConcertsTabPage.PerformLayout();
             this.m_CommonInterestTabPage.ResumeLayout(false);
             this.m_CommonInterestTabPage.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,7 +457,6 @@ namespace BasicFacebookFeatures
 
 		#endregion
 		private System.Windows.Forms.Button buttonLogout;
-        private System.Windows.Forms.Label m_LoggedInLabel;
         private System.Windows.Forms.Label m_UserNameLabel;
         private System.Windows.Forms.PictureBox m_ProfilePicture;
         private System.Windows.Forms.ListBox m_TrendingPostListBox;
@@ -402,5 +481,13 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button m_BirthdaysButton;
         private System.Windows.Forms.Label m_EventsAmountLabel;
         private System.Windows.Forms.Button m_FriendsIntrestsButton;
+        private System.Windows.Forms.Label m_BirthdayLabel;
+        private System.Windows.Forms.Label m_UserEmailLabel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label m_PhotosAmountLabel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label m_LocaleLabel;
+        private System.Windows.Forms.Label label6;
     }
 }

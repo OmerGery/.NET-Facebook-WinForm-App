@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Xml.Linq;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
