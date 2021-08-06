@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
 using Logic;
 
 namespace BasicFacebookFeatures
@@ -11,25 +9,24 @@ namespace BasicFacebookFeatures
     {
         private const string k_AppId = "327180762451294";
 
-        public readonly AppSettings r_AppSettings = AppSettings.Instance;
+        public AppSettings AppSettings { get; }
 
         public LoginResult UserLoginResult { get; private set; }
 
         public bool LoggedIn { get; private set; }
 
-
         public StartForm()
         {
             InitializeComponent();
             m_MockModeCheckBox.Checked = true;
-            r_AppSettings = AppSettings.LoadSettingsFromFile();
+            AppSettings = AppSettings.LoadSettingsFromFile();
         }
 
-         void buttonLogin_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                if(string.IsNullOrEmpty(r_AppSettings.LastAccessToken))
+                if(string.IsNullOrEmpty(AppSettings.LastAccessToken))
                 {
                     UserLoginResult = FacebookService.Login(
                         k_AppId,
@@ -46,23 +43,22 @@ namespace BasicFacebookFeatures
                 }
                 else
                 {
-                    UserLoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
+                    UserLoginResult = FacebookService.Connect(AppSettings.LastAccessToken);
                     LoggedIn = true;
                 }
+
                 Close();
             }
-
             catch (Exception)
             {
                 MessageBox.Show(@"Please enter a valid login and password");
             }
-            
         }
+
          protected override void OnClosed(EventArgs e)
          {
-             r_AppSettings.IsMockState = m_MockModeCheckBox.Checked;
+             AppSettings.IsMockState = m_MockModeCheckBox.Checked;
              base.OnClosed(e);
          }
-
     }
 }

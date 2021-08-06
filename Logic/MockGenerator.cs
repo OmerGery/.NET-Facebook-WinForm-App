@@ -4,7 +4,7 @@ namespace Logic
 {
     public static class MocksGenerator
     {
-        public static List<string> getFakeArtists()
+        public static List<string> GetFakeArtists()
         {
             return new List<string>
                      {
@@ -21,7 +21,7 @@ namespace Logic
                      };
         }
 
-        public static Dictionary<string, int> getFakeFriends()
+        public static Dictionary<string, int> GetFakeFriends()
         {
             return new Dictionary<string, int>()
                        {
@@ -30,11 +30,11 @@ namespace Logic
                            { "Noam Bracha", 100 },
                            { "Eden Shalev", 77 },
                            { "Yuval Houri", 152 },
-                           {"Ido Rot", 1216 }
+                           { "Ido Rot", 1216 }
                        };
         }
 
-        public static List<string> getFakeEvents()
+        public static List<string> GetFakeEvents()
         {
             return new List<string>
                        {
@@ -48,15 +48,14 @@ namespace Logic
                        };
         }
 
-        public static string getFakePost(ref int io_MaxLikedPost, ref string io_FriendName)
+        public static string GetFakePost(out int o_MaxLikedPost, out string o_FriendName)
         {
-            io_MaxLikedPost = 712;
-            io_FriendName = "Daniel Dolev";
-
+            o_MaxLikedPost = 712;
+            o_FriendName = "Daniel Dolev";
             return "Design Patterns are cool";
         }
 
-        public static List<string> getFakeBirthdays()
+        public static List<string> GetFakeBirthdays()
         {
             return new List<string>
                        {

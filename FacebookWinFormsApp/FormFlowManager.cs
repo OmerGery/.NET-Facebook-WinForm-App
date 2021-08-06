@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
             try
             {
                 r_StartForm.ShowDialog();
-                m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.r_AppSettings);
+                m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.AppSettings);
                 if(r_StartForm.LoggedIn)
                 {
                     m_FacebookForm.ShowDialog();
@@ -21,7 +21,7 @@ namespace BasicFacebookFeatures
             }
             catch(Exception ex)
             {
-                MessageBox.Show($@"An error occured: {ex.Message} {Environment.NewLine} The App will close now.");
+                MessageBox.Show($@"An error occurred: {ex.Message} {Environment.NewLine} The App will close now.");
             }
         }
     }
