@@ -42,6 +42,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="LastFmApi.cs" />
     <Compile Include="MainLogic.cs" />
+    <Compile Include="MocksGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Facebook">
