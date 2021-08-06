@@ -328,7 +328,7 @@ namespace BasicFacebookFeatures
             this.m_FriendsIntrestsButton.TabIndex = 4;
             this.m_FriendsIntrestsButton.Text = "Click here to see them!";
             this.m_FriendsIntrestsButton.UseVisualStyleBackColor = true;
-            this.m_FriendsIntrestsButton.Click += new System.EventHandler(this.m_FriendsIntrestsButton_Click);
+            this.m_FriendsIntrestsButton.Click += new System.EventHandler(this.m_FriendsInterestsButton_Click);
             // 
             // m_CommonInterestListBox
             // 

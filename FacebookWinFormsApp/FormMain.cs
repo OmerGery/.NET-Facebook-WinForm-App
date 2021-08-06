@@ -54,7 +54,7 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Event> userEvents = r_Logic.LoggedUser.Events;
             updateAmountOfEvents(userEvents.Count);
-            foreach (var userEvent in userEvents)
+            foreach (Event userEvent in userEvents)
             {
                 long? eventAttendingNumber = userEvent.AttendingCount;
 
@@ -73,7 +73,7 @@ namespace BasicFacebookFeatures
             {
                 List<string> fakeEvents = MocksGenerator.getFakeEvents();
                 updateAmountOfEvents(fakeEvents.Count);
-                foreach (var fakeEvent in fakeEvents)
+                foreach (string fakeEvent in fakeEvents)
                 {
                     m_UpcomingEventsListBox.Items.Add($"{fakeEvent} Attendees");
 
@@ -101,7 +101,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                r_Logic.GetFriendsCommonInterstest(ref friendsCommonPagesLikes, ref isFriendWithCommonInterest);
+                r_Logic.GetFriendsCommonInterest(ref friendsCommonPagesLikes, ref isFriendWithCommonInterest);
             }
 
             foreach (var friendInDictionary in friendsCommonPagesLikes)
@@ -255,7 +255,7 @@ namespace BasicFacebookFeatures
             fetchEvents();
         }
 
-        private void m_FriendsIntrestsButton_Click(object sender, EventArgs e)
+        private void m_FriendsInterestsButton_Click(object sender, EventArgs e)
         {
             m_FriendsIntrestsButton.Enabled = false;
             fetchFriendsWithCommonInterest();
