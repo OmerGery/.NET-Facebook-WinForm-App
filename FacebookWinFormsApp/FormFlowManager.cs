@@ -13,8 +13,11 @@ namespace BasicFacebookFeatures
             try
             {
                 r_StartForm.ShowDialog();
-                m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.m_AppSettings);
-                m_FacebookForm.ShowDialog();
+                m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.r_AppSettings);
+                if(r_StartForm.UserLoginResult.FacebookOAuthResult.IsSuccess)
+                {
+                    m_FacebookForm.ShowDialog();
+                }
             }
             catch(Exception ex)
             {

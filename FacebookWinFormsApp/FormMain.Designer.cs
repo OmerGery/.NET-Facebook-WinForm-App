@@ -220,7 +220,7 @@ namespace BasicFacebookFeatures
             // 
             // m_BirthdaysButton
             // 
-            this.m_BirthdaysButton.Location = new System.Drawing.Point(741, 8);
+            this.m_BirthdaysButton.Location = new System.Drawing.Point(741, 9);
             this.m_BirthdaysButton.Name = "m_BirthdaysButton";
             this.m_BirthdaysButton.Size = new System.Drawing.Size(276, 59);
             this.m_BirthdaysButton.TabIndex = 71;

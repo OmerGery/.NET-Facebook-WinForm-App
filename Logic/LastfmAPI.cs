@@ -10,13 +10,13 @@ namespace Logic
     {
         private const string k_LastFmToken = "e55a6c4ec6ffa24e98f249adc405865d";
         private const string k_Limit = "3";
-        private const string k_getRequestBaseUri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar";
+        private const string k_GetRequestBaseUri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar";
         private static readonly HttpClient sr_HttpClient = new HttpClient();
 
         public static async Task<XDocument> GetSimilarArtists(string i_ArtistName)
         {
             string parametersUri = $"&api_key={k_LastFmToken}&artist={i_ArtistName}&format=xml&limit={k_Limit}";
-            string response = await sr_HttpClient.GetStringAsync(k_getRequestBaseUri + parametersUri);
+            string response = await sr_HttpClient.GetStringAsync(k_GetRequestBaseUri + parametersUri);
             return XDocument.Parse(response);
         }
 

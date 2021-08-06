@@ -169,7 +169,6 @@ namespace BasicFacebookFeatures
             int currentMaxLikedPost = 0;
             string friendName = null;
             Post mostLikedPost = null;
-            
             r_Logic.FetchTopPostByFriend(ref currentMaxLikedPost,ref friendName,ref mostLikedPost);
             if (currentMaxLikedPost == 0)
             {

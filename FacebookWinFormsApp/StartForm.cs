@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 using Logic;
 
 namespace BasicFacebookFeatures
@@ -9,21 +10,22 @@ namespace BasicFacebookFeatures
     {
         private const string k_AppId = "327180762451294";
 
-        public AppSettings m_AppSettings;
+        public readonly AppSettings r_AppSettings;
 
-        public LoginResult UserLoginResult { get; set; }
+        public LoginResult UserLoginResult { get; private set; }
+        
 
         public StartForm()
         {
             InitializeComponent();
-            m_AppSettings = AppSettings.LoadSettingsFromFile();
+            r_AppSettings = AppSettings.LoadSettingsFromFile();
         }
 
          void buttonLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                if(string.IsNullOrEmpty(m_AppSettings.LastAccessToken))
+                if(string.IsNullOrEmpty(r_AppSettings.LastAccessToken))
                 {
                     UserLoginResult = FacebookService.Login(
                         k_AppId,
@@ -36,15 +38,15 @@ namespace BasicFacebookFeatures
                 }
                 else
                 {
-                    UserLoginResult = FacebookService.Connect(m_AppSettings.LastAccessToken);
+                    UserLoginResult = FacebookService.Connect(r_AppSettings.LastAccessToken);
                 }
+                Close();
             }
-            catch(Exception)
+
+            catch (Exception)
             {
                 MessageBox.Show(@"Please enter a valid login and password");
             }
-
-            Close();
         }
         
     }
