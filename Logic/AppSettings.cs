@@ -11,8 +11,9 @@ namespace Logic
         public string LastAccessToken { get; set; }
 
         public bool RememberUser { get; set; }
-        
-        public bool isMockState { get; set; }
+
+        public bool IsMockState { get; set; }
+
 
         public Size LastWindowsSize { get; set; }
 
@@ -41,9 +42,8 @@ namespace Logic
 
         private AppSettings()
         {
-            LastAccessToken = null;
             RememberUser = false;
-            isMockState = false;
+            LastAccessToken = null;
             LastWindowsSize = new Size(870, 650);
             LastWindowsLocation = new Point(50, 50);
         }

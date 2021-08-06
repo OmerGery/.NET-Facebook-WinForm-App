@@ -453,7 +453,6 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.TabIndex = 70;
             this.m_RememberMeCheckBox.Text = "Remember Me";
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
-            this.m_RememberMeCheckBox.CheckedChanged += new System.EventHandler(this.m_RememberMeCheckBox_CheckedChanged);
             // 
             // FormMain
             // 
