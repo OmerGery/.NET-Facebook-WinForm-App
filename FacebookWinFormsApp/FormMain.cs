@@ -12,6 +12,8 @@ namespace BasicFacebookFeatures
     {
         private readonly MainLogic r_Logic;
         private readonly AppSettings r_AppSettings;
+        private Dictionary<string, List<string>> m_similarArtistsDictionary = new Dictionary<string, List<string>>();
+
 
         public FormMain(LoginResult i_LoginResult, AppSettings i_AppSettings)
         {
@@ -132,20 +134,13 @@ namespace BasicFacebookFeatures
 
             foreach (string favoriteArtist in userFavoriteArtists)
             {
+                m_FavoriteArtistsListBox.Items.Add($"{favoriteArtist}");
+
                 try
                 {
-                    string favoriteAndSimilarArtists = $"{favoriteArtist}  - / ";
                     XDocument userSimilarArtists = await LastFmApi.GetSimilarArtists(favoriteArtist);
                     List<string> userSimilarArtistsList = LastFmApi.FilterSimilarArtists(userSimilarArtists);
-                    foreach (string similarArtist in userSimilarArtistsList)
-                    {
-                        favoriteAndSimilarArtists += $"{similarArtist} / ";
-                    }
-
-                    if (userSimilarArtistsList.Count > 0)
-                    {
-                        m_SimilarArtistsListBox.Items.Add(favoriteAndSimilarArtists);
-                    }
+                    m_similarArtistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
                 }
                 catch (Exception lastFmException)
                 {
@@ -155,7 +150,7 @@ namespace BasicFacebookFeatures
 
             if (userFavoriteArtists.Count == 0)
             {
-                m_SimilarArtistsListBox.Items.Add("No liked Artists");
+                m_FavoriteArtistsListBox.Items.Add("No liked Artists");
             }
         }
 
@@ -254,6 +249,21 @@ namespace BasicFacebookFeatures
         {
             m_FriendsIntrestsButton.Enabled = false;
             fetchFriendsWithCommonInterest();
+        }
+
+        private void m_SimilarArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(m_FavoriteArtistsListBox.SelectedItem != null)
+            {
+                string similarArtistsText = String.Empty;
+                string selectedArtist = m_FavoriteArtistsListBox.SelectedItem as string;
+                foreach(string similarArtists in m_similarArtistsDictionary[selectedArtist])
+                {
+                    similarArtistsText += $"{similarArtists} {Environment.NewLine}";
+                    m_SimilarArtistsTextBox.Text = similarArtistsText;
+                }
+                
+            }
         }
     }
 }

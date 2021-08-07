@@ -9,7 +9,7 @@ namespace Logic
     public static class LastFmApi
     {
         private const string k_LastFmToken = "e55a6c4ec6ffa24e98f249adc405865d";
-        private const string k_Limit = "3";
+        private const string k_Limit = "5";
         private const string k_GetRequestBaseUri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar";
         private static readonly HttpClient sr_HttpClient = new HttpClient();
 
