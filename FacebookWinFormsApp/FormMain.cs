@@ -12,7 +12,7 @@ namespace BasicFacebookFeatures
     {
         private readonly MainLogic r_Logic;
         private readonly AppSettings r_AppSettings;
-        private Dictionary<string, List<string>> m_similarArtistsDictionary = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, List<string>> r_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
 
 
         public FormMain(LoginResult i_LoginResult, AppSettings i_AppSettings)
@@ -140,7 +140,7 @@ namespace BasicFacebookFeatures
                 {
                     XDocument userSimilarArtists = await LastFmApi.GetSimilarArtists(favoriteArtist);
                     List<string> userSimilarArtistsList = LastFmApi.FilterSimilarArtists(userSimilarArtists);
-                    m_similarArtistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
+                    r_SimilarArtistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
                 }
                 catch (Exception lastFmException)
                 {
@@ -257,7 +257,7 @@ namespace BasicFacebookFeatures
             {
                 string similarArtistsText = String.Empty;
                 string selectedArtist = m_FavoriteArtistsListBox.SelectedItem as string;
-                foreach(string similarArtists in m_similarArtistsDictionary[selectedArtist])
+                foreach(string similarArtists in r_SimilarArtistsDictionary[selectedArtist])
                 {
                     similarArtistsText += $"{similarArtists} {Environment.NewLine}";
                     m_SimilarArtistsTextBox.Text = similarArtistsText;
