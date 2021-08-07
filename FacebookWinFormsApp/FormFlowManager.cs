@@ -14,7 +14,7 @@ namespace BasicFacebookFeatures
             {
                 r_StartForm.ShowDialog();
                 m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.AppSettings);
-                if(r_StartForm.LoggedIn)
+                if(r_StartForm.IsLoggedIn)
                 {
                     m_FacebookForm.ShowDialog();
                 }

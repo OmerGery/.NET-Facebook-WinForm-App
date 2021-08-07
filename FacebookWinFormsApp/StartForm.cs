@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
 
         public LoginResult UserLoginResult { get; private set; }
 
-        public bool LoggedIn { get; private set; }
+        public bool IsLoggedIn { get; private set; }
 
         public StartForm()
         {
@@ -38,13 +38,13 @@ namespace BasicFacebookFeatures
                         "user_friends");
                     if(UserLoginResult.FacebookOAuthResult.IsSuccess)
                     {
-                        LoggedIn = true;
+                        IsLoggedIn = true;
                     }
                 }
                 else
                 {
                     UserLoginResult = FacebookService.Connect(AppSettings.LastAccessToken);
-                    LoggedIn = true;
+                    IsLoggedIn = true;
                 }
 
                 Close();
