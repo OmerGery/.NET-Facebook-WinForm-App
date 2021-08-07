@@ -138,7 +138,7 @@ namespace BasicFacebookFeatures
 
                 try
                 {
-                    XDocument userSimilarArtists = await LastFmApi.GetSimilarArtists(favoriteArtist);
+                    XDocument userSimilarArtists = await LastFmApi.GetSimilarArtists(favoriteArtist, m_ArtistsLimitNumericUpDown.Text);
                     List<string> userSimilarArtistsList = LastFmApi.FilterSimilarArtists(userSimilarArtists);
                     r_SimilarArtistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
                 }
@@ -175,6 +175,7 @@ namespace BasicFacebookFeatures
         private void recommendationButton_Click(object sender, EventArgs e)
         {
             m_RecommendationButton.Enabled = false;
+            m_ArtistsLimitNumericUpDown.Enabled = false;
             fetchRecommendations();
         }
 
@@ -252,11 +253,14 @@ namespace BasicFacebookFeatures
             if(m_FavoriteArtistsListBox.SelectedItem != null)
             {
                 string similarArtistsText = String.Empty;
+                int similarArtistIndex = 1;
                 string selectedArtist = m_FavoriteArtistsListBox.SelectedItem as string;
+                
                 foreach(string similarArtists in r_SimilarArtistsDictionary[selectedArtist])
                 {
-                    similarArtistsText += $"{similarArtists} {Environment.NewLine}";
+                    similarArtistsText += $"{similarArtistIndex.ToString()}.{similarArtists} {Environment.NewLine}";
                     m_SimilarArtistsTextBox.Text = similarArtistsText;
+                    similarArtistIndex++;
                 }
                 
             }

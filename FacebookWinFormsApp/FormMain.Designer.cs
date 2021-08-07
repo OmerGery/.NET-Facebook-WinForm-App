@@ -41,6 +41,7 @@ namespace BasicFacebookFeatures
             this.m_RandomPicture = new System.Windows.Forms.PictureBox();
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.m_HomeTabPage = new System.Windows.Forms.TabPage();
+            this.m_TrendingPostTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.m_EventsAmountLabel = new System.Windows.Forms.Label();
@@ -68,7 +69,7 @@ namespace BasicFacebookFeatures
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.m_TrendingPostTextBox = new System.Windows.Forms.TextBox();
+            this.m_ArtistsLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
@@ -78,6 +79,7 @@ namespace BasicFacebookFeatures
             this.m_UpcomingConcertsTabPage.SuspendLayout();
             this.m_CommonInterestTabPage.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_ArtistsLimitNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogout
@@ -174,6 +176,14 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.Text = "Home";
             this.m_HomeTabPage.UseVisualStyleBackColor = true;
             // 
+            // m_TrendingPostTextBox
+            // 
+            this.m_TrendingPostTextBox.Location = new System.Drawing.Point(92, 43);
+            this.m_TrendingPostTextBox.Multiline = true;
+            this.m_TrendingPostTextBox.Name = "m_TrendingPostTextBox";
+            this.m_TrendingPostTextBox.Size = new System.Drawing.Size(173, 186);
+            this.m_TrendingPostTextBox.TabIndex = 76;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(393, 92);
@@ -250,6 +260,7 @@ namespace BasicFacebookFeatures
             // m_UpcomingConcertsTabPage
             // 
             this.m_UpcomingConcertsTabPage.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.m_UpcomingConcertsTabPage.Controls.Add(this.m_ArtistsLimitNumericUpDown);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_SimilarArtistsTextBox);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_RecommendationButton);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.label1);
@@ -462,13 +473,12 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.Text = "Remember Me";
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // m_TrendingPostTextBox
+            // m_ArtistsLimitNumericUpDown
             // 
-            this.m_TrendingPostTextBox.Location = new System.Drawing.Point(92, 43);
-            this.m_TrendingPostTextBox.Multiline = true;
-            this.m_TrendingPostTextBox.Name = "m_TrendingPostTextBox";
-            this.m_TrendingPostTextBox.Size = new System.Drawing.Size(173, 186);
-            this.m_TrendingPostTextBox.TabIndex = 76;
+            this.m_ArtistsLimitNumericUpDown.Location = new System.Drawing.Point(513, 90);
+            this.m_ArtistsLimitNumericUpDown.Name = "m_ArtistsLimitNumericUpDown";
+            this.m_ArtistsLimitNumericUpDown.Size = new System.Drawing.Size(36, 20);
+            this.m_ArtistsLimitNumericUpDown.TabIndex = 5;
             // 
             // FormMain
             // 
@@ -497,6 +507,7 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestTabPage.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_ArtistsLimitNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,5 +550,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox m_SimilarArtistsTextBox;
         private System.Windows.Forms.TextBox m_TrendingPostTextBox;
+        private System.Windows.Forms.NumericUpDown m_ArtistsLimitNumericUpDown;
     }
 }

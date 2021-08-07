@@ -19,6 +19,7 @@ namespace Logic
                          "Nirvana",
                          "Radiohead",
                          "Pink Floyd",
+                         "King Gizzard and the Lizard Wizard"
                      };
         }
 
