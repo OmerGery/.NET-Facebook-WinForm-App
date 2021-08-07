@@ -246,7 +246,7 @@ namespace BasicFacebookFeatures
             this.m_PictureRandomizerButton.TabIndex = 69;
             this.m_PictureRandomizerButton.Text = "Click To Get A Random Photo From Your Profile";
             this.m_PictureRandomizerButton.UseVisualStyleBackColor = true;
-            this.m_PictureRandomizerButton.Click += new System.EventHandler(this.m_PictureRandomizerButton_Click);
+            this.m_PictureRandomizerButton.Click += new System.EventHandler(this.pictureRandomButton_Click);
             // 
             // m_UpcomingConcertsTabPage
             // 
@@ -328,7 +328,7 @@ namespace BasicFacebookFeatures
             this.m_FriendsIntrestsButton.TabIndex = 4;
             this.m_FriendsIntrestsButton.Text = "Click here to see them!";
             this.m_FriendsIntrestsButton.UseVisualStyleBackColor = true;
-            this.m_FriendsIntrestsButton.Click += new System.EventHandler(this.m_FriendsInterestsButton_Click);
+            this.m_FriendsIntrestsButton.Click += new System.EventHandler(this.friendsInterestsButton_Click);
             // 
             // m_CommonInterestListBox
             // 

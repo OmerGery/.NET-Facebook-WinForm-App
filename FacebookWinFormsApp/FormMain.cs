@@ -165,7 +165,7 @@ namespace BasicFacebookFeatures
             Close();
         }
         
-        private void m_PictureRandomizerButton_Click(object sender, EventArgs e)
+        private void pictureRandomButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -250,7 +250,7 @@ namespace BasicFacebookFeatures
             fetchEvents();
         }
 
-        private void m_FriendsInterestsButton_Click(object sender, EventArgs e)
+        private void friendsInterestsButton_Click(object sender, EventArgs e)
         {
             m_FriendsIntrestsButton.Enabled = false;
             fetchFriendsWithCommonInterest();

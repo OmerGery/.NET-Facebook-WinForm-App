@@ -6,8 +6,6 @@ namespace Logic
 {
     public sealed class AppSettings
     {
-        public static AppSettings Instance { get; } = new AppSettings();
-
         public string LastAccessToken { get; set; }
 
         public bool RememberUser { get; }
