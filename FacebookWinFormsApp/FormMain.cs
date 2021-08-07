@@ -186,26 +186,22 @@ namespace BasicFacebookFeatures
             Post mostLikedPost = null;
 
             r_Logic.FetchTopPostByFriend(ref maxLikedPost, ref friendName, ref mostLikedPost);
-            if (maxLikedPost == 0 && !r_AppSettings.IsMockState)
+            if (maxLikedPost == 0)
             {
-                m_TrendingPostListBox.Items.Add("No liked posts by friends");
+                m_TrendingPostTextBox.Text = "No liked posts by friends";
             }
             else
             {
                 if (mostLikedPost != null)
                 {
-                    m_TrendingPostListBox.Items.Add(
-                        $" {mostLikedPost.Message} By {friendName} ({maxLikedPost} likes)");
+                    m_TrendingPostTextBox.Text = $" {mostLikedPost.Message} {Environment.NewLine}By {friendName} ({maxLikedPost} likes)";
                 }
             }
 
             if (r_AppSettings.IsMockState)
             {
                 string post = MocksGenerator.GetFakePost(out maxLikedPost, out friendName);
-                m_TrendingPostListBox.Items.Add(
-                $" {post}");
-                m_TrendingPostListBox.Items.Add(
-                    $"By {friendName} ({maxLikedPost} likes)");
+                m_TrendingPostTextBox.Text = $"{post} {Environment.NewLine}{Environment.NewLine}By {friendName} ({maxLikedPost} likes)";
             }
         }
 

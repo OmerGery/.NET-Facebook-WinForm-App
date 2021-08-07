@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Logic
 {
@@ -44,7 +45,7 @@ namespace Logic
                            "Local Concert - 135",
                            "Football match - 13524",
                            "BBQ in the park - 12",
-                           "Proteset - 75"
+                           "Protest - 75"
                        };
         }
 
@@ -52,7 +53,7 @@ namespace Logic
         {
             o_MaxLikedPost = 712;
             o_FriendName = "Daniel Dolev";
-            return "Design Patterns are cool";
+            return $"Design Patterns are cool. {Environment.NewLine}Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups";
         }
 
         public static List<string> GetFakeBirthdays()

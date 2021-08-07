@@ -36,7 +36,6 @@ namespace BasicFacebookFeatures
             this.buttonLogout = new System.Windows.Forms.Button();
             this.m_UserNameLabel = new System.Windows.Forms.Label();
             this.m_ProfilePicture = new System.Windows.Forms.PictureBox();
-            this.m_TrendingPostListBox = new System.Windows.Forms.ListBox();
             this.m_UpcomingBirthdaysListBox = new System.Windows.Forms.ListBox();
             this.m_UpcomingEventsListBox = new System.Windows.Forms.ListBox();
             this.m_RandomPicture = new System.Windows.Forms.PictureBox();
@@ -69,6 +68,7 @@ namespace BasicFacebookFeatures
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.m_TrendingPostTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
@@ -109,15 +109,6 @@ namespace BasicFacebookFeatures
             this.m_ProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.m_ProfilePicture.TabIndex = 57;
             this.m_ProfilePicture.TabStop = false;
-            // 
-            // m_TrendingPostListBox
-            // 
-            this.m_TrendingPostListBox.FormattingEnabled = true;
-            this.m_TrendingPostListBox.Location = new System.Drawing.Point(92, 43);
-            this.m_TrendingPostListBox.Margin = new System.Windows.Forms.Padding(2);
-            this.m_TrendingPostListBox.Name = "m_TrendingPostListBox";
-            this.m_TrendingPostListBox.Size = new System.Drawing.Size(173, 186);
-            this.m_TrendingPostListBox.TabIndex = 62;
             // 
             // m_UpcomingBirthdaysListBox
             // 
@@ -163,6 +154,7 @@ namespace BasicFacebookFeatures
             // m_HomeTabPage
             // 
             this.m_HomeTabPage.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.m_HomeTabPage.Controls.Add(this.m_TrendingPostTextBox);
             this.m_HomeTabPage.Controls.Add(this.pictureBox2);
             this.m_HomeTabPage.Controls.Add(this.pictureBox1);
             this.m_HomeTabPage.Controls.Add(this.m_EventsAmountLabel);
@@ -172,7 +164,6 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.Controls.Add(this.m_PictureRandomizerButton);
             this.m_HomeTabPage.Controls.Add(this.m_UpcomingEventsListBox);
             this.m_HomeTabPage.Controls.Add(this.m_RandomPicture);
-            this.m_HomeTabPage.Controls.Add(this.m_TrendingPostListBox);
             this.m_HomeTabPage.Controls.Add(this.m_UpcomingBirthdaysListBox);
             this.m_HomeTabPage.ForeColor = System.Drawing.Color.Black;
             this.m_HomeTabPage.Location = new System.Drawing.Point(4, 22);
@@ -471,6 +462,14 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.Text = "Remember Me";
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
+            // m_TrendingPostTextBox
+            // 
+            this.m_TrendingPostTextBox.Location = new System.Drawing.Point(92, 43);
+            this.m_TrendingPostTextBox.Multiline = true;
+            this.m_TrendingPostTextBox.Name = "m_TrendingPostTextBox";
+            this.m_TrendingPostTextBox.Size = new System.Drawing.Size(173, 186);
+            this.m_TrendingPostTextBox.TabIndex = 76;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,7 +506,6 @@ namespace BasicFacebookFeatures
 		private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Label m_UserNameLabel;
         private System.Windows.Forms.PictureBox m_ProfilePicture;
-        private System.Windows.Forms.ListBox m_TrendingPostListBox;
         private System.Windows.Forms.ListBox m_UpcomingBirthdaysListBox;
         private System.Windows.Forms.ListBox m_UpcomingEventsListBox;
         private System.Windows.Forms.PictureBox m_RandomPicture;
@@ -540,5 +538,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox m_SimilarArtistsTextBox;
+        private System.Windows.Forms.TextBox m_TrendingPostTextBox;
     }
 }
