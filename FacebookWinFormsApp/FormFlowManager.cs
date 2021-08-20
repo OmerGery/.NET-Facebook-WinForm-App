@@ -5,18 +5,17 @@ namespace BasicFacebookFeatures
 {
     public class FormFlowManager
     {
-        private readonly StartForm r_StartForm = new StartForm();
-        private FormMain m_FacebookForm;
-
+        private StartForm m_StartForm = new StartForm();
+        private MainForm m_FacebookMainForm; 
         public void RunApp()
         {
             try
             {
-                r_StartForm.ShowDialog();
-                m_FacebookForm = new FormMain(r_StartForm.UserLoginResult, r_StartForm.AppSettings);
-                if(r_StartForm.IsLoggedIn)
+                m_StartForm.ShowDialog();
+                m_FacebookMainForm = new MainForm(m_StartForm.AppSettings);
+                if(m_StartForm.IsLoggedIn)
                 {
-                    m_FacebookForm.ShowDialog();
+                    m_FacebookMainForm.ShowDialog();
                 }
             }
             catch(Exception ex)

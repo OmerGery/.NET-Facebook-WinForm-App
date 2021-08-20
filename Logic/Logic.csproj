@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="LastFmApi.cs" />
-    <Compile Include="MainLogic.cs" />
+    <Compile Include="AppLogic.cs" />
     <Compile Include="MockGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

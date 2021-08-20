@@ -46,7 +46,7 @@ namespace BasicFacebookFeatures
                     UserLoginResult = FacebookService.Connect(AppSettings.LastAccessToken);
                     IsLoggedIn = true;
                 }
-
+                AppLogic.Instance.LoggedUser = UserLoginResult.LoggedInUser;
                 Close();
             }
             catch (Exception)
