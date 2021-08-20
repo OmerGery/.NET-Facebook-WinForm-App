@@ -12,7 +12,7 @@ namespace Logic
     {
         private LastFmApi m_LastFmApi = new LastFmApi();
 
-        async public Task<Dictionary<string, List<string>>> GetArtistRecommendations(
+        public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(
             IFacebookUser i_LoggedUser,
             AppSettings i_AppSettings,
             int i_SimilarArtistsAmount)

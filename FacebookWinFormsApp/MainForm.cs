@@ -141,11 +141,7 @@ namespace BasicFacebookFeatures
             {
                 m_FavoriteArtistsListBox.Items.Add("No liked Artists");
             }
-
-
         }
-
-        
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
