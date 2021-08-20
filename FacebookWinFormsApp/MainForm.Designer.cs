@@ -319,7 +319,7 @@ namespace BasicFacebookFeatures
             this.m_FavoriteArtistsListBox.Name = "m_FavoriteArtistsListBox";
             this.m_FavoriteArtistsListBox.Size = new System.Drawing.Size(197, 173);
             this.m_FavoriteArtistsListBox.TabIndex = 0;
-            this.m_FavoriteArtistsListBox.SelectedIndexChanged += new System.EventHandler(this.m_SimilarArtistsListBox_SelectedIndexChanged);
+            this.m_FavoriteArtistsListBox.SelectedIndexChanged += new System.EventHandler(this.similarArtistsListBox_SelectedIndexChanged);
             // 
             // m_CommonInterestTabPage
             // 

@@ -45,6 +45,7 @@
     <Compile Include="LastFmApi.cs" />
     <Compile Include="AppLogic.cs" />
     <Compile Include="MockGenerator.cs" />
+    <Compile Include="RecommendationsFacade.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Facebook">

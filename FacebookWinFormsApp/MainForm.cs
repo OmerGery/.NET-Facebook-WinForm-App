@@ -10,10 +10,11 @@ namespace BasicFacebookFeatures
 {
     public partial class MainForm : Form
     {
+        private RecommendationsFacade m_RecommendationsFacade = new RecommendationsFacade();
         private IFacebookUser LoggedUser {get;}
         private readonly AppLogic r_AppLogic = AppLogic.Instance;
         private readonly AppSettings r_AppSettings;
-        private readonly Dictionary<string, List<string>> r_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
+        private Dictionary<string, List<string>> m_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
 
 
         public MainForm(AppSettings i_AppSettings)
@@ -117,43 +118,34 @@ namespace BasicFacebookFeatures
 
         private async void fetchRecommendations()
         {
-            List<string> userFavoriteArtists = new List<string>();
-            if (r_AppSettings.IsMockState)
+            try
             {
-                userFavoriteArtists = MocksGenerator.GetFakeArtists();
+                m_SimilarArtistsDictionary = await m_RecommendationsFacade.GetArtistRecommendations(
+                                                 LoggedUser,
+                                                 r_AppSettings,
+                                                 int.Parse(m_ArtistsLimitNumericUpDown.Text));
             }
-            else
+            catch (Exception lastFmException)
             {
-                foreach (Page artistPage in LoggedUser.GetLikedPages())
-                {
-                    if (artistPage.Category == "Artist")
-                    {
-                        userFavoriteArtists.Add(artistPage.Name);
-                    }
-                }
+                MessageBox.Show($@"A Problem with the Recommendations API {lastFmException.Message}");
             }
 
-            foreach (string favoriteArtist in userFavoriteArtists)
+
+            foreach (string favoriteArtist in m_SimilarArtistsDictionary.Keys)
             {
                 m_FavoriteArtistsListBox.Items.Add($"{favoriteArtist}");
 
-                try
-                {
-                    XDocument userSimilarArtists = await LastFmApi.GetSimilarArtists(favoriteArtist, m_ArtistsLimitNumericUpDown.Text);
-                    List<string> userSimilarArtistsList = LastFmApi.FilterSimilarArtists(userSimilarArtists);
-                    r_SimilarArtistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
-                }
-                catch (Exception lastFmException)
-                {
-                    MessageBox.Show($@"A Problem with the lastFM API {lastFmException.Message}");
-                }
             }
 
-            if (userFavoriteArtists.Count == 0)
+            if (m_SimilarArtistsDictionary.Keys.Count == 0)
             {
                 m_FavoriteArtistsListBox.Items.Add("No liked Artists");
             }
+
+
         }
+
+        
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
@@ -249,7 +241,7 @@ namespace BasicFacebookFeatures
             fetchFriendsWithCommonInterest();
         }
 
-        private void m_SimilarArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void similarArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(m_FavoriteArtistsListBox.SelectedItem != null)
             {
@@ -257,7 +249,7 @@ namespace BasicFacebookFeatures
                 int similarArtistIndex = 1;
                 string selectedArtist = m_FavoriteArtistsListBox.SelectedItem as string;
                 
-                foreach(string similarArtists in r_SimilarArtistsDictionary[selectedArtist])
+                foreach(string similarArtists in m_SimilarArtistsDictionary[selectedArtist])
                 {
                     similarArtistsText += $"{similarArtistIndex.ToString()}.{similarArtists} {Environment.NewLine}";
                     m_SimilarArtistsTextBox.Text = similarArtistsText;
@@ -267,4 +259,5 @@ namespace BasicFacebookFeatures
             }
         }
     }
+
 }
