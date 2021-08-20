@@ -42,6 +42,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="FacebookConnector.cs" />
     <Compile Include="FacebookUserAdapter.cs" />
+    <Compile Include="IFacebookUser.cs" />
     <Compile Include="LastFmApi.cs" />
     <Compile Include="AppLogic.cs" />
     <Compile Include="MockGenerator.cs" />
