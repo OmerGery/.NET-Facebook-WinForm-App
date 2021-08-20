@@ -11,7 +11,8 @@ namespace BasicFacebookFeatures
 
         public AppSettings AppSettings { get; }
 
-        public LoginResult UserLoginResult { get; private set; }
+        private AppLogic m_AppLogic = AppLogic.Instance;
+
 
         public bool IsLoggedIn { get; private set; }
 
@@ -26,27 +27,9 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if(string.IsNullOrEmpty(AppSettings.LastAccessToken))
-                {
-                    UserLoginResult = FacebookService.Login(
-                        k_AppId,
-                        "email",
-                        "public_profile",
-                        "user_photos",
-                        "user_events",
-                        "user_birthday",
-                        "user_friends");
-                    if(UserLoginResult.FacebookOAuthResult.IsSuccess)
-                    {
-                        IsLoggedIn = true;
-                    }
-                }
-                else
-                {
-                    UserLoginResult = FacebookService.Connect(AppSettings.LastAccessToken);
-                    IsLoggedIn = true;
-                }
-                AppLogic.Instance.LoggedUser = UserLoginResult.LoggedInUser;
+                bool loggedIn = false;
+                m_AppLogic.Connect(AppSettings.LastAccessToken,k_AppId,ref loggedIn);
+                IsLoggedIn = loggedIn;
                 Close();
             }
             catch (Exception)

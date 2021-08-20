@@ -10,6 +10,7 @@ namespace BasicFacebookFeatures
 {
     public partial class MainForm : Form
     {
+        private IFacebookUser LoggedUser {get;}
         private readonly AppLogic r_AppLogic = AppLogic.Instance;
         private readonly AppSettings r_AppSettings;
         private readonly Dictionary<string, List<string>> r_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
@@ -23,22 +24,23 @@ namespace BasicFacebookFeatures
             Location = r_AppSettings.LastWindowsLocation;
             m_RememberMeCheckBox.Checked = r_AppSettings.RememberUser;
             FacebookService.s_CollectionLimit = 100;
+            LoggedUser = r_AppLogic.GetUser();
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            m_UserNameLabel.Text = $@"Hello {r_AppLogic.LoggedUser.FirstName} {r_AppLogic.LoggedUser.LastName}!";
+            m_UserNameLabel.Text = $@"Hello {LoggedUser.GetFirstName()} {LoggedUser.GetLastName()}!";
             fetchAboutData();
         }
 
         private void fetchAboutData()
         {
-            m_ProfilePicture.Image = r_AppLogic.LoggedUser.ImageSmall;
-            m_UserEmailLabel.Text = r_AppLogic.LoggedUser.Email;
-            m_BirthdayLabel.Text = r_AppLogic.LoggedUser.Birthday;
-            m_PhotosAmountLabel.Text = r_AppLogic.LoggedUser.PhotosTaggedIn.Count.ToString();
-            m_LocaleLabel.Text = r_AppLogic.LoggedUser.Locale;
+            m_ProfilePicture.Image = LoggedUser.GetImageSmall();
+            m_UserEmailLabel.Text = LoggedUser.GetEmail();
+            m_BirthdayLabel.Text = LoggedUser.GetBirthday();
+            m_PhotosAmountLabel.Text = LoggedUser.GetPhotosTaggedInAmount().ToString();
+            m_LocaleLabel.Text = LoggedUser.GetLocale();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -52,7 +54,7 @@ namespace BasicFacebookFeatures
 
         private void fetchEvents()
         {
-            FacebookObjectCollection<Event> userEvents = r_AppLogic.LoggedUser.Events;
+            FacebookObjectCollection<Event> userEvents = LoggedUser.GetEvents();
             updateAmountOfEvents(userEvents.Count);
             foreach (Event userEvent in userEvents)
             {
@@ -99,7 +101,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                r_AppLogic.GetFriendsCommonInterest(ref friendsCommonPagesLikes, ref isFriendWithCommonInterest);
+                LoggedUser.GetFriendsCommonInterest(ref friendsCommonPagesLikes, ref isFriendWithCommonInterest);
             }
 
             foreach (KeyValuePair<string, int> friendInDictionary in friendsCommonPagesLikes)
@@ -122,7 +124,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                foreach (Page artistPage in r_AppLogic.LoggedUser.LikedPages)
+                foreach (Page artistPage in LoggedUser.GetLikedPages())
                 {
                     if (artistPage.Category == "Artist")
                     {
@@ -163,7 +165,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                m_RandomPicture.Image = r_AppLogic.GetRandomImage();
+                m_RandomPicture.Image = LoggedUser.GetRandomImage();
             }
             catch (Exception pictureException)
             {
@@ -185,7 +187,7 @@ namespace BasicFacebookFeatures
             string friendName = null;
             Post mostLikedPost = null;
 
-            r_AppLogic.FetchTopPostByFriend(ref maxLikedPost, ref friendName, ref mostLikedPost);
+            LoggedUser.FetchTopPostByFriend(ref maxLikedPost, ref friendName, ref mostLikedPost);
             if (maxLikedPost == 0)
             {
                 m_TrendingPostTextBox.Text = "No liked posts by friends";
@@ -210,7 +212,7 @@ namespace BasicFacebookFeatures
             m_BirthdaysButton.Enabled = false;
             bool areFriendsBDaysThisMonth = false;
 
-            foreach (User friend in r_AppLogic.LoggedUser.Friends)
+            foreach (User friend in LoggedUser.GetFriends())
             {
                 DateTime friendBirthday = DateTime.Parse(friend.Birthday);
                 if (friendBirthday.Month == DateTime.Now.Month)
