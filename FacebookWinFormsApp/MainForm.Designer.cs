@@ -144,7 +144,7 @@ namespace BasicFacebookFeatures
             // 
             // m_UpcomingEventsListBox
             // 
-            this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
+            //this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
             this.m_UpcomingEventsListBox.FormattingEnabled = true;
             this.m_UpcomingEventsListBox.Location = new System.Drawing.Point(92, 292);
             this.m_UpcomingEventsListBox.Margin = new System.Windows.Forms.Padding(2);
@@ -199,7 +199,6 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.TabIndex = 0;
             this.m_HomeTabPage.Text = "Home";
             this.m_HomeTabPage.UseVisualStyleBackColor = true;
-            this.m_HomeTabPage.Click += new System.EventHandler(this.m_HomeTabPage_Click);
             // 
             // m_TrendingPostTextBox
             // 

@@ -57,22 +57,8 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Event> userEvents = LoggedUser.GetEvents();
             updateAmountOfEvents(userEvents.Count);
-            foreach (Event userEvent in userEvents)
-            {
-                long? eventAttendingNumber = userEvent.AttendingCount;
 
-                if (eventAttendingNumber != null)
-                {
-                    m_UpcomingEventsListBox.Items.Add(
-                        $"{userEvent.Name} - {eventAttendingNumber.ToString()} Attendees");
-                }
-            }
-
-            if (!r_AppSettings.IsMockState && userEvents.Count == 0)
-            {
-                m_UpcomingEventsListBox.Items.Add("No upcoming events");
-            }
-            else
+            if (r_AppSettings.IsMockState)
             {
                 List<string> fakeEvents = MocksGenerator.GetFakeEvents();
                 updateAmountOfEvents(fakeEvents.Count);
@@ -80,6 +66,11 @@ namespace BasicFacebookFeatures
                 {
                     m_UpcomingEventsListBox.Items.Add($"{fakeEvent} Attendees");
                 }
+            }
+            else
+            {
+                this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
+                eventBindingSource.DataSource = LoggedUser.GetEvents();
             }
         }
 
@@ -229,7 +220,6 @@ namespace BasicFacebookFeatures
         {
             m_EventsButton.Enabled = false;
             fetchEvents();
-            eventBindingSource.DataSource = LoggedUser.GetEvents();
         }
 
         private void friendsInterestsButton_Click(object sender, EventArgs e)
@@ -256,10 +246,6 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void m_HomeTabPage_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }
