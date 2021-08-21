@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
-
-namespace Logic
+﻿namespace Logic
 {
    
 
