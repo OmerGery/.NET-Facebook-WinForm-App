@@ -122,7 +122,7 @@ namespace BasicFacebookFeatures
             {
                 m_SimilarArtistsDictionary = await m_RecommendationsFacade.GetArtistRecommendations(
                                                  LoggedUser,
-                                                 r_AppSettings,
+                                                 r_AppSettings.IsMockState,
                                                  int.Parse(m_ArtistsLimitNumericUpDown.Text));
             }
             catch (Exception lastFmException)

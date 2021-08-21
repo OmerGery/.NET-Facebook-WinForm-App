@@ -12,14 +12,11 @@ namespace Logic
     {
         private LastFmApi m_LastFmApi = new LastFmApi();
 
-        public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(
-            IFacebookUser i_LoggedUser,
-            AppSettings i_AppSettings,
-            int i_SimilarArtistsAmount)
+        public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(IFacebookUser i_LoggedUser, bool i_IsMockState, int i_SimilarArtistsAmount)
         {
             Dictionary<string, List<string>> artistsDictionary = new Dictionary<string, List<string>>();
             List<string> userFavoriteArtists = new List<string>();
-            if(i_AppSettings.IsMockState)
+            if(i_IsMockState)
             {
                 userFavoriteArtists = MocksGenerator.GetFakeArtists();
             }
