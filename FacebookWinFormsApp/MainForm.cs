@@ -125,9 +125,9 @@ namespace BasicFacebookFeatures
                                                  r_AppSettings.IsMockState,
                                                  int.Parse(m_ArtistsLimitNumericUpDown.Text));
             }
-            catch (Exception lastFmException)
+            catch (Exception facadeException)
             {
-                MessageBox.Show($@"A Problem with the Recommendations API {lastFmException.Message}");
+                MessageBox.Show($@"A Problem with the Recommendations API {facadeException.Message}");
             }
 
 

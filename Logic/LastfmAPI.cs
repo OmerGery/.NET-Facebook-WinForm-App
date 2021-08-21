@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace Logic
 {
-    public class LastFmApi
+    internal class LastFmApi
     {
         private const string k_LastFmToken = "e55a6c4ec6ffa24e98f249adc405865d";
         private const string k_GetRequestBaseUri = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar";
