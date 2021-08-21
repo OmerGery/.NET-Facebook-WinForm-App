@@ -1,23 +1,21 @@
 ﻿namespace Logic
 {
-   
-
     public sealed class AppLogic
     {
 
         private AppLogic()
         { 
         }
-            private static AppLogic instance = null;
+            private static AppLogic s_Instance;
             public static AppLogic Instance
             {
                 get
                 {
-                    if (instance == null)
+                    if (s_Instance == null)
                     {
-                        instance = new AppLogic();
+                        s_Instance = new AppLogic();
                     }
-                    return instance;
+                    return s_Instance;
                 }
             }
             
