@@ -13,9 +13,9 @@ namespace Logic
         private readonly User r_FacebookUser;
         private readonly Random r_Random = new Random();
 
-        public FacebookUserAdapter(User adaptee)
+        public FacebookUserAdapter(User i_UserAdaptee)
         {
-            r_FacebookUser = adaptee;
+            r_FacebookUser = i_UserAdaptee;
         }
 
         public string GetFirstName()

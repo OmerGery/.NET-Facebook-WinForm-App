@@ -113,7 +113,7 @@ namespace BasicFacebookFeatures
 
             foreach (string favoriteArtist in m_SimilarArtistsDictionary.Keys)
             {
-                m_FavoriteArtistsListBox.Invoke(new Action((() => m_FavoriteArtistsListBox.Items.Add($"{favoriteArtist}"))));
+                m_FavoriteArtistsListBox.Invoke(new Action(() => m_FavoriteArtistsListBox.Items.Add($"{favoriteArtist}")));
             }
 
             if (m_SimilarArtistsDictionary.Keys.Count == 0)
@@ -246,12 +246,11 @@ namespace BasicFacebookFeatures
         private void m_FetchAllDataButton_Click(object sender, EventArgs e)
         {
             m_TopPostButton.Enabled = false;
-            new Thread (fetchTopPost).Start();
+            new Thread(fetchTopPost).Start();
             m_BirthdaysButton.Enabled = false;
             new Thread(fetchBirthdays).Start();
             m_EventsButton.Enabled = false;
             new Thread(fetchEvents).Start();
-
         }
     }
 }
