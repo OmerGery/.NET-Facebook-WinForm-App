@@ -5,17 +5,24 @@
 
         private AppLogic()
         { 
-        }
+        }   
+            private static readonly object sr_LockGetContext = new object ();
             private static AppLogic s_Instance;
             public static AppLogic Instance
             {
                 get
                 {
-                    if (s_Instance == null)
+                if (s_Instance == null)
+                {
+                    lock (sr_LockGetContext)
                     {
-                        s_Instance = new AppLogic();
+                        if (s_Instance == null)
+                        {
+                            s_Instance = new AppLogic();
+                        }
                     }
-                    return s_Instance;
+                }
+                return s_Instance;
                 }
             }
             
@@ -28,8 +35,6 @@
             return m_FacebookUser;
         }
 
-
-       
         public void Connect(string i_AppSettingsLastAccessToken, string i_AppId,ref bool io_IsLoggedIn)
         {
             m_FacebookUser = FacebookConnector.Connect(i_AppSettingsLastAccessToken, i_AppId, ref io_IsLoggedIn);

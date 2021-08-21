@@ -10,7 +10,7 @@ namespace BasicFacebookFeatures
 {
     public partial class MainForm : Form
     {
-        private RecommendationsFacade m_RecommendationsFacade = new RecommendationsFacade();
+        private readonly RecommendationsFacade r_RecommendationsFacade = new RecommendationsFacade();
         private IFacebookUser LoggedUser {get;}
         private readonly AppLogic r_AppLogic = AppLogic.Instance;
         private readonly AppSettings r_AppSettings;
@@ -111,7 +111,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                m_SimilarArtistsDictionary = await m_RecommendationsFacade.GetArtistRecommendations(
+                m_SimilarArtistsDictionary = await r_RecommendationsFacade.GetArtistRecommendations(
                                                  LoggedUser,
                                                  r_AppSettings.IsMockState,
                                                  int.Parse(m_ArtistsLimitNumericUpDown.Text));

@@ -7,7 +7,7 @@ namespace Logic
 {
     public class RecommendationsFacade
     {
-        private LastFmApi m_LastFmApi = new LastFmApi();
+        private readonly LastFmApi r_LastFmApi = new LastFmApi();
 
         public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(
             IFacebookUser i_LoggedUser,
@@ -34,8 +34,8 @@ namespace Logic
             foreach(string favoriteArtist in userFavoriteArtists)
             {
                 XDocument userSimilarArtists =
-                    await m_LastFmApi.GetSimilarArtists(favoriteArtist, i_SimilarArtistsAmount);
-                List<string> userSimilarArtistsList = m_LastFmApi.FilterSimilarArtists(userSimilarArtists);
+                    await r_LastFmApi.GetSimilarArtists(favoriteArtist, i_SimilarArtistsAmount);
+                List<string> userSimilarArtistsList = r_LastFmApi.FilterSimilarArtists(userSimilarArtists);
                 artistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
             }
 
