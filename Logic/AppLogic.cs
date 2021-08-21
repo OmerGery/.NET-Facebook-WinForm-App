@@ -19,7 +19,7 @@
                 }
             }
             
-        public string AccessToken { get; }
+        public string AccessToken { get; set; }
         
 
         private IFacebookUser m_FacebookUser;

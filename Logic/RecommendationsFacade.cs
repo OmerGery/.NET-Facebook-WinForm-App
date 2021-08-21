@@ -8,7 +8,6 @@ namespace Logic
     public class RecommendationsFacade
     {
         private LastFmApi m_LastFmApi = new LastFmApi();
-
         public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(
             IFacebookUser i_LoggedUser,
             AppSettings i_AppSettings,
