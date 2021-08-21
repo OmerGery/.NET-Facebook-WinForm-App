@@ -229,6 +229,7 @@ namespace BasicFacebookFeatures
         {
             m_EventsButton.Enabled = false;
             fetchEvents();
+            eventBindingSource.DataSource = LoggedUser.GetEvents();
         }
 
         private void friendsInterestsButton_Click(object sender, EventArgs e)
@@ -253,6 +254,11 @@ namespace BasicFacebookFeatures
                 }
                 
             }
+        }
+
+        private void m_HomeTabPage_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

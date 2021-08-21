@@ -19,6 +19,7 @@ public class FacebookConnector
                 "user_friends");
             if (loginResult.FacebookOAuthResult.IsSuccess)
             {
+                AppLogic.Instance.AccessToken = loginResult.AccessToken;
                 io_IsLoggedIn = true;
             }
         }
