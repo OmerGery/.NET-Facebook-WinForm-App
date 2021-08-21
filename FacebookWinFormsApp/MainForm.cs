@@ -11,11 +11,14 @@ namespace BasicFacebookFeatures
     public partial class MainForm : Form
     {
         private readonly RecommendationsFacade r_RecommendationsFacade = new RecommendationsFacade();
-        private IFacebookUser LoggedUser {get;}
-        private readonly AppLogic r_AppLogic = AppLogic.Instance;
-        private readonly AppSettings r_AppSettings;
-        private Dictionary<string, List<string>> m_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
 
+        private IFacebookUser LoggedUser { get; }
+
+        private readonly AppLogic r_AppLogic = AppLogic.Instance;
+
+        private readonly AppSettings r_AppSettings;
+
+        private Dictionary<string, List<string>> m_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
 
         public MainForm(AppSettings i_AppSettings)
         {
@@ -121,11 +124,9 @@ namespace BasicFacebookFeatures
                 MessageBox.Show($@"A Problem with the Recommendations API {facadeException.Message}");
             }
 
-
             foreach (string favoriteArtist in m_SimilarArtistsDictionary.Keys)
             {
                 m_FavoriteArtistsListBox.Items.Add($"{favoriteArtist}");
-
             }
 
             if (m_SimilarArtistsDictionary.Keys.Count == 0)
@@ -232,7 +233,7 @@ namespace BasicFacebookFeatures
         {
             if(m_FavoriteArtistsListBox.SelectedItem != null)
             {
-                string similarArtistsText = String.Empty;
+                string similarArtistsText = string.Empty;
                 int similarArtistIndex = 1;
                 string selectedArtist = m_FavoriteArtistsListBox.SelectedItem as string;
                 
@@ -242,10 +243,7 @@ namespace BasicFacebookFeatures
                     m_SimilarArtistsTextBox.Text = similarArtistsText;
                     similarArtistIndex++;
                 }
-                
             }
         }
-
     }
-
 }

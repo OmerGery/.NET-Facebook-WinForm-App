@@ -3,7 +3,6 @@ using Logic;
 
 public class FacebookConnector
 {
-
     public static IFacebookUser Connect(string i_Token, string i_AppId, ref bool io_IsLoggedIn)
     {
         LoginResult loginResult;

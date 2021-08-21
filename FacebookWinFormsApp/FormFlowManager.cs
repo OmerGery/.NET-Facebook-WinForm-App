@@ -6,7 +6,9 @@ namespace BasicFacebookFeatures
     public class FormFlowManager
     {
         private readonly StartForm r_StartForm = new StartForm();
+
         private MainForm m_FacebookMainForm; 
+
         public void RunApp()
         {
             try

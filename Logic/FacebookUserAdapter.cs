@@ -8,7 +8,6 @@ using FacebookWrapper.ObjectModel;
 
 namespace Logic
 {
-
     public class FacebookUserAdapter : IFacebookUser
     {
         private readonly User r_FacebookUser;
@@ -33,10 +32,12 @@ namespace Logic
         {
             return r_FacebookUser.Email;
         }
+
         public Image GetImageSmall()
         {
             return r_FacebookUser.ImageSmall;
         }
+
         public FacebookObjectCollection<User> GetFriends()
         {
             return r_FacebookUser.Friends;
@@ -57,16 +58,10 @@ namespace Logic
             return r_FacebookUser.Locale;
         }
 
-        
-
         public string GetBirthday()
         {
             return r_FacebookUser.Birthday;
         }
-
-
-
-
 
     public void FetchTopPostByFriend(ref int io_CurrentMaxLikedPost, ref string io_FriendName, ref Post io_MostLikedPost)
         {
@@ -87,7 +82,7 @@ namespace Logic
         public Image GetRandomImage()
         {
             FacebookObjectCollection<Photo> taggedPictures = r_FacebookUser.PhotosTaggedIn;
-            if (taggedPictures.Count< 1)
+            if (taggedPictures.Count < 1)
             {
                 throw new Exception("No Tagged pictures");
             }

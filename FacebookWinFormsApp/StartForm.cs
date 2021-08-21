@@ -13,7 +13,6 @@ namespace BasicFacebookFeatures
 
         private readonly AppLogic r_AppLogic = AppLogic.Instance;
 
-
         public bool IsLoggedIn { get; private set; }
 
         public StartForm()
@@ -28,7 +27,7 @@ namespace BasicFacebookFeatures
             try
             {
                 bool loggedIn = false;
-                r_AppLogic.Connect(AppSettings.LastAccessToken,k_AppId,ref loggedIn);
+                r_AppLogic.Connect(AppSettings.LastAccessToken, k_AppId, ref loggedIn);
                 IsLoggedIn = loggedIn;
                 Close();
             }
