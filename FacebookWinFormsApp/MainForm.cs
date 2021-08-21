@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using FacebookWrapper;
@@ -60,21 +61,7 @@ namespace BasicFacebookFeatures
         {
             FacebookObjectCollection<Event> userEvents = LoggedUser.GetEvents();
             updateAmountOfEvents(userEvents.Count);
-
-            if (r_AppSettings.IsMockState)
-            {
-                List<string> fakeEvents = MocksGenerator.GetFakeEvents();
-                updateAmountOfEvents(fakeEvents.Count);
-                foreach (string fakeEvent in fakeEvents)
-                {
-                    m_UpcomingEventsListBox.Items.Add($"{fakeEvent} Attendees");
-                }
-            }
-            else
-            {
-                this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
-                eventBindingSource.DataSource = LoggedUser.GetEvents();
-            }
+            eventBindingSource.DataSource = LoggedUser.GetEvents();
         }
 
         private void updateAmountOfEvents(int i_UserEventsCount)
@@ -101,12 +88,12 @@ namespace BasicFacebookFeatures
 
             foreach (KeyValuePair<string, int> friendInDictionary in friendsCommonPagesLikes)
             {
-                m_CommonInterestListBox.Items.Add($"{friendInDictionary.Key} - {friendInDictionary.Value.ToString()} Pages");
+                m_CommonInterestListBox.Invoke(new Action(() => m_CommonInterestListBox.Items.Add($"{friendInDictionary.Key} - {friendInDictionary.Value.ToString()} Pages")));
             }
 
             if (!isFriendWithCommonInterest && !r_AppSettings.IsMockState)
             {
-                m_CommonInterestListBox.Items.Add("No Friends With Common Liked Pages");
+                m_CommonInterestListBox.Invoke(new Action(() => m_CommonInterestListBox.Items.Add("No Friends With Common Liked Pages")));
             }
         }
 
@@ -126,7 +113,7 @@ namespace BasicFacebookFeatures
 
             foreach (string favoriteArtist in m_SimilarArtistsDictionary.Keys)
             {
-                m_FavoriteArtistsListBox.Items.Add($"{favoriteArtist}");
+                m_FavoriteArtistsListBox.Invoke(new Action((() => m_FavoriteArtistsListBox.Items.Add($"{favoriteArtist}"))));
             }
 
             if (m_SimilarArtistsDictionary.Keys.Count == 0)
@@ -157,12 +144,17 @@ namespace BasicFacebookFeatures
         {
             m_RecommendationButton.Enabled = false;
             m_ArtistsLimitNumericUpDown.Enabled = false;
-            fetchRecommendations();
+            new Thread(fetchRecommendations).Start();
         }
 
         private void topPostButton_Click(object sender, EventArgs e)
         {
             m_TopPostButton.Enabled = false;
+            fetchTopPost();
+        }
+
+        private void fetchTopPost()
+        {
             int maxLikedPost = 0;
             string friendName = null;
             Post mostLikedPost = null;
@@ -190,6 +182,11 @@ namespace BasicFacebookFeatures
         private void birthdaysButton_Click(object sender, EventArgs e)
         {
             m_BirthdaysButton.Enabled = false;
+            fetchBirthdays();
+        }
+
+        private void fetchBirthdays()
+        {
             bool areFriendsBDaysThisMonth = false;
 
             foreach (User friend in LoggedUser.GetFriends())
@@ -198,13 +195,13 @@ namespace BasicFacebookFeatures
                 if (friendBirthday.Month == DateTime.Now.Month)
                 {
                     areFriendsBDaysThisMonth = true;
-                    m_UpcomingBirthdaysListBox.Items.Add($"{friend.Name} - {friend.Birthday} ");
+                    m_UpcomingBirthdaysListBox.Invoke(new Action(() => m_UpcomingBirthdaysListBox.Items.Add($"{friend.Name} - {friend.Birthday} ")));
                 }
             }
 
             if (!areFriendsBDaysThisMonth && !r_AppSettings.IsMockState)
             {
-                m_UpcomingBirthdaysListBox.Items.Add($"No friends birthdays on {DateTime.Now.ToString("M")}");
+                m_UpcomingBirthdaysListBox.Invoke(new Action(() => m_UpcomingBirthdaysListBox.Items.Add($"No friends birthdays on {DateTime.Now.ToString("M")}")));
             }
 
             if (r_AppSettings.IsMockState)
@@ -212,7 +209,7 @@ namespace BasicFacebookFeatures
                 List<string> fakeBirthdays = MocksGenerator.GetFakeBirthdays();
                 foreach (string fakeBirthday in fakeBirthdays)
                 {
-                    m_UpcomingBirthdaysListBox.Items.Add($"{fakeBirthday}");
+                    m_UpcomingBirthdaysListBox.Invoke(new Action(() => m_UpcomingBirthdaysListBox.Items.Add($"{fakeBirthday}")));
                 }
             }
         }
@@ -226,7 +223,7 @@ namespace BasicFacebookFeatures
         private void friendsInterestsButton_Click(object sender, EventArgs e)
         {
             m_FriendsIntrestsButton.Enabled = false;
-            fetchFriendsWithCommonInterest();
+            new Thread(fetchFriendsWithCommonInterest).Start();
         }
 
         private void similarArtistsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -244,6 +241,17 @@ namespace BasicFacebookFeatures
                     similarArtistIndex++;
                 }
             }
+        }
+
+        private void m_FetchAllDataButton_Click(object sender, EventArgs e)
+        {
+            m_TopPostButton.Enabled = false;
+            new Thread (fetchTopPost).Start();
+            m_BirthdaysButton.Enabled = false;
+            new Thread(fetchBirthdays).Start();
+            m_EventsButton.Enabled = false;
+            new Thread(fetchEvents).Start();
+
         }
     }
 }

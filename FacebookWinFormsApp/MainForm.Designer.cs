@@ -33,20 +33,27 @@ namespace BasicFacebookFeatures
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.Label attendingCountLabel;
             System.Windows.Forms.Label descriptionLabel;
             System.Windows.Forms.Label imageSmallLabel;
             System.Windows.Forms.Label locationLabel;
             System.Windows.Forms.Label startTimeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.buttonLogout = new System.Windows.Forms.Button();
             this.m_UserNameLabel = new System.Windows.Forms.Label();
             this.m_ProfilePicture = new System.Windows.Forms.PictureBox();
             this.m_UpcomingBirthdaysListBox = new System.Windows.Forms.ListBox();
             this.m_UpcomingEventsListBox = new System.Windows.Forms.ListBox();
+            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.m_RandomPicture = new System.Windows.Forms.PictureBox();
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.m_HomeTabPage = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.attendingCountTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.imageSmallPictureBox = new System.Windows.Forms.PictureBox();
+            this.locationTextBox = new System.Windows.Forms.TextBox();
+            this.startTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.m_TrendingPostTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -76,32 +83,71 @@ namespace BasicFacebookFeatures
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.attendingCountTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.imageSmallPictureBox = new System.Windows.Forms.PictureBox();
-            this.locationTextBox = new System.Windows.Forms.TextBox();
-            this.startTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.m_FetchAllDataButton = new System.Windows.Forms.Button();
             attendingCountLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             imageSmallLabel = new System.Windows.Forms.Label();
             locationLabel = new System.Windows.Forms.Label();
             startTimeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).BeginInit();
             this.m_tabControl.SuspendLayout();
             this.m_HomeTabPage.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.m_UpcomingConcertsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_ArtistsLimitNumericUpDown)).BeginInit();
             this.m_CommonInterestTabPage.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).BeginInit();
             this.SuspendLayout();
+            // 
+            // attendingCountLabel
+            // 
+            attendingCountLabel.AutoSize = true;
+            attendingCountLabel.Location = new System.Drawing.Point(11, 16);
+            attendingCountLabel.Name = "attendingCountLabel";
+            attendingCountLabel.Size = new System.Drawing.Size(86, 13);
+            attendingCountLabel.TabIndex = 0;
+            attendingCountLabel.Text = "Attending Count:";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(11, 42);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            descriptionLabel.TabIndex = 2;
+            descriptionLabel.Text = "Description:";
+            // 
+            // imageSmallLabel
+            // 
+            imageSmallLabel.AutoSize = true;
+            imageSmallLabel.Location = new System.Drawing.Point(11, 65);
+            imageSmallLabel.Name = "imageSmallLabel";
+            imageSmallLabel.Size = new System.Drawing.Size(67, 13);
+            imageSmallLabel.TabIndex = 4;
+            imageSmallLabel.Text = "Image Small:";
+            // 
+            // locationLabel
+            // 
+            locationLabel.AutoSize = true;
+            locationLabel.Location = new System.Drawing.Point(11, 125);
+            locationLabel.Name = "locationLabel";
+            locationLabel.Size = new System.Drawing.Size(51, 13);
+            locationLabel.TabIndex = 8;
+            locationLabel.Text = "Location:";
+            // 
+            // startTimeLabel
+            // 
+            startTimeLabel.AutoSize = true;
+            startTimeLabel.Location = new System.Drawing.Point(11, 161);
+            startTimeLabel.Name = "startTimeLabel";
+            startTimeLabel.Size = new System.Drawing.Size(58, 13);
+            startTimeLabel.TabIndex = 10;
+            startTimeLabel.Text = "Start Time:";
             // 
             // buttonLogout
             // 
@@ -144,13 +190,17 @@ namespace BasicFacebookFeatures
             // 
             // m_UpcomingEventsListBox
             // 
-            //this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
+            this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
             this.m_UpcomingEventsListBox.FormattingEnabled = true;
             this.m_UpcomingEventsListBox.Location = new System.Drawing.Point(92, 292);
             this.m_UpcomingEventsListBox.Margin = new System.Windows.Forms.Padding(2);
             this.m_UpcomingEventsListBox.Name = "m_UpcomingEventsListBox";
             this.m_UpcomingEventsListBox.Size = new System.Drawing.Size(173, 186);
             this.m_UpcomingEventsListBox.TabIndex = 65;
+            // 
+            // eventBindingSource
+            // 
+            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
             // 
             // m_RandomPicture
             // 
@@ -179,6 +229,7 @@ namespace BasicFacebookFeatures
             // 
             this.m_HomeTabPage.AutoScroll = true;
             this.m_HomeTabPage.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.m_HomeTabPage.Controls.Add(this.m_FetchAllDataButton);
             this.m_HomeTabPage.Controls.Add(this.panel1);
             this.m_HomeTabPage.Controls.Add(this.m_TrendingPostTextBox);
             this.m_HomeTabPage.Controls.Add(this.pictureBox2);
@@ -200,6 +251,64 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.Text = "Home";
             this.m_HomeTabPage.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(attendingCountLabel);
+            this.panel1.Controls.Add(this.attendingCountTextBox);
+            this.panel1.Controls.Add(descriptionLabel);
+            this.panel1.Controls.Add(this.descriptionTextBox);
+            this.panel1.Controls.Add(imageSmallLabel);
+            this.panel1.Controls.Add(this.imageSmallPictureBox);
+            this.panel1.Controls.Add(locationLabel);
+            this.panel1.Controls.Add(this.locationTextBox);
+            this.panel1.Controls.Add(startTimeLabel);
+            this.panel1.Controls.Add(this.startTimeDateTimePicker);
+            this.panel1.Location = new System.Drawing.Point(280, 292);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(282, 186);
+            this.panel1.TabIndex = 77;
+            // 
+            // attendingCountTextBox
+            // 
+            this.attendingCountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "AttendingCount", true));
+            this.attendingCountTextBox.Location = new System.Drawing.Point(114, 13);
+            this.attendingCountTextBox.Name = "attendingCountTextBox";
+            this.attendingCountTextBox.Size = new System.Drawing.Size(89, 20);
+            this.attendingCountTextBox.TabIndex = 1;
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Description", true));
+            this.descriptionTextBox.Location = new System.Drawing.Point(114, 39);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(153, 20);
+            this.descriptionTextBox.TabIndex = 3;
+            // 
+            // imageSmallPictureBox
+            // 
+            this.imageSmallPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.eventBindingSource, "ImageSmall", true));
+            this.imageSmallPictureBox.Location = new System.Drawing.Point(114, 65);
+            this.imageSmallPictureBox.Name = "imageSmallPictureBox";
+            this.imageSmallPictureBox.Size = new System.Drawing.Size(56, 50);
+            this.imageSmallPictureBox.TabIndex = 5;
+            this.imageSmallPictureBox.TabStop = false;
+            // 
+            // locationTextBox
+            // 
+            this.locationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Location", true));
+            this.locationTextBox.Location = new System.Drawing.Point(112, 125);
+            this.locationTextBox.Name = "locationTextBox";
+            this.locationTextBox.Size = new System.Drawing.Size(136, 20);
+            this.locationTextBox.TabIndex = 9;
+            // 
+            // startTimeDateTimePicker
+            // 
+            this.startTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.eventBindingSource, "StartTime", true));
+            this.startTimeDateTimePicker.Location = new System.Drawing.Point(75, 161);
+            this.startTimeDateTimePicker.Name = "startTimeDateTimePicker";
+            this.startTimeDateTimePicker.Size = new System.Drawing.Size(180, 20);
+            this.startTimeDateTimePicker.TabIndex = 11;
+            // 
             // m_TrendingPostTextBox
             // 
             this.m_TrendingPostTextBox.Location = new System.Drawing.Point(92, 43);
@@ -220,7 +329,7 @@ namespace BasicFacebookFeatures
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(280, 29);
+            this.pictureBox1.Location = new System.Drawing.Point(306, 50);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(187, 175);
@@ -504,112 +613,18 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.Text = "Remember Me";
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // m_FetchAllDataButton
             // 
-            this.panel1.Controls.Add(attendingCountLabel);
-            this.panel1.Controls.Add(this.attendingCountTextBox);
-            this.panel1.Controls.Add(descriptionLabel);
-            this.panel1.Controls.Add(this.descriptionTextBox);
-            this.panel1.Controls.Add(imageSmallLabel);
-            this.panel1.Controls.Add(this.imageSmallPictureBox);
-            this.panel1.Controls.Add(locationLabel);
-            this.panel1.Controls.Add(this.locationTextBox);
-            this.panel1.Controls.Add(startTimeLabel);
-            this.panel1.Controls.Add(this.startTimeDateTimePicker);
-            this.panel1.Location = new System.Drawing.Point(280, 292);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 186);
-            this.panel1.TabIndex = 77;
-            // 
-            // eventBindingSource
-            // 
-            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
-            // 
-            // attendingCountLabel
-            // 
-            attendingCountLabel.AutoSize = true;
-            attendingCountLabel.Location = new System.Drawing.Point(11, 16);
-            attendingCountLabel.Name = "attendingCountLabel";
-            attendingCountLabel.Size = new System.Drawing.Size(86, 13);
-            attendingCountLabel.TabIndex = 0;
-            attendingCountLabel.Text = "Attending Count:";
-            // 
-            // attendingCountTextBox
-            // 
-            this.attendingCountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "AttendingCount", true));
-            this.attendingCountTextBox.Location = new System.Drawing.Point(114, 13);
-            this.attendingCountTextBox.Name = "attendingCountTextBox";
-            this.attendingCountTextBox.Size = new System.Drawing.Size(89, 20);
-            this.attendingCountTextBox.TabIndex = 1;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(11, 42);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(63, 13);
-            descriptionLabel.TabIndex = 2;
-            descriptionLabel.Text = "Description:";
-            // 
-            // descriptionTextBox
-            // 
-            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(114, 39);
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(153, 20);
-            this.descriptionTextBox.TabIndex = 3;
-            // 
-            // imageSmallLabel
-            // 
-            imageSmallLabel.AutoSize = true;
-            imageSmallLabel.Location = new System.Drawing.Point(11, 65);
-            imageSmallLabel.Name = "imageSmallLabel";
-            imageSmallLabel.Size = new System.Drawing.Size(67, 13);
-            imageSmallLabel.TabIndex = 4;
-            imageSmallLabel.Text = "Image Small:";
-            // 
-            // imageSmallPictureBox
-            // 
-            this.imageSmallPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.eventBindingSource, "ImageSmall", true));
-            this.imageSmallPictureBox.Location = new System.Drawing.Point(114, 65);
-            this.imageSmallPictureBox.Name = "imageSmallPictureBox";
-            this.imageSmallPictureBox.Size = new System.Drawing.Size(56, 50);
-            this.imageSmallPictureBox.TabIndex = 5;
-            this.imageSmallPictureBox.TabStop = false;
-            // 
-            // locationLabel
-            // 
-            locationLabel.AutoSize = true;
-            locationLabel.Location = new System.Drawing.Point(11, 125);
-            locationLabel.Name = "locationLabel";
-            locationLabel.Size = new System.Drawing.Size(51, 13);
-            locationLabel.TabIndex = 8;
-            locationLabel.Text = "Location:";
-            // 
-            // locationTextBox
-            // 
-            this.locationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Location", true));
-            this.locationTextBox.Location = new System.Drawing.Point(112, 125);
-            this.locationTextBox.Name = "locationTextBox";
-            this.locationTextBox.Size = new System.Drawing.Size(136, 20);
-            this.locationTextBox.TabIndex = 9;
-            // 
-            // startTimeLabel
-            // 
-            startTimeLabel.AutoSize = true;
-            startTimeLabel.Location = new System.Drawing.Point(11, 161);
-            startTimeLabel.Name = "startTimeLabel";
-            startTimeLabel.Size = new System.Drawing.Size(58, 13);
-            startTimeLabel.TabIndex = 10;
-            startTimeLabel.Text = "Start Time:";
-            // 
-            // startTimeDateTimePicker
-            // 
-            this.startTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.eventBindingSource, "StartTime", true));
-            this.startTimeDateTimePicker.Location = new System.Drawing.Point(75, 161);
-            this.startTimeDateTimePicker.Name = "startTimeDateTimePicker";
-            this.startTimeDateTimePicker.Size = new System.Drawing.Size(180, 20);
-            this.startTimeDateTimePicker.TabIndex = 11;
+            this.m_FetchAllDataButton.BackColor = System.Drawing.Color.BurlyWood;
+            this.m_FetchAllDataButton.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.m_FetchAllDataButton.Location = new System.Drawing.Point(325, 8);
+            this.m_FetchAllDataButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_FetchAllDataButton.Name = "m_FetchAllDataButton";
+            this.m_FetchAllDataButton.Size = new System.Drawing.Size(149, 38);
+            this.m_FetchAllDataButton.TabIndex = 78;
+            this.m_FetchAllDataButton.Text = "Click here to Fetch All Data in One Click";
+            this.m_FetchAllDataButton.UseVisualStyleBackColor = false;
+            this.m_FetchAllDataButton.Click += new System.EventHandler(this.m_FetchAllDataButton_Click);
             // 
             // MainForm
             // 
@@ -626,10 +641,14 @@ namespace BasicFacebookFeatures
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fun Facebook App";
             ((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_RandomPicture)).EndInit();
             this.m_tabControl.ResumeLayout(false);
             this.m_HomeTabPage.ResumeLayout(false);
             this.m_HomeTabPage.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.m_UpcomingConcertsTabPage.ResumeLayout(false);
@@ -639,10 +658,6 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestTabPage.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -693,5 +708,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.PictureBox imageSmallPictureBox;
         private System.Windows.Forms.TextBox locationTextBox;
         private System.Windows.Forms.DateTimePicker startTimeDateTimePicker;
+        private System.Windows.Forms.Button m_FetchAllDataButton;
     }
 }
