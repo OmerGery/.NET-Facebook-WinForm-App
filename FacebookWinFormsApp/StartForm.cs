@@ -11,7 +11,7 @@ namespace BasicFacebookFeatures
 
         public AppSettings AppSettings { get; }
 
-        private AppLogic m_AppLogic = AppLogic.Instance;
+        private readonly AppLogic r_AppLogic = AppLogic.Instance;
 
 
         public bool IsLoggedIn { get; private set; }
@@ -28,7 +28,7 @@ namespace BasicFacebookFeatures
             try
             {
                 bool loggedIn = false;
-                m_AppLogic.Connect(AppSettings.LastAccessToken,k_AppId,ref loggedIn);
+                r_AppLogic.Connect(AppSettings.LastAccessToken,k_AppId,ref loggedIn);
                 IsLoggedIn = loggedIn;
                 Close();
             }
