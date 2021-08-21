@@ -11,57 +11,57 @@ namespace Logic
 
     public class FacebookUserAdapter : IFacebookUser
     {
-        private readonly User m_FacebookUser;
+        private readonly User r_FacebookUser;
         private readonly Random r_Random = new Random();
 
         public FacebookUserAdapter(User adaptee)
         {
-            m_FacebookUser = adaptee;
+            r_FacebookUser = adaptee;
         }
 
         public string GetFirstName()
         {
-            return m_FacebookUser.FirstName;
+            return r_FacebookUser.FirstName;
         }
 
         public string GetLastName()
         {
-            return m_FacebookUser.LastName;
+            return r_FacebookUser.LastName;
         }
 
         public string GetEmail()
         {
-            return m_FacebookUser.Email;
+            return r_FacebookUser.Email;
         }
         public Image GetImageSmall()
         {
-            return m_FacebookUser.ImageSmall;
+            return r_FacebookUser.ImageSmall;
         }
         public FacebookObjectCollection<User> GetFriends()
         {
-            return m_FacebookUser.Friends;
+            return r_FacebookUser.Friends;
         }
 
         public FacebookObjectCollection<Page> GetLikedPages()
         {
-            return m_FacebookUser.LikedPages;
+            return r_FacebookUser.LikedPages;
         }
 
         public FacebookObjectCollection<Event> GetEvents()
         {
-            return m_FacebookUser.Events;
+            return r_FacebookUser.Events;
         }
 
         public string GetLocale()
         {
-            return m_FacebookUser.Locale;
+            return r_FacebookUser.Locale;
         }
 
         
 
         public string GetBirthday()
         {
-            return m_FacebookUser.Birthday;
+            return r_FacebookUser.Birthday;
         }
 
 
@@ -70,7 +70,7 @@ namespace Logic
 
     public void FetchTopPostByFriend(ref int io_CurrentMaxLikedPost, ref string io_FriendName, ref Post io_MostLikedPost)
         {
-            foreach (User friend in m_FacebookUser.Friends)
+            foreach (User friend in r_FacebookUser.Friends)
             {
                 foreach (var friendPost in friend.Posts)
                 {
@@ -86,7 +86,7 @@ namespace Logic
 
         public Image GetRandomImage()
         {
-            FacebookObjectCollection<Photo> taggedPictures = m_FacebookUser.PhotosTaggedIn;
+            FacebookObjectCollection<Photo> taggedPictures = r_FacebookUser.PhotosTaggedIn;
             if (taggedPictures.Count< 1)
             {
                 throw new Exception("No Tagged pictures");
@@ -98,12 +98,12 @@ namespace Logic
 
         public void GetFriendsCommonInterest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
         {
-            foreach (User friend in m_FacebookUser.Friends)
+            foreach (User friend in r_FacebookUser.Friends)
             {
                 int friendCommonLikedPages = 0;
                 foreach (var friendLikedPage in friend.LikedPages)
                 {
-                    if (m_FacebookUser.LikedPages.Contains(friendLikedPage))
+                    if (r_FacebookUser.LikedPages.Contains(friendLikedPage))
                     {
                         io_IsFriendWithCommonInterest = true;
                         friendCommonLikedPages++;
@@ -119,7 +119,7 @@ namespace Logic
 
         public int GetPhotosTaggedInAmount()
         {
-            return m_FacebookUser.PhotosTaggedIn.Count;
+            return r_FacebookUser.PhotosTaggedIn.Count;
         }
     }
 }

@@ -5,15 +5,15 @@ namespace BasicFacebookFeatures
 {
     public class FormFlowManager
     {
-        private StartForm m_StartForm = new StartForm();
+        private readonly StartForm r_StartForm = new StartForm();
         private MainForm m_FacebookMainForm; 
         public void RunApp()
         {
             try
             {
-                m_StartForm.ShowDialog();
-                m_FacebookMainForm = new MainForm(m_StartForm.AppSettings);
-                if(m_StartForm.IsLoggedIn)
+                r_StartForm.ShowDialog();
+                m_FacebookMainForm = new MainForm(r_StartForm.AppSettings);
+                if(r_StartForm.IsLoggedIn)
                 {
                     m_FacebookMainForm.ShowDialog();
                 }
