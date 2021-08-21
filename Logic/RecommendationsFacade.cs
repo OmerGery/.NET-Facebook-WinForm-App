@@ -8,15 +8,11 @@ namespace Logic
     public class RecommendationsFacade
     {
         private LastFmApi m_LastFmApi = new LastFmApi();
-<<<<<<< HEAD
 
-        public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(IFacebookUser i_LoggedUser, bool i_IsMockState, int i_SimilarArtistsAmount)
-=======
         public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(
             IFacebookUser i_LoggedUser,
-            AppSettings i_AppSettings,
+            bool i_IsMockState,
             int i_SimilarArtistsAmount)
->>>>>>> 21c43f5798b762de261403d43223aa0864c477c1
         {
             Dictionary<string, List<string>> artistsDictionary = new Dictionary<string, List<string>>();
             List<string> userFavoriteArtists = new List<string>();

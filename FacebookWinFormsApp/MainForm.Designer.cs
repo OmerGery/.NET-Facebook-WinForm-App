@@ -78,19 +78,6 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eventBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.eventBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.attendingCountTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.imageSmallPictureBox = new System.Windows.Forms.PictureBox();
@@ -113,8 +100,6 @@ namespace BasicFacebookFeatures
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventBindingNavigator)).BeginInit();
-            this.eventBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,6 +144,7 @@ namespace BasicFacebookFeatures
             // 
             // m_UpcomingEventsListBox
             // 
+            this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
             this.m_UpcomingEventsListBox.FormattingEnabled = true;
             this.m_UpcomingEventsListBox.Location = new System.Drawing.Point(92, 292);
             this.m_UpcomingEventsListBox.Margin = new System.Windows.Forms.Padding(2);
@@ -540,131 +526,6 @@ namespace BasicFacebookFeatures
             // 
             this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
             // 
-            // eventBindingNavigator
-            // 
-            this.eventBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.eventBindingNavigator.BindingSource = this.eventBindingSource;
-            this.eventBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.eventBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.eventBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.eventBindingNavigatorSaveItem});
-            this.eventBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.eventBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.eventBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.eventBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.eventBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.eventBindingNavigator.Name = "eventBindingNavigator";
-            this.eventBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.eventBindingNavigator.Size = new System.Drawing.Size(837, 25);
-            this.eventBindingNavigator.TabIndex = 71;
-            this.eventBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // eventBindingNavigatorSaveItem
-            // 
-            this.eventBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.eventBindingNavigatorSaveItem.Enabled = false;
-            this.eventBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("eventBindingNavigatorSaveItem.Image")));
-            this.eventBindingNavigatorSaveItem.Name = "eventBindingNavigatorSaveItem";
-            this.eventBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.eventBindingNavigatorSaveItem.Text = "Save Data";
-            // 
             // attendingCountLabel
             // 
             attendingCountLabel.AutoSize = true;
@@ -757,7 +618,6 @@ namespace BasicFacebookFeatures
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(837, 606);
-            this.Controls.Add(this.eventBindingNavigator);
             this.Controls.Add(this.m_RememberMeCheckBox);
             this.Controls.Add(this.m_tabControl);
             this.Controls.Add(this.m_ProfilePicture);
@@ -783,9 +643,6 @@ namespace BasicFacebookFeatures
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventBindingNavigator)).EndInit();
-            this.eventBindingNavigator.ResumeLayout(false);
-            this.eventBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -837,18 +694,5 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.PictureBox imageSmallPictureBox;
         private System.Windows.Forms.TextBox locationTextBox;
         private System.Windows.Forms.DateTimePicker startTimeDateTimePicker;
-        private System.Windows.Forms.BindingNavigator eventBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton eventBindingNavigatorSaveItem;
     }
 }
