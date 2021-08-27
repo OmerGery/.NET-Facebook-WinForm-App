@@ -28,6 +28,6 @@ public class FacebookConnector
             io_IsLoggedIn = true;
         }
 
-        return new FacebookUserAdapter(loginResult.LoggedInUser);
+        return new FacebookUserProxy(loginResult.LoggedInUser);
     }
 }

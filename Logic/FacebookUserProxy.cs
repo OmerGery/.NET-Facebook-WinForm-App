@@ -8,14 +8,14 @@ using FacebookWrapper.ObjectModel;
 
 namespace Logic
 {
-    public class FacebookUserAdapter : IFacebookUser
+    public class FacebookUserProxy : IFacebookUser
     {
         private readonly User r_FacebookUser;
         private readonly Random r_Random = new Random();
 
-        public FacebookUserAdapter(User i_UserAdaptee)
+        public FacebookUserProxy(User i_User)
         {
-            r_FacebookUser = i_UserAdaptee;
+            r_FacebookUser = i_User;
         }
 
         public string GetFirstName()
@@ -57,7 +57,7 @@ namespace Logic
         {
             return r_FacebookUser.Locale;
         }
-
+        
         public string GetBirthday()
         {
             return r_FacebookUser.Birthday;
