@@ -48,6 +48,7 @@ namespace BasicFacebookFeatures
             this.m_RandomPicture = new System.Windows.Forms.PictureBox();
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.m_HomeTabPage = new System.Windows.Forms.TabPage();
+            this.m_FetchAllDataButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.attendingCountTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@ namespace BasicFacebookFeatures
             this.locationTextBox = new System.Windows.Forms.TextBox();
             this.startTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.m_TrendingPostTextBox = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.m_EventsAmountLabel = new System.Windows.Forms.Label();
             this.m_TopPostButton = new System.Windows.Forms.Button();
@@ -83,7 +83,7 @@ namespace BasicFacebookFeatures
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.m_RememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.m_FetchAllDataButton = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             attendingCountLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             imageSmallLabel = new System.Windows.Forms.Label();
@@ -96,12 +96,12 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.m_UpcomingConcertsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_ArtistsLimitNumericUpDown)).BeginInit();
             this.m_CommonInterestTabPage.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // attendingCountLabel
@@ -232,7 +232,6 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.Controls.Add(this.m_FetchAllDataButton);
             this.m_HomeTabPage.Controls.Add(this.panel1);
             this.m_HomeTabPage.Controls.Add(this.m_TrendingPostTextBox);
-            this.m_HomeTabPage.Controls.Add(this.pictureBox2);
             this.m_HomeTabPage.Controls.Add(this.pictureBox1);
             this.m_HomeTabPage.Controls.Add(this.m_EventsAmountLabel);
             this.m_HomeTabPage.Controls.Add(this.m_TopPostButton);
@@ -250,6 +249,19 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.TabIndex = 0;
             this.m_HomeTabPage.Text = "Home";
             this.m_HomeTabPage.UseVisualStyleBackColor = true;
+            // 
+            // m_FetchAllDataButton
+            // 
+            this.m_FetchAllDataButton.BackColor = System.Drawing.Color.BurlyWood;
+            this.m_FetchAllDataButton.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.m_FetchAllDataButton.Location = new System.Drawing.Point(325, 8);
+            this.m_FetchAllDataButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_FetchAllDataButton.Name = "m_FetchAllDataButton";
+            this.m_FetchAllDataButton.Size = new System.Drawing.Size(149, 38);
+            this.m_FetchAllDataButton.TabIndex = 78;
+            this.m_FetchAllDataButton.Text = "Click here to Fetch All Data in One Click";
+            this.m_FetchAllDataButton.UseVisualStyleBackColor = false;
+            this.m_FetchAllDataButton.Click += new System.EventHandler(this.m_FetchAllDataButton_Click);
             // 
             // panel1
             // 
@@ -316,15 +328,6 @@ namespace BasicFacebookFeatures
             this.m_TrendingPostTextBox.Name = "m_TrendingPostTextBox";
             this.m_TrendingPostTextBox.Size = new System.Drawing.Size(173, 186);
             this.m_TrendingPostTextBox.TabIndex = 76;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(393, 92);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(5, 6);
-            this.pictureBox2.TabIndex = 75;
-            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -613,19 +616,6 @@ namespace BasicFacebookFeatures
             this.m_RememberMeCheckBox.Text = "Remember Me";
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // m_FetchAllDataButton
-            // 
-            this.m_FetchAllDataButton.BackColor = System.Drawing.Color.BurlyWood;
-            this.m_FetchAllDataButton.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.m_FetchAllDataButton.Location = new System.Drawing.Point(325, 8);
-            this.m_FetchAllDataButton.Margin = new System.Windows.Forms.Padding(2);
-            this.m_FetchAllDataButton.Name = "m_FetchAllDataButton";
-            this.m_FetchAllDataButton.Size = new System.Drawing.Size(149, 38);
-            this.m_FetchAllDataButton.TabIndex = 78;
-            this.m_FetchAllDataButton.Text = "Click here to Fetch All Data in One Click";
-            this.m_FetchAllDataButton.UseVisualStyleBackColor = false;
-            this.m_FetchAllDataButton.Click += new System.EventHandler(this.m_FetchAllDataButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,7 +639,6 @@ namespace BasicFacebookFeatures
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageSmallPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.m_UpcomingConcertsTabPage.ResumeLayout(false);
             this.m_UpcomingConcertsTabPage.PerformLayout();
@@ -658,6 +647,7 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestTabPage.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -697,7 +687,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label m_LocaleLabel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox m_SimilarArtistsTextBox;
         private System.Windows.Forms.TextBox m_TrendingPostTextBox;
         private System.Windows.Forms.NumericUpDown m_ArtistsLimitNumericUpDown;
@@ -709,5 +698,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.TextBox locationTextBox;
         private System.Windows.Forms.DateTimePicker startTimeDateTimePicker;
         private System.Windows.Forms.Button m_FetchAllDataButton;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
