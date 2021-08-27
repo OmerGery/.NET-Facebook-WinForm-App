@@ -30,7 +30,6 @@ namespace BasicFacebookFeatures
             m_RememberMeCheckBox.Checked = r_AppSettings.RememberUser;
             FacebookService.s_CollectionLimit = 100;
             LoggedUser = r_AppLogic.GetUser();
-           
         }
 
         protected override void OnShown(EventArgs e)
