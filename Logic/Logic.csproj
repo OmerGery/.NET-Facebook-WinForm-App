@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="ArtistSortStrategy.cs" />
     <Compile Include="FacebookConnector.cs" />
     <Compile Include="FacebookUserProxy.cs" />
     <Compile Include="IFacebookUser.cs" />

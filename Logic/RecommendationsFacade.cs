@@ -8,7 +8,12 @@ namespace Logic
     public class RecommendationsFacade
     {
         private readonly LastFmApi r_LastFmApi = new LastFmApi();
+        private IArtistSortStrategy m_ArtistSortStrategy;
 
+        public RecommendationsFacade()
+        { 
+            m_ArtistSortStrategy = new DescendingArtistSortStrategy();
+        }
         public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(
             IFacebookUser i_LoggedUser,
             bool i_IsMockState,
@@ -36,6 +41,7 @@ namespace Logic
                 XDocument userSimilarArtists =
                     await r_LastFmApi.GetSimilarArtists(favoriteArtist, i_SimilarArtistsAmount);
                 List<string> userSimilarArtistsList = r_LastFmApi.FilterSimilarArtists(userSimilarArtists);
+                m_ArtistSortStrategy.sort(userSimilarArtistsList);
                 artistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
             }
 
