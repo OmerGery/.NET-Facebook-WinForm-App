@@ -11,7 +11,7 @@ namespace Logic
     public class FacebookUserProxy : IFacebookUser
     {
         private readonly User r_FacebookUser;
-        private readonly Random r_Random = new Random();
+        private readonly PhotoSelectionAlgorithmBase r_PhotoSelectionAlgorithmArray = new PhotoRandomizer();
 
         public FacebookUserProxy(User i_User)
         {
@@ -79,17 +79,10 @@ namespace Logic
             }
         }
 
-        public Image GetRandomImage()
-        {
-            FacebookObjectCollection<Photo> taggedPictures = r_FacebookUser.PhotosTaggedIn;
-            if (taggedPictures.Count < 1)
-            {
-                throw new Exception("No Tagged pictures");
-            }
-
-            int randomizedIndex = r_Random.Next(taggedPictures.Count);
-            return taggedPictures[randomizedIndex].ImageAlbum;
-        }
+    public Image GetRandomImage()
+    {
+        return r_PhotoSelectionAlgorithmArray.GetPhoto(r_FacebookUser);
+    }
 
         public void GetFriendsCommonInterest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
         {
