@@ -100,11 +100,12 @@ namespace BasicFacebookFeatures
         private async void fetchRecommendations()
         {
             try
-            {
+            { 
                 m_SimilarArtistsDictionary = await r_RecommendationsFacade.GetArtistRecommendations(
-                                                 LoggedUser,
-                                                 r_AppSettings.IsMockState,
-                                                 int.Parse(m_ArtistsLimitNumericUpDown.Text));
+                                               LoggedUser,
+                                               r_AppSettings.IsMockState,
+                                               int.Parse(m_ArtistsLimitNumericUpDown.Text),
+                                               m_SortingComboBox.Text);
             }
             catch (Exception facadeException)
             {
@@ -118,7 +119,7 @@ namespace BasicFacebookFeatures
 
             if (m_SimilarArtistsDictionary.Keys.Count == 0)
             {
-                m_FavoriteArtistsListBox.Items.Add("No liked Artists");
+                m_FavoriteArtistsListBox.Invoke(new Action(() => m_FavoriteArtistsListBox.Items.Add("No Favorite Artist")));
             }
         }
 
@@ -144,7 +145,8 @@ namespace BasicFacebookFeatures
         {
             m_RecommendationButton.Enabled = false;
             m_ArtistsLimitNumericUpDown.Enabled = false;
-            new Thread(fetchRecommendations).Start();
+            m_SortingComboBox.Enabled = false;
+            fetchRecommendations();
         }
 
         private void topPostButton_Click(object sender, EventArgs e)
@@ -252,5 +254,6 @@ namespace BasicFacebookFeatures
             m_EventsButton.Enabled = false;
             new Thread(fetchEvents).Start();
         }
+
     }
 }

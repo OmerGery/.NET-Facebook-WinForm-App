@@ -63,6 +63,9 @@ namespace BasicFacebookFeatures
             this.m_EventsButton = new System.Windows.Forms.Button();
             this.m_PictureRandomizerButton = new System.Windows.Forms.Button();
             this.m_UpcomingConcertsTabPage = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.m_SortingComboBox = new System.Windows.Forms.ComboBox();
             this.m_ArtistsLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.m_SimilarArtistsTextBox = new System.Windows.Forms.TextBox();
             this.m_RecommendationButton = new System.Windows.Forms.Button();
@@ -107,53 +110,59 @@ namespace BasicFacebookFeatures
             // attendingCountLabel
             // 
             attendingCountLabel.AutoSize = true;
-            attendingCountLabel.Location = new System.Drawing.Point(11, 16);
+            attendingCountLabel.Location = new System.Drawing.Point(16, 25);
+            attendingCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             attendingCountLabel.Name = "attendingCountLabel";
-            attendingCountLabel.Size = new System.Drawing.Size(86, 13);
+            attendingCountLabel.Size = new System.Drawing.Size(129, 20);
             attendingCountLabel.TabIndex = 0;
             attendingCountLabel.Text = "Attending Count:";
             // 
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(11, 42);
+            descriptionLabel.Location = new System.Drawing.Point(16, 65);
+            descriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            descriptionLabel.Size = new System.Drawing.Size(93, 20);
             descriptionLabel.TabIndex = 2;
             descriptionLabel.Text = "Description:";
             // 
             // imageSmallLabel
             // 
             imageSmallLabel.AutoSize = true;
-            imageSmallLabel.Location = new System.Drawing.Point(11, 65);
+            imageSmallLabel.Location = new System.Drawing.Point(16, 100);
+            imageSmallLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             imageSmallLabel.Name = "imageSmallLabel";
-            imageSmallLabel.Size = new System.Drawing.Size(67, 13);
+            imageSmallLabel.Size = new System.Drawing.Size(101, 20);
             imageSmallLabel.TabIndex = 4;
             imageSmallLabel.Text = "Image Small:";
             // 
             // locationLabel
             // 
             locationLabel.AutoSize = true;
-            locationLabel.Location = new System.Drawing.Point(11, 125);
+            locationLabel.Location = new System.Drawing.Point(16, 192);
+            locationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             locationLabel.Name = "locationLabel";
-            locationLabel.Size = new System.Drawing.Size(51, 13);
+            locationLabel.Size = new System.Drawing.Size(74, 20);
             locationLabel.TabIndex = 8;
             locationLabel.Text = "Location:";
             // 
             // startTimeLabel
             // 
             startTimeLabel.AutoSize = true;
-            startTimeLabel.Location = new System.Drawing.Point(11, 161);
+            startTimeLabel.Location = new System.Drawing.Point(16, 248);
+            startTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             startTimeLabel.Name = "startTimeLabel";
-            startTimeLabel.Size = new System.Drawing.Size(58, 13);
+            startTimeLabel.Size = new System.Drawing.Size(86, 20);
             startTimeLabel.TabIndex = 10;
             startTimeLabel.Text = "Start Time:";
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(767, 9);
+            this.buttonLogout.Location = new System.Drawing.Point(1150, 14);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(66, 23);
+            this.buttonLogout.Size = new System.Drawing.Size(99, 35);
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -162,19 +171,17 @@ namespace BasicFacebookFeatures
             // m_UserNameLabel
             // 
             this.m_UserNameLabel.AutoSize = true;
-            this.m_UserNameLabel.Location = new System.Drawing.Point(559, 14);
-            this.m_UserNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.m_UserNameLabel.Location = new System.Drawing.Point(838, 22);
             this.m_UserNameLabel.Name = "m_UserNameLabel";
-            this.m_UserNameLabel.Size = new System.Drawing.Size(59, 13);
+            this.m_UserNameLabel.Size = new System.Drawing.Size(89, 20);
             this.m_UserNameLabel.TabIndex = 56;
             this.m_UserNameLabel.Text = "user_name";
             // 
             // m_ProfilePicture
             // 
-            this.m_ProfilePicture.Location = new System.Drawing.Point(687, 6);
-            this.m_ProfilePicture.Margin = new System.Windows.Forms.Padding(2);
+            this.m_ProfilePicture.Location = new System.Drawing.Point(1030, 9);
             this.m_ProfilePicture.Name = "m_ProfilePicture";
-            this.m_ProfilePicture.Size = new System.Drawing.Size(56, 47);
+            this.m_ProfilePicture.Size = new System.Drawing.Size(84, 72);
             this.m_ProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.m_ProfilePicture.TabIndex = 57;
             this.m_ProfilePicture.TabStop = false;
@@ -182,20 +189,20 @@ namespace BasicFacebookFeatures
             // m_UpcomingBirthdaysListBox
             // 
             this.m_UpcomingBirthdaysListBox.FormattingEnabled = true;
-            this.m_UpcomingBirthdaysListBox.Location = new System.Drawing.Point(586, 50);
-            this.m_UpcomingBirthdaysListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.m_UpcomingBirthdaysListBox.ItemHeight = 20;
+            this.m_UpcomingBirthdaysListBox.Location = new System.Drawing.Point(879, 77);
             this.m_UpcomingBirthdaysListBox.Name = "m_UpcomingBirthdaysListBox";
-            this.m_UpcomingBirthdaysListBox.Size = new System.Drawing.Size(173, 186);
+            this.m_UpcomingBirthdaysListBox.Size = new System.Drawing.Size(258, 284);
             this.m_UpcomingBirthdaysListBox.TabIndex = 63;
             // 
             // m_UpcomingEventsListBox
             // 
             this.m_UpcomingEventsListBox.DataSource = this.eventBindingSource;
             this.m_UpcomingEventsListBox.FormattingEnabled = true;
-            this.m_UpcomingEventsListBox.Location = new System.Drawing.Point(92, 292);
-            this.m_UpcomingEventsListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.m_UpcomingEventsListBox.ItemHeight = 20;
+            this.m_UpcomingEventsListBox.Location = new System.Drawing.Point(138, 449);
             this.m_UpcomingEventsListBox.Name = "m_UpcomingEventsListBox";
-            this.m_UpcomingEventsListBox.Size = new System.Drawing.Size(173, 186);
+            this.m_UpcomingEventsListBox.Size = new System.Drawing.Size(258, 284);
             this.m_UpcomingEventsListBox.TabIndex = 65;
             // 
             // eventBindingSource
@@ -204,8 +211,7 @@ namespace BasicFacebookFeatures
             // 
             // m_RandomPicture
             // 
-            this.m_RandomPicture.Location = new System.Drawing.Point(637, 331);
-            this.m_RandomPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.m_RandomPicture.Location = new System.Drawing.Point(956, 509);
             this.m_RandomPicture.Name = "m_RandomPicture";
             this.m_RandomPicture.Size = new System.Drawing.Size(90, 88);
             this.m_RandomPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -219,10 +225,11 @@ namespace BasicFacebookFeatures
             this.m_tabControl.Controls.Add(this.m_CommonInterestTabPage);
             this.m_tabControl.Controls.Add(this.tabPage1);
             this.m_tabControl.ForeColor = System.Drawing.Color.Black;
-            this.m_tabControl.Location = new System.Drawing.Point(12, 69);
+            this.m_tabControl.Location = new System.Drawing.Point(18, 106);
+            this.m_tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_tabControl.Name = "m_tabControl";
             this.m_tabControl.SelectedIndex = 0;
-            this.m_tabControl.Size = new System.Drawing.Size(807, 509);
+            this.m_tabControl.Size = new System.Drawing.Size(1210, 783);
             this.m_tabControl.TabIndex = 69;
             // 
             // m_HomeTabPage
@@ -242,10 +249,11 @@ namespace BasicFacebookFeatures
             this.m_HomeTabPage.Controls.Add(this.m_RandomPicture);
             this.m_HomeTabPage.Controls.Add(this.m_UpcomingBirthdaysListBox);
             this.m_HomeTabPage.ForeColor = System.Drawing.Color.Black;
-            this.m_HomeTabPage.Location = new System.Drawing.Point(4, 22);
+            this.m_HomeTabPage.Location = new System.Drawing.Point(4, 29);
+            this.m_HomeTabPage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_HomeTabPage.Name = "m_HomeTabPage";
-            this.m_HomeTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.m_HomeTabPage.Size = new System.Drawing.Size(799, 483);
+            this.m_HomeTabPage.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.m_HomeTabPage.Size = new System.Drawing.Size(1202, 750);
             this.m_HomeTabPage.TabIndex = 0;
             this.m_HomeTabPage.Text = "Home";
             this.m_HomeTabPage.UseVisualStyleBackColor = true;
@@ -254,10 +262,9 @@ namespace BasicFacebookFeatures
             // 
             this.m_FetchAllDataButton.BackColor = System.Drawing.Color.BurlyWood;
             this.m_FetchAllDataButton.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.m_FetchAllDataButton.Location = new System.Drawing.Point(325, 8);
-            this.m_FetchAllDataButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_FetchAllDataButton.Location = new System.Drawing.Point(488, 12);
             this.m_FetchAllDataButton.Name = "m_FetchAllDataButton";
-            this.m_FetchAllDataButton.Size = new System.Drawing.Size(149, 38);
+            this.m_FetchAllDataButton.Size = new System.Drawing.Size(224, 58);
             this.m_FetchAllDataButton.TabIndex = 78;
             this.m_FetchAllDataButton.Text = "Click here to Fetch All Data in One Click";
             this.m_FetchAllDataButton.UseVisualStyleBackColor = false;
@@ -275,86 +282,90 @@ namespace BasicFacebookFeatures
             this.panel1.Controls.Add(this.locationTextBox);
             this.panel1.Controls.Add(startTimeLabel);
             this.panel1.Controls.Add(this.startTimeDateTimePicker);
-            this.panel1.Location = new System.Drawing.Point(280, 292);
+            this.panel1.Location = new System.Drawing.Point(420, 449);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 186);
+            this.panel1.Size = new System.Drawing.Size(423, 286);
             this.panel1.TabIndex = 77;
             // 
             // attendingCountTextBox
             // 
             this.attendingCountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "AttendingCount", true));
-            this.attendingCountTextBox.Location = new System.Drawing.Point(114, 13);
+            this.attendingCountTextBox.Location = new System.Drawing.Point(171, 20);
+            this.attendingCountTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.attendingCountTextBox.Name = "attendingCountTextBox";
-            this.attendingCountTextBox.Size = new System.Drawing.Size(89, 20);
+            this.attendingCountTextBox.Size = new System.Drawing.Size(132, 26);
             this.attendingCountTextBox.TabIndex = 1;
             // 
             // descriptionTextBox
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(114, 39);
+            this.descriptionTextBox.Location = new System.Drawing.Point(171, 60);
+            this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(153, 20);
+            this.descriptionTextBox.Size = new System.Drawing.Size(228, 26);
             this.descriptionTextBox.TabIndex = 3;
             // 
             // imageSmallPictureBox
             // 
             this.imageSmallPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.eventBindingSource, "ImageSmall", true));
-            this.imageSmallPictureBox.Location = new System.Drawing.Point(114, 65);
+            this.imageSmallPictureBox.Location = new System.Drawing.Point(171, 100);
+            this.imageSmallPictureBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.imageSmallPictureBox.Name = "imageSmallPictureBox";
-            this.imageSmallPictureBox.Size = new System.Drawing.Size(56, 50);
+            this.imageSmallPictureBox.Size = new System.Drawing.Size(84, 77);
             this.imageSmallPictureBox.TabIndex = 5;
             this.imageSmallPictureBox.TabStop = false;
             // 
             // locationTextBox
             // 
             this.locationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eventBindingSource, "Location", true));
-            this.locationTextBox.Location = new System.Drawing.Point(112, 125);
+            this.locationTextBox.Location = new System.Drawing.Point(168, 192);
+            this.locationTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.locationTextBox.Name = "locationTextBox";
-            this.locationTextBox.Size = new System.Drawing.Size(136, 20);
+            this.locationTextBox.Size = new System.Drawing.Size(202, 26);
             this.locationTextBox.TabIndex = 9;
             // 
             // startTimeDateTimePicker
             // 
             this.startTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.eventBindingSource, "StartTime", true));
-            this.startTimeDateTimePicker.Location = new System.Drawing.Point(75, 161);
+            this.startTimeDateTimePicker.Location = new System.Drawing.Point(112, 248);
+            this.startTimeDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.startTimeDateTimePicker.Name = "startTimeDateTimePicker";
-            this.startTimeDateTimePicker.Size = new System.Drawing.Size(180, 20);
+            this.startTimeDateTimePicker.Size = new System.Drawing.Size(268, 26);
             this.startTimeDateTimePicker.TabIndex = 11;
             // 
             // m_TrendingPostTextBox
             // 
-            this.m_TrendingPostTextBox.Location = new System.Drawing.Point(92, 43);
+            this.m_TrendingPostTextBox.Location = new System.Drawing.Point(138, 66);
+            this.m_TrendingPostTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_TrendingPostTextBox.Multiline = true;
             this.m_TrendingPostTextBox.Name = "m_TrendingPostTextBox";
-            this.m_TrendingPostTextBox.Size = new System.Drawing.Size(173, 186);
+            this.m_TrendingPostTextBox.Size = new System.Drawing.Size(258, 284);
             this.m_TrendingPostTextBox.TabIndex = 76;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(306, 50);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(459, 77);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(187, 175);
+            this.pictureBox1.Size = new System.Drawing.Size(280, 269);
             this.pictureBox1.TabIndex = 74;
             this.pictureBox1.TabStop = false;
             // 
             // m_EventsAmountLabel
             // 
             this.m_EventsAmountLabel.AutoSize = true;
-            this.m_EventsAmountLabel.Location = new System.Drawing.Point(291, 259);
-            this.m_EventsAmountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.m_EventsAmountLabel.Location = new System.Drawing.Point(436, 398);
             this.m_EventsAmountLabel.Name = "m_EventsAmountLabel";
-            this.m_EventsAmountLabel.Size = new System.Drawing.Size(85, 13);
+            this.m_EventsAmountLabel.Size = new System.Drawing.Size(126, 20);
             this.m_EventsAmountLabel.TabIndex = 73;
             this.m_EventsAmountLabel.Text = "Events Amount: ";
             // 
             // m_TopPostButton
             // 
-            this.m_TopPostButton.Location = new System.Drawing.Point(92, 8);
-            this.m_TopPostButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_TopPostButton.Location = new System.Drawing.Point(138, 12);
             this.m_TopPostButton.Name = "m_TopPostButton";
-            this.m_TopPostButton.Size = new System.Drawing.Size(184, 25);
+            this.m_TopPostButton.Size = new System.Drawing.Size(276, 38);
             this.m_TopPostButton.TabIndex = 72;
             this.m_TopPostButton.Text = "Click here to get #1 Trending Post";
             this.m_TopPostButton.UseVisualStyleBackColor = true;
@@ -362,10 +373,9 @@ namespace BasicFacebookFeatures
             // 
             // m_BirthdaysButton
             // 
-            this.m_BirthdaysButton.Location = new System.Drawing.Point(575, 8);
-            this.m_BirthdaysButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_BirthdaysButton.Location = new System.Drawing.Point(862, 12);
             this.m_BirthdaysButton.Name = "m_BirthdaysButton";
-            this.m_BirthdaysButton.Size = new System.Drawing.Size(184, 38);
+            this.m_BirthdaysButton.Size = new System.Drawing.Size(276, 58);
             this.m_BirthdaysButton.TabIndex = 71;
             this.m_BirthdaysButton.Text = "Click here to get Upcoming Birthdays";
             this.m_BirthdaysButton.UseVisualStyleBackColor = true;
@@ -373,10 +383,9 @@ namespace BasicFacebookFeatures
             // 
             // m_EventsButton
             // 
-            this.m_EventsButton.Location = new System.Drawing.Point(92, 248);
-            this.m_EventsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_EventsButton.Location = new System.Drawing.Point(138, 382);
             this.m_EventsButton.Name = "m_EventsButton";
-            this.m_EventsButton.Size = new System.Drawing.Size(184, 36);
+            this.m_EventsButton.Size = new System.Drawing.Size(276, 55);
             this.m_EventsButton.TabIndex = 70;
             this.m_EventsButton.Text = "Click here to get Upcoming Events";
             this.m_EventsButton.UseVisualStyleBackColor = true;
@@ -384,10 +393,9 @@ namespace BasicFacebookFeatures
             // 
             // m_PictureRandomizerButton
             // 
-            this.m_PictureRandomizerButton.Location = new System.Drawing.Point(575, 252);
-            this.m_PictureRandomizerButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_PictureRandomizerButton.Location = new System.Drawing.Point(862, 388);
             this.m_PictureRandomizerButton.Name = "m_PictureRandomizerButton";
-            this.m_PictureRandomizerButton.Size = new System.Drawing.Size(184, 36);
+            this.m_PictureRandomizerButton.Size = new System.Drawing.Size(276, 55);
             this.m_PictureRandomizerButton.TabIndex = 69;
             this.m_PictureRandomizerButton.Text = "Click To Get A Random Photo From Your Profile";
             this.m_PictureRandomizerButton.UseVisualStyleBackColor = true;
@@ -395,42 +403,78 @@ namespace BasicFacebookFeatures
             // 
             // m_UpcomingConcertsTabPage
             // 
+            this.m_UpcomingConcertsTabPage.AllowDrop = true;
             this.m_UpcomingConcertsTabPage.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.m_UpcomingConcertsTabPage.Controls.Add(this.label7);
+            this.m_UpcomingConcertsTabPage.Controls.Add(this.label4);
+            this.m_UpcomingConcertsTabPage.Controls.Add(this.m_SortingComboBox);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_ArtistsLimitNumericUpDown);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_SimilarArtistsTextBox);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_RecommendationButton);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.label1);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_SimilarArtistsLabel);
             this.m_UpcomingConcertsTabPage.Controls.Add(this.m_FavoriteArtistsListBox);
-            this.m_UpcomingConcertsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.m_UpcomingConcertsTabPage.Location = new System.Drawing.Point(4, 29);
+            this.m_UpcomingConcertsTabPage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_UpcomingConcertsTabPage.Name = "m_UpcomingConcertsTabPage";
-            this.m_UpcomingConcertsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.m_UpcomingConcertsTabPage.Size = new System.Drawing.Size(799, 483);
+            this.m_UpcomingConcertsTabPage.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.m_UpcomingConcertsTabPage.Size = new System.Drawing.Size(1202, 750);
             this.m_UpcomingConcertsTabPage.TabIndex = 1;
             this.m_UpcomingConcertsTabPage.Text = "Artists Recommendations";
             this.m_UpcomingConcertsTabPage.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(744, 158);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 20);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Amount:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(457, 161);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 20);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Sort By:";
+            // 
+            // m_SortingComboBox
+            // 
+            this.m_SortingComboBox.FormattingEnabled = true;
+            this.m_SortingComboBox.Items.AddRange(new object[] {
+            "By Match Rating",
+            "A-Z",
+            "Z-A"});
+            this.m_SortingComboBox.Location = new System.Drawing.Point(528, 155);
+            this.m_SortingComboBox.Name = "m_SortingComboBox";
+            this.m_SortingComboBox.Size = new System.Drawing.Size(210, 28);
+            this.m_SortingComboBox.TabIndex = 6;
+            // 
             // m_ArtistsLimitNumericUpDown
             // 
-            this.m_ArtistsLimitNumericUpDown.Location = new System.Drawing.Point(513, 90);
+            this.m_ArtistsLimitNumericUpDown.Location = new System.Drawing.Point(820, 155);
+            this.m_ArtistsLimitNumericUpDown.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_ArtistsLimitNumericUpDown.Name = "m_ArtistsLimitNumericUpDown";
-            this.m_ArtistsLimitNumericUpDown.Size = new System.Drawing.Size(36, 20);
+            this.m_ArtistsLimitNumericUpDown.Size = new System.Drawing.Size(54, 26);
             this.m_ArtistsLimitNumericUpDown.TabIndex = 5;
             // 
             // m_SimilarArtistsTextBox
             // 
-            this.m_SimilarArtistsTextBox.Location = new System.Drawing.Point(415, 114);
+            this.m_SimilarArtistsTextBox.Location = new System.Drawing.Point(627, 226);
+            this.m_SimilarArtistsTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_SimilarArtistsTextBox.Multiline = true;
             this.m_SimilarArtistsTextBox.Name = "m_SimilarArtistsTextBox";
-            this.m_SimilarArtistsTextBox.Size = new System.Drawing.Size(187, 173);
+            this.m_SimilarArtistsTextBox.Size = new System.Drawing.Size(278, 264);
             this.m_SimilarArtistsTextBox.TabIndex = 4;
             // 
             // m_RecommendationButton
             // 
-            this.m_RecommendationButton.Location = new System.Drawing.Point(309, 90);
-            this.m_RecommendationButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_RecommendationButton.Location = new System.Drawing.Point(461, 189);
             this.m_RecommendationButton.Name = "m_RecommendationButton";
-            this.m_RecommendationButton.Size = new System.Drawing.Size(187, 19);
+            this.m_RecommendationButton.Size = new System.Drawing.Size(280, 29);
             this.m_RecommendationButton.TabIndex = 3;
             this.m_RecommendationButton.Text = "Click To Get Recommendations!";
             this.m_RecommendationButton.UseVisualStyleBackColor = true;
@@ -439,9 +483,10 @@ namespace BasicFacebookFeatures
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 56);
+            this.label1.Location = new System.Drawing.Point(285, 86);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 13);
+            this.label1.Size = new System.Drawing.Size(342, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = " Based on your favorite Artists, using last.fm api";
             // 
@@ -449,18 +494,21 @@ namespace BasicFacebookFeatures
             // 
             this.m_SimilarArtistsLabel.AutoSize = true;
             this.m_SimilarArtistsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.m_SimilarArtistsLabel.Location = new System.Drawing.Point(188, 22);
+            this.m_SimilarArtistsLabel.Location = new System.Drawing.Point(282, 34);
+            this.m_SimilarArtistsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.m_SimilarArtistsLabel.Name = "m_SimilarArtistsLabel";
-            this.m_SimilarArtistsLabel.Size = new System.Drawing.Size(327, 25);
+            this.m_SimilarArtistsLabel.Size = new System.Drawing.Size(489, 37);
             this.m_SimilarArtistsLabel.TabIndex = 1;
             this.m_SimilarArtistsLabel.Text = "Similar Artists Recommendations";
             // 
             // m_FavoriteArtistsListBox
             // 
             this.m_FavoriteArtistsListBox.FormattingEnabled = true;
-            this.m_FavoriteArtistsListBox.Location = new System.Drawing.Point(193, 114);
+            this.m_FavoriteArtistsListBox.ItemHeight = 20;
+            this.m_FavoriteArtistsListBox.Location = new System.Drawing.Point(277, 226);
+            this.m_FavoriteArtistsListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_FavoriteArtistsListBox.Name = "m_FavoriteArtistsListBox";
-            this.m_FavoriteArtistsListBox.Size = new System.Drawing.Size(197, 173);
+            this.m_FavoriteArtistsListBox.Size = new System.Drawing.Size(294, 264);
             this.m_FavoriteArtistsListBox.TabIndex = 0;
             this.m_FavoriteArtistsListBox.SelectedIndexChanged += new System.EventHandler(this.similarArtistsListBox_SelectedIndexChanged);
             // 
@@ -470,20 +518,20 @@ namespace BasicFacebookFeatures
             this.m_CommonInterestTabPage.Controls.Add(this.m_FriendsIntrestsButton);
             this.m_CommonInterestTabPage.Controls.Add(this.m_CommonInterestListBox);
             this.m_CommonInterestTabPage.Controls.Add(this.label2);
-            this.m_CommonInterestTabPage.Location = new System.Drawing.Point(4, 22);
+            this.m_CommonInterestTabPage.Location = new System.Drawing.Point(4, 29);
+            this.m_CommonInterestTabPage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_CommonInterestTabPage.Name = "m_CommonInterestTabPage";
-            this.m_CommonInterestTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.m_CommonInterestTabPage.Size = new System.Drawing.Size(799, 483);
+            this.m_CommonInterestTabPage.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.m_CommonInterestTabPage.Size = new System.Drawing.Size(1202, 750);
             this.m_CommonInterestTabPage.TabIndex = 2;
             this.m_CommonInterestTabPage.Text = "Friends With Common Interest";
             this.m_CommonInterestTabPage.UseVisualStyleBackColor = true;
             // 
             // m_FriendsIntrestsButton
             // 
-            this.m_FriendsIntrestsButton.Location = new System.Drawing.Point(283, 47);
-            this.m_FriendsIntrestsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.m_FriendsIntrestsButton.Location = new System.Drawing.Point(424, 72);
             this.m_FriendsIntrestsButton.Name = "m_FriendsIntrestsButton";
-            this.m_FriendsIntrestsButton.Size = new System.Drawing.Size(173, 25);
+            this.m_FriendsIntrestsButton.Size = new System.Drawing.Size(260, 38);
             this.m_FriendsIntrestsButton.TabIndex = 4;
             this.m_FriendsIntrestsButton.Text = "Click here to see them!";
             this.m_FriendsIntrestsButton.UseVisualStyleBackColor = true;
@@ -492,18 +540,21 @@ namespace BasicFacebookFeatures
             // m_CommonInterestListBox
             // 
             this.m_CommonInterestListBox.FormattingEnabled = true;
-            this.m_CommonInterestListBox.Location = new System.Drawing.Point(186, 78);
+            this.m_CommonInterestListBox.ItemHeight = 20;
+            this.m_CommonInterestListBox.Location = new System.Drawing.Point(279, 120);
+            this.m_CommonInterestListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_CommonInterestListBox.Name = "m_CommonInterestListBox";
-            this.m_CommonInterestListBox.Size = new System.Drawing.Size(407, 212);
+            this.m_CommonInterestListBox.Size = new System.Drawing.Size(608, 324);
             this.m_CommonInterestListBox.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label2.Location = new System.Drawing.Point(205, 21);
+            this.label2.Location = new System.Drawing.Point(308, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(465, 25);
+            this.label2.Size = new System.Drawing.Size(689, 37);
             this.label2.TabIndex = 2;
             this.label2.Text = "Get list of cool friends that liked similar pages :)";
             // 
@@ -518,10 +569,11 @@ namespace BasicFacebookFeatures
             this.tabPage1.Controls.Add(this.m_UserEmailLabel);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(799, 483);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Size = new System.Drawing.Size(1202, 750);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "About";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -529,104 +581,98 @@ namespace BasicFacebookFeatures
             // m_PhotosAmountLabel
             // 
             this.m_PhotosAmountLabel.AutoSize = true;
-            this.m_PhotosAmountLabel.Location = new System.Drawing.Point(347, 108);
-            this.m_PhotosAmountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.m_PhotosAmountLabel.Location = new System.Drawing.Point(520, 166);
             this.m_PhotosAmountLabel.Name = "m_PhotosAmountLabel";
-            this.m_PhotosAmountLabel.Size = new System.Drawing.Size(116, 13);
+            this.m_PhotosAmountLabel.Size = new System.Drawing.Size(176, 20);
             this.m_PhotosAmountLabel.TabIndex = 9;
             this.m_PhotosAmountLabel.Text = "m_PhotosAmountLabel";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(195, 107);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(292, 165);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 13);
+            this.label8.Size = new System.Drawing.Size(210, 20);
             this.label8.TabIndex = 8;
             this.label8.Text = "Amount of photos tagged in:";
             // 
             // m_LocaleLabel
             // 
             this.m_LocaleLabel.AutoSize = true;
-            this.m_LocaleLabel.Location = new System.Drawing.Point(291, 79);
-            this.m_LocaleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.m_LocaleLabel.Location = new System.Drawing.Point(436, 122);
             this.m_LocaleLabel.Name = "m_LocaleLabel";
-            this.m_LocaleLabel.Size = new System.Drawing.Size(79, 13);
+            this.m_LocaleLabel.Size = new System.Drawing.Size(117, 20);
             this.m_LocaleLabel.TabIndex = 7;
             this.m_LocaleLabel.Text = "m_LocaleLabel";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(196, 79);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(294, 122);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.Size = new System.Drawing.Size(60, 20);
             this.label6.TabIndex = 6;
             this.label6.Text = "Locale:";
             // 
             // m_BirthdayLabel
             // 
             this.m_BirthdayLabel.AutoSize = true;
-            this.m_BirthdayLabel.Location = new System.Drawing.Point(289, 51);
-            this.m_BirthdayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.m_BirthdayLabel.Location = new System.Drawing.Point(434, 78);
             this.m_BirthdayLabel.Name = "m_BirthdayLabel";
-            this.m_BirthdayLabel.Size = new System.Drawing.Size(85, 13);
+            this.m_BirthdayLabel.Size = new System.Drawing.Size(128, 20);
             this.m_BirthdayLabel.TabIndex = 5;
             this.m_BirthdayLabel.Text = "m_BirthdayLabel";
             // 
             // m_UserEmailLabel
             // 
             this.m_UserEmailLabel.AutoSize = true;
-            this.m_UserEmailLabel.Location = new System.Drawing.Point(253, 25);
-            this.m_UserEmailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.m_UserEmailLabel.Location = new System.Drawing.Point(380, 38);
             this.m_UserEmailLabel.Name = "m_UserEmailLabel";
-            this.m_UserEmailLabel.Size = new System.Drawing.Size(94, 13);
+            this.m_UserEmailLabel.Size = new System.Drawing.Size(143, 20);
             this.m_UserEmailLabel.TabIndex = 3;
             this.m_UserEmailLabel.Text = "m_UserEmailLabel";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(195, 51);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(292, 78);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.Size = new System.Drawing.Size(71, 20);
             this.label5.TabIndex = 2;
             this.label5.Text = "Birthday:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(196, 25);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(294, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(52, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Email:";
             // 
             // m_RememberMeCheckBox
             // 
             this.m_RememberMeCheckBox.AutoSize = true;
-            this.m_RememberMeCheckBox.Location = new System.Drawing.Point(14, 36);
+            this.m_RememberMeCheckBox.Location = new System.Drawing.Point(21, 55);
+            this.m_RememberMeCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.m_RememberMeCheckBox.Name = "m_RememberMeCheckBox";
-            this.m_RememberMeCheckBox.Size = new System.Drawing.Size(95, 17);
+            this.m_RememberMeCheckBox.Size = new System.Drawing.Size(140, 24);
             this.m_RememberMeCheckBox.TabIndex = 70;
             this.m_RememberMeCheckBox.Text = "Remember Me";
             this.m_RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(837, 606);
+            this.ClientSize = new System.Drawing.Size(1256, 932);
             this.Controls.Add(this.m_RememberMeCheckBox);
             this.Controls.Add(this.m_tabControl);
             this.Controls.Add(this.m_ProfilePicture);
             this.Controls.Add(this.m_UserNameLabel);
             this.Controls.Add(this.buttonLogout);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fun Facebook App";
@@ -699,5 +745,8 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.DateTimePicker startTimeDateTimePicker;
         private System.Windows.Forms.Button m_FetchAllDataButton;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox m_SortingComboBox;
     }
 }

@@ -10,15 +10,13 @@ namespace Logic
         private readonly LastFmApi r_LastFmApi = new LastFmApi();
         private IArtistSortStrategy m_ArtistSortStrategy;
 
-        public RecommendationsFacade()
-        { 
-            m_ArtistSortStrategy = new DescendingArtistSortStrategy();
-        }
         public async Task<Dictionary<string, List<string>>> GetArtistRecommendations(
             IFacebookUser i_LoggedUser,
             bool i_IsMockState,
-            int i_SimilarArtistsAmount)
+            int i_SimilarArtistsAmount,
+            string i_SortBy)
         {
+            setSortStrategy(i_SortBy);
             Dictionary<string, List<string>> artistsDictionary = new Dictionary<string, List<string>>();
             List<string> userFavoriteArtists = new List<string>();
             if(i_IsMockState)
@@ -46,6 +44,22 @@ namespace Logic
             }
 
             return artistsDictionary;
+        }
+
+        private void setSortStrategy(string i_SortBy)
+        {
+            switch(i_SortBy)
+            {
+                case "A-Z":
+                    m_ArtistSortStrategy = new AscendingArtistSortStrategy();
+                    break;
+                case "Z-A":
+                    m_ArtistSortStrategy = new DescendingArtistSortStrategy();
+                    break;
+                default:
+                    m_ArtistSortStrategy = new RatingArtistSortStrategy();
+                    break;
+            }
         }
     }
 }

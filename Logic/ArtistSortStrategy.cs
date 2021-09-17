@@ -16,8 +16,6 @@ namespace Logic
     {
         public void sort(List<string> artistListToSort)
         {
-
-            artistListToSort.Add("Ascend");
             artistListToSort.Sort((a, b) => a.CompareTo(b)); 
         }
     }
@@ -26,8 +24,14 @@ namespace Logic
     {
         public void sort(List<string> artistListToSort)
         {
-            artistListToSort.Add("Desending");
             artistListToSort.Sort((a, b) => b.CompareTo(a));
+        }
+    }
+    public class RatingArtistSortStrategy : IArtistSortStrategy
+    {
+        public void sort(List<string> artistListToSort)
+        {
+            artistListToSort.Add("Sorted By Rating :-)");
         }
     }
 
