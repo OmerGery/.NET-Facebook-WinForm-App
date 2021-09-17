@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Logic
 {
-    public sealed class AppSettings
+    public sealed class AppSettings : IExitObserver
     {
         public string LastAccessToken { get; set; }
 
@@ -17,10 +17,10 @@ namespace Logic
         public Point LastWindowsLocation { get; set; }
 
         private static readonly string sr_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
-
+        private ExitNotifier m_ExitNotifer = new ExitNotifier();
         public static AppSettings LoadSettingsFromFile()
         {
-            AppSettings appSettings; 
+            AppSettings appSettings;
             if(File.Exists(sr_AppSettingsFilePath))
             {
                 using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Open))
@@ -39,17 +39,18 @@ namespace Logic
 
         private AppSettings()
         {
+            m_ExitNotifer.ExitClicked += UpdateExited;
             RememberUser = false;
             LastAccessToken = null;
             LastWindowsSize = new Size(870, 650);
             LastWindowsLocation = new Point(50, 50);
         }
 
-        public void SaveSettingsToFile()
+        public void UpdateExited()
         {
             using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Create, FileAccess.ReadWrite))
             {
-                XmlSerializer serializer = new XmlSerializer(this.GetType());
+                XmlSerializer serializer = new XmlSerializer(GetType());
                 serializer.Serialize(stream, this);
             }
         }

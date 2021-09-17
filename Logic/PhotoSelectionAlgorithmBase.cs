@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 
 namespace Logic
 {
     public abstract class PhotoSelectionAlgorithmBase
     {
+
         public Image GetPhoto(User i_FacebookUser)
         {
 
@@ -19,11 +16,10 @@ namespace Logic
                 throw new Exception("No Tagged pictures");
             }
 
-            int photoIndex = GetIndexOfPhoto(taggedPictures);
-            return taggedPictures[photoIndex].ImageAlbum;
+            return GetImageFromAlbum(taggedPictures);
         }
 
-        public abstract int GetIndexOfPhoto(FacebookObjectCollection<Photo> i_Album);
+        public abstract Image GetImageFromAlbum(FacebookObjectCollection<Photo> i_Album);
     }
 
     public class PhotoRandomizer : PhotoSelectionAlgorithmBase
@@ -31,11 +27,11 @@ namespace Logic
 
         private readonly Random r_Random = new Random();
 
-        public override int GetIndexOfPhoto(FacebookObjectCollection<Photo> i_Album)
+        public override Image GetImageFromAlbum(FacebookObjectCollection<Photo> i_Album)
         {
-            return r_Random.Next(i_Album.Count);
+            return i_Album[r_Random.Next(i_Album.Count)].ImageAlbum;
         }
     }
-    
+
 
 }

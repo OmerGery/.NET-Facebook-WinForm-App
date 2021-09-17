@@ -9,10 +9,11 @@ using Logic;
 
 namespace BasicFacebookFeatures
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IExitObserver
     {
         private readonly RecommendationsFacade r_RecommendationsFacade = new RecommendationsFacade();
 
+        private ExitNotifier m_ExitNotifier = new ExitNotifier();
         private IFacebookUser LoggedUser { get; }
 
         private readonly AppLogic r_AppLogic = AppLogic.Instance;
@@ -30,6 +31,8 @@ namespace BasicFacebookFeatures
             m_RememberMeCheckBox.Checked = r_AppSettings.RememberUser;
             FacebookService.s_CollectionLimit = 100;
             LoggedUser = r_AppLogic.GetUser();
+            m_ExitNotifier.ExitClicked += UpdateExited;
+            m_ExitNotifier.ExitClicked += r_AppSettings.UpdateExited;
         }
 
         protected override void OnShown(EventArgs e)
@@ -39,6 +42,7 @@ namespace BasicFacebookFeatures
             fetchAboutData();
         }
 
+
         private void fetchAboutData()
         {
             m_ProfilePicture.Image = LoggedUser.GetImageSmall();
@@ -47,13 +51,17 @@ namespace BasicFacebookFeatures
             m_PhotosAmountLabel.Text = LoggedUser.GetPhotosTaggedInAmount().ToString();
             m_LocaleLabel.Text = LoggedUser.GetLocale();
         }
-
+        public void UpdateExited()
+        {
+            MessageBox.Show("Bye Bye :-)");
+        }
         protected override void OnClosed(EventArgs e)
         {
+            
             r_AppSettings.LastWindowsSize = Size;
             r_AppSettings.LastWindowsLocation = Location;
             r_AppSettings.LastAccessToken = m_RememberMeCheckBox.Checked ? r_AppLogic.AccessToken : null;
-            r_AppSettings.SaveSettingsToFile();
+            m_ExitNotifier.NotifyAll();
             base.OnClosed(e);
         }
 
@@ -256,4 +264,6 @@ namespace BasicFacebookFeatures
         }
 
     }
+
+   
 }
