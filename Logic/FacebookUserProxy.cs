@@ -79,7 +79,7 @@ namespace Logic
             }
         }
 
-    public Image GetRandomImage()
+    public Image GetSelectedImage()
     {
         return r_PhotoSelectionAlgorithmArray.GetPhoto(r_FacebookUser);
     }

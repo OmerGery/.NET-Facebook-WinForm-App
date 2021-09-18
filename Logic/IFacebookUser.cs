@@ -24,7 +24,7 @@ public interface IFacebookUser
 
     void FetchTopPostByFriend(ref int io_CurrentMaxLikedPost, ref string io_FriendName, ref Post io_MostLikedPost);
 
-    Image GetRandomImage();
+    Image GetSelectedImage();
 
     void GetFriendsCommonInterest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest);
 

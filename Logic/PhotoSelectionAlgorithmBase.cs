@@ -19,7 +19,7 @@ namespace Logic
             return GetImageFromAlbum(taggedPictures);
         }
 
-        public abstract Image GetImageFromAlbum(FacebookObjectCollection<Photo> i_Album);
+        protected abstract Image GetImageFromAlbum(FacebookObjectCollection<Photo> i_Album);
     }
 
   

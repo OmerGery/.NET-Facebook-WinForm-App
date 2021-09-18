@@ -139,7 +139,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                m_RandomPicture.Image = LoggedUser.GetRandomImage();
+                m_RandomPicture.Image = LoggedUser.GetSelectedImage();
             }
             catch (Exception pictureException)
             {
