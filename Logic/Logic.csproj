@@ -41,6 +41,9 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="ArtistSortStrategy.cs" />
+    <Compile Include="RatingArtistSortStrategy.cs" />
+    <Compile Include="DescendingArtistSortStrategy.cs" />
+    <Compile Include="AscendingArtistSortStrategy.cs" />
     <Compile Include="IExitObserver.cs" />
     <Compile Include="FacebookConnector.cs" />
     <Compile Include="FacebookUserProxy.cs" />

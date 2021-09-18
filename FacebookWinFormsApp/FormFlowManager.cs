@@ -12,7 +12,7 @@ namespace BasicFacebookFeatures
 
         public void ExitUpdate()
         {
-            MessageBox.Show("Bye Bye :---) ");
+            MessageBox.Show("Bye Bye :-) ");
         }
 
         public void RunApp()
