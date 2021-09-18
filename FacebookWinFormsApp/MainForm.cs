@@ -9,16 +9,18 @@ using Logic;
 
 namespace BasicFacebookFeatures
 {
-    public partial class MainForm : Form, IExitObserver
+    public partial class MainForm : Form
     {
         private readonly RecommendationsFacade r_RecommendationsFacade = new RecommendationsFacade();
 
-        private ExitNotifier m_ExitNotifier = new ExitNotifier();
+        private readonly ExitNotifier m_ExitNotifier = new ExitNotifier();
         private IFacebookUser LoggedUser { get; }
 
         private readonly AppLogic r_AppLogic = AppLogic.Instance;
 
         private readonly AppSettings r_AppSettings;
+
+        private readonly IExitObserver r_ExitObserver = new ExitMessage();
 
         private Dictionary<string, List<string>> m_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
 
@@ -31,8 +33,8 @@ namespace BasicFacebookFeatures
             m_RememberMeCheckBox.Checked = r_AppSettings.RememberUser;
             FacebookService.s_CollectionLimit = 100;
             LoggedUser = r_AppLogic.GetUser();
-            m_ExitNotifier.ExitClicked += UpdateExited;
-            m_ExitNotifier.ExitClicked += r_AppSettings.UpdateExited;
+            m_ExitNotifier.Attach(r_ExitObserver.UpdateExited);
+            m_ExitNotifier.Attach(r_AppSettings.UpdateExited);
         }
 
         protected override void OnShown(EventArgs e)
@@ -50,10 +52,6 @@ namespace BasicFacebookFeatures
             m_BirthdayLabel.Text = LoggedUser.GetBirthday();
             m_PhotosAmountLabel.Text = LoggedUser.GetPhotosTaggedInAmount().ToString();
             m_LocaleLabel.Text = LoggedUser.GetLocale();
-        }
-        public void UpdateExited()
-        {
-            MessageBox.Show("Bye Bye :-)");
         }
         protected override void OnClosed(EventArgs e)
         {

@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExitMessage.cs" />
     <Compile Include="FormFlowManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

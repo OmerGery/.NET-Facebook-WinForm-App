@@ -39,7 +39,7 @@ namespace Logic
                 XDocument userSimilarArtists =
                     await r_LastFmApi.GetSimilarArtists(favoriteArtist, i_SimilarArtistsAmount);
                 List<string> userSimilarArtistsList = r_LastFmApi.FilterSimilarArtists(userSimilarArtists);
-                m_ArtistSortStrategy.sort(userSimilarArtistsList);
+                m_ArtistSortStrategy.Sort(userSimilarArtistsList);
                 artistsDictionary.Add(favoriteArtist, userSimilarArtistsList);
             }
 

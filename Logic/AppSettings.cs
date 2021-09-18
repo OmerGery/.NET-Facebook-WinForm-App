@@ -17,7 +17,6 @@ namespace Logic
         public Point LastWindowsLocation { get; set; }
 
         private static readonly string sr_AppSettingsFilePath = Directory.GetCurrentDirectory() + "\\appsettings.xml";
-        private ExitNotifier m_ExitNotifer = new ExitNotifier();
         public static AppSettings LoadSettingsFromFile()
         {
             AppSettings appSettings;
@@ -39,7 +38,6 @@ namespace Logic
 
         private AppSettings()
         {
-            m_ExitNotifer.ExitClicked += UpdateExited;
             RememberUser = false;
             LastAccessToken = null;
             LastWindowsSize = new Size(870, 650);

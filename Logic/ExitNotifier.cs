@@ -10,6 +10,16 @@ namespace Logic
         {
             ExitClicked?.Invoke();
         }
-        
+
+        public void Attach(Action i_ActionToAdd)
+        {
+            ExitClicked += i_ActionToAdd;
+        }
+        public void Detach(Action i_ActionToRemove)
+        {
+            ExitClicked -= i_ActionToRemove;
+        }
+
+
     }
 }
