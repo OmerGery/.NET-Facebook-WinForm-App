@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Logic
 {
-    public sealed class AppSettings : IExitObserver
+    public sealed class AppSettings
     {
         public string LastAccessToken { get; set; }
 
@@ -44,7 +44,7 @@ namespace Logic
             LastWindowsLocation = new Point(50, 50);
         }
 
-        public void UpdateExited()
+        public void SaveSettingsToFile()
         {
             using(Stream stream = new FileStream(sr_AppSettingsFilePath, FileMode.Create, FileAccess.ReadWrite))
             {

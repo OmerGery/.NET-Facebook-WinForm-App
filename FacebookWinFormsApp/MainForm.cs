@@ -12,17 +12,30 @@ namespace BasicFacebookFeatures
     public partial class MainForm : Form
     {
         private readonly RecommendationsFacade r_RecommendationsFacade = new RecommendationsFacade();
-
-        private readonly ExitNotifier m_ExitNotifier = new ExitNotifier();
+        
         private IFacebookUser LoggedUser { get; }
 
         private readonly AppLogic r_AppLogic = AppLogic.Instance;
 
         private readonly AppSettings r_AppSettings;
 
-        private readonly IExitObserver r_ExitObserver = new ExitMessage();
-
         private Dictionary<string, List<string>> m_SimilarArtistsDictionary = new Dictionary<string, List<string>>();
+
+        public event Action ExitClicked;
+
+        private void notify()
+        {
+            ExitClicked?.Invoke();
+        }
+
+        public void Attach(Action i_ObserverToAdd)
+        {
+            ExitClicked += i_ObserverToAdd;
+        }
+        public void Detach(Action i_ObserverToRemove)
+        {
+            ExitClicked -= i_ObserverToRemove;
+        }
 
         public MainForm(AppSettings i_AppSettings)
         {
@@ -33,8 +46,6 @@ namespace BasicFacebookFeatures
             m_RememberMeCheckBox.Checked = r_AppSettings.RememberUser;
             FacebookService.s_CollectionLimit = 100;
             LoggedUser = r_AppLogic.GetUser();
-            m_ExitNotifier.Attach(r_ExitObserver.UpdateExited);
-            m_ExitNotifier.Attach(r_AppSettings.UpdateExited);
         }
 
         protected override void OnShown(EventArgs e)
@@ -59,7 +70,8 @@ namespace BasicFacebookFeatures
             r_AppSettings.LastWindowsSize = Size;
             r_AppSettings.LastWindowsLocation = Location;
             r_AppSettings.LastAccessToken = m_RememberMeCheckBox.Checked ? r_AppLogic.AccessToken : null;
-            m_ExitNotifier.NotifyAll();
+            r_AppSettings.SaveSettingsToFile();
+            notify();
             base.OnClosed(e);
         }
 

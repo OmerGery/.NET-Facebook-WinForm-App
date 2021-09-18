@@ -5,7 +5,7 @@ namespace Logic
 
     public interface IExitObserver
     { 
-        void UpdateExited();
+        void ExitUpdate();
     }
     
 }
