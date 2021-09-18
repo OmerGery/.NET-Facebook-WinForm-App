@@ -49,6 +49,7 @@
     <Compile Include="LastFmApi.cs" />
     <Compile Include="AppLogic.cs" />
     <Compile Include="MockGenerator.cs" />
+    <Compile Include="PhotoRandomizer.cs" />
     <Compile Include="PhotoSelectionAlgorithmBase.cs" />
     <Compile Include="RecommendationsFacade.cs" />
   </ItemGroup>

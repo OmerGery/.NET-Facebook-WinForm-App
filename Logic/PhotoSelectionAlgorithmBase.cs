@@ -22,16 +22,7 @@ namespace Logic
         public abstract Image GetImageFromAlbum(FacebookObjectCollection<Photo> i_Album);
     }
 
-    public class PhotoRandomizer : PhotoSelectionAlgorithmBase
-    {
-
-        private readonly Random r_Random = new Random();
-
-        public override Image GetImageFromAlbum(FacebookObjectCollection<Photo> i_Album)
-        {
-            return i_Album[r_Random.Next(i_Album.Count)].ImageAlbum;
-        }
-    }
+  
 
 
 }
