@@ -11,7 +11,7 @@ namespace Logic
     public class FacebookUserProxy : IFacebookUser
     {
         private readonly User r_FacebookUser;
-        private readonly PhotoSelectionAlgorithmBase r_PhotoSelectionAlgorithmArray = new PhotoRandomizer();
+        private readonly PhotoSelectionAlgorithmBase r_PhotoSelectionAlgorithm = new PhotoRandomizer();
 
         public FacebookUserProxy(User i_User)
         {
@@ -81,7 +81,7 @@ namespace Logic
 
     public Image GetSelectedImage()
     {
-        return r_PhotoSelectionAlgorithmArray.GetPhoto(r_FacebookUser);
+        return r_PhotoSelectionAlgorithm.GetPhoto(r_FacebookUser);
     }
 
         public void GetFriendsCommonInterest(ref Dictionary<string, int> io_FriendsCommonPagesLikes, ref bool io_IsFriendWithCommonInterest)
